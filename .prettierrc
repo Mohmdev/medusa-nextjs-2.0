@@ -2,7 +2,9 @@
   "arrowParens": "always",
   "semi": false,
   "endOfLine": "auto",
-  "singleQuote": false,
+  "singleQuote": true,
   "tabWidth": 2,
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "printWidth": 100,
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
