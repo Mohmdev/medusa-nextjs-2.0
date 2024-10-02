@@ -1,0 +1,13 @@
+[build]
+builder = "NIXPACKS"
+nixpacksConfigPath = "railway.nixpacks.toml"
+
+[deploy]
+region = "us-west1"
+runtime = "V2"
+numReplicas = 1
+# healthcheckPath = "/health"
+# healthcheckTimeout = 90
+sleepApplication = true
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
