@@ -1,6 +1,6 @@
-import { ArrowUpRightMini } from "@medusajs/icons"
-import { Text } from "@medusajs/ui"
-import LocalizedClientLink from "../localized-client-link"
+import { ArrowUpRightMini } from '@medusajs/icons'
+import { Text } from '@medusajs/ui'
+import LocalizedClientLink from '../localized-client-link'
 
 type InteractiveLinkProps = {
   href: string
@@ -8,22 +8,17 @@ type InteractiveLinkProps = {
   onClick?: () => void
 }
 
-const InteractiveLink = ({
-  href,
-  children,
-  onClick,
-  ...props
-}: InteractiveLinkProps) => {
+const InteractiveLink = ({ href, children, onClick, ...props }: InteractiveLinkProps) => {
   return (
     <LocalizedClientLink
-      className="flex gap-x-1 items-center group"
+      className="group flex items-center gap-x-2"
       href={href}
       onClick={onClick}
       {...props}
     >
       <Text className="text-ui-fg-interactive">{children}</Text>
       <ArrowUpRightMini
-        className="group-hover:rotate-45 ease-in-out duration-150"
+        className="duration-200 ease-in-out group-hover:rotate-45"
         color="var(--fg-interactive)"
       />
     </LocalizedClientLink>

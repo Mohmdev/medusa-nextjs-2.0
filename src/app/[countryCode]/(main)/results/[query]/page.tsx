@@ -1,13 +1,13 @@
-import { Metadata } from "next"
+import { Metadata } from 'next'
 
-import SearchResultsTemplate from "@/modules/search/templates/search-results-template"
+import SearchResultsTemplate from '@/modules/search/templates/search-results-template'
 
-import { search } from "@/modules/search/actions"
-import { SortOptions } from "@/modules/store/components/refinement-list/sort-products"
+import { search } from '@/modules/search/actions'
+import { SortOptions } from '@/modules/store/components/refinement-list/sort-products'
 
 export const metadata: Metadata = {
-  title: "Search",
-  description: "Explore all of our products.",
+  title: 'Search',
+  description: 'Explore all of our products.',
 }
 
 type Params = {
@@ -27,7 +27,7 @@ export default async function SearchResults({ params, searchParams }: Params) {
   const ids = hits
     .map((h) => h.objectID || h.id)
     .filter((id): id is string => {
-      return typeof id === "string"
+      return typeof id === 'string'
     })
 
   return (

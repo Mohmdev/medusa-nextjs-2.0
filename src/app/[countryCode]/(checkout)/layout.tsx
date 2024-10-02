@@ -2,10 +2,14 @@ import LocalizedClientLink from '@/modules/common/components/localized-client-li
 import ChevronDown from '@/modules/common/icons/chevron-down'
 import MedusaCTA from '@/modules/layout/components-shared/medusa-cta'
 
-export default function CheckoutLayout({ children }: { children: React.ReactNode }) {
+export default function CheckoutLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <div className="relative w-full bg-white small:min-h-screen">
-      <div className="h-16 border-b bg-white">
+    <div className="relative w-full small:min-h-screen">
+      <div className="h-16 border-b">
         <nav className="content-container flex h-full items-center justify-between">
           <LocalizedClientLink
             href="/cart"

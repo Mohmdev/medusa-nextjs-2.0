@@ -1,10 +1,10 @@
-import { getBaseURL } from '@/lib/util/env'
 import { Metadata } from 'next'
+import { ThemeProvider } from '@/ui/theme-provider'
+import { getBaseURL } from '@/lib/util/env'
 import '@/styles/base.css'
 import '@/styles/utilities.css'
 import '@/styles/components.css'
 import '@/styles/custom.css'
-import { ThemeProvider } from '@/ui/theme-provider'
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
