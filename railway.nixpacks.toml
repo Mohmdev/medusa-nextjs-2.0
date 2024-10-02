@@ -10,7 +10,7 @@ PORT = '8000'
 
 
 [phases.setup]
-nixPkgs = ['nodejs_22', 'npm-9_x']
+nixPkgs = ['nodejs_20', 'npm-9_x']
 nixLibs = ['gcc-unwrapped']
 nixOverlays = [
   'https://github.com/railwayapp/nix-npm-overlay/archive/main.tar.gz',
