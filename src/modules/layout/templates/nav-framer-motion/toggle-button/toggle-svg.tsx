@@ -1,5 +1,5 @@
-import { m, type SVGMotionProps } from 'framer-motion'
 import { cn } from '@/lib/util/cn'
+import { m, type SVGMotionProps } from 'framer-motion'
 
 interface PathProps extends SVGMotionProps<SVGPathElement> {
   menuState: boolean

@@ -1,13 +1,15 @@
-import React from 'react'
-import { StoreCollection } from '@medusajs/types'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import { StoreCollection } from '@medusajs/types'
+import React from 'react'
 
 type CollectionsTemplateProps = {
   collections: StoreCollection[]
   countryCode: string
 }
 
-const CollectionsTemplate: React.FC<CollectionsTemplateProps> = ({ collections }) => {
+const CollectionsTemplate: React.FC<CollectionsTemplateProps> = ({
+  collections,
+}) => {
   return (
     <div className="content-container flex flex-col py-6 small:flex-row small:items-start">
       <div className="w-full">

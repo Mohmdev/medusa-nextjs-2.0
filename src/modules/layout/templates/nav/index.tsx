@@ -1,13 +1,13 @@
 import { Suspense } from 'react'
 
 import { listRegions } from '@/lib/data/regions'
-import { StoreRegion } from '@medusajs/types'
+import { cn } from '@/lib/util/cn'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import Medusa from '@/modules/common/icons/medusa'
 import CartButton from '@/modules/layout/components-shared/cart-button'
 import SideMenu from '@/modules/layout/templates/nav/side-menu'
-import { cn } from '@/lib/util/cn'
 import SiteLogo from '@/ui/site-logo'
-import Medusa from '@/modules/common/icons/medusa'
+import { StoreRegion } from '@medusajs/types'
 
 export default async function Nav({ className }: { className?: string }) {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)

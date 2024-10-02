@@ -1,12 +1,12 @@
 import { Suspense } from 'react'
 
 import { listRegions } from '@/lib/data/regions'
-import { StoreRegion } from '@medusajs/types'
-import LocalizedClientLink from '@/modules/common/components/localized-client-link'
-import CartButton from '@/modules/layout/components-shared/cart-button'
 import { cn } from '@/lib/util/cn'
-import SiteLogo from '@/ui/site-logo'
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import Medusa from '@/modules/common/icons/medusa'
+import CartButton from '@/modules/layout/components-shared/cart-button'
+import SiteLogo from '@/ui/site-logo'
+import { StoreRegion } from '@medusajs/types'
 import SideMenuNav from './templates/nav-framer-motion'
 
 export default async function Header({ className }: { className?: string }) {
@@ -23,7 +23,10 @@ export default async function Header({ className }: { className?: string }) {
       )}
     >
       <nav className="content-container text-small-regular txt-xsmall-plus relative flex h-full w-full items-center justify-between text-ui-fg-subtle">
-        <div data-testid="nav-menu" className="flex h-full flex-1 basis-0 items-center">
+        <div
+          data-testid="nav-menu"
+          className="flex h-full flex-1 basis-0 items-center"
+        >
           {/* <div className="h-full">
             <SideMenu regions={regions} />
           </div> */}

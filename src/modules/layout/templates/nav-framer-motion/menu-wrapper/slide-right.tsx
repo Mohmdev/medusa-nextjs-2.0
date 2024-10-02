@@ -1,5 +1,5 @@
-import { m, type Variants } from 'framer-motion'
 import { cn } from '@/lib/util/cn'
+import { m, type Variants } from 'framer-motion'
 
 const slideRightFullVariants: Variants = {
   open: {

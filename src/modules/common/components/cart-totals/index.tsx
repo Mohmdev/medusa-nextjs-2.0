@@ -1,9 +1,7 @@
-"use client"
+'use client'
 
-import { convertToLocale } from "@/lib/util/money"
-import { InformationCircleSolid } from "@medusajs/icons"
-import { Tooltip } from "@medusajs/ui"
-import React from "react"
+import { convertToLocale } from '@/lib/util/money'
+import React from 'react'
 
 type CartTotalsProps = {
   totals: {
@@ -47,7 +45,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
               data-testid="cart-discount"
               data-value={discount_total || 0}
             >
-              -{" "}
+              -{' '}
               {convertToLocale({ amount: discount_total ?? 0, currency_code })}
             </span>
           </div>
@@ -72,7 +70,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
               data-testid="cart-gift-card-amount"
               data-value={gift_card_total || 0}
             >
-              -{" "}
+              -{' '}
               {convertToLocale({ amount: gift_card_total ?? 0, currency_code })}
             </span>
           </div>

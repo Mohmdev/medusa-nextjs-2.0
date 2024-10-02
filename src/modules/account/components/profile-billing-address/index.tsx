@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import React, { useEffect, useMemo } from "react"
+import React, { useEffect, useMemo } from 'react'
 
-import Input from "@/modules/common/components/input"
-import NativeSelect from "@/modules/common/components/native-select"
+import Input from '@/modules/common/components/input'
+import NativeSelect from '@/modules/common/components/native-select'
 
-import AccountInfo from "../account-info"
-import { useFormState } from "react-dom"
-import { HttpTypes } from "@medusajs/types"
-import { updateCustomerAddress } from "@/lib/data/customer"
+import { updateCustomerAddress } from '@/lib/data/customer'
+import { HttpTypes } from '@medusajs/types'
+import { useFormState } from 'react-dom'
+import AccountInfo from '../account-info'
 
 type MyInformationProps = {
   customer: HttpTypes.StoreCustomer
@@ -53,7 +53,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
 
   const currentInfo = useMemo(() => {
     if (!billingAddress) {
-      return "No billing address"
+      return 'No billing address'
     }
 
     const country =
@@ -69,7 +69,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
         <span>{billingAddress.company}</span>
         <span>
           {billingAddress.address_1}
-          {billingAddress.address_2 ? `, ${billingAddress.address_2}` : ""}
+          {billingAddress.address_2 ? `, ${billingAddress.address_2}` : ''}
         </span>
         <span>
           {billingAddress.postal_code}, {billingAddress.city}

@@ -1,6 +1,5 @@
-import { Heading } from "@medusajs/ui"
-import LocalizedClientLink from "@/modules/common/components/localized-client-link"
-import React from "react"
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import { Heading } from '@medusajs/ui'
 
 const Help = () => {
   return (

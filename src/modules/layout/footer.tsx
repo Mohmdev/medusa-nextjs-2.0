@@ -12,7 +12,13 @@ const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Medusa Store'
 
 export default async function Footer({ className }: { className?: string }) {
   return (
-    <footer className={cn('flex-start flex w-full flex-col flex-nowrap', 'bg-card', className)}>
+    <footer
+      className={cn(
+        'flex-start flex w-full flex-col flex-nowrap',
+        'bg-card',
+        className
+      )}
+    >
       <div className="border-y border-border-subtle shadow-inner-overlay-md">
         {/* Top-level Grid */}
         <div
@@ -59,7 +65,10 @@ const FooterCategoriesLinks = async ({ className }: { className?: string }) => {
       {product_categories && product_categories?.length > 0 && (
         <div className={cn('flex flex-col gap-y-2', className)}>
           <span className="txt-ui-fg-base txt-small-plus">Categories</span>
-          <ul className="grid grid-cols-1 gap-2" data-testid="footer-categories">
+          <ul
+            className="grid grid-cols-1 gap-2"
+            data-testid="footer-categories"
+          >
             {product_categories?.slice(0, 6).map((c) => {
               if (c.parent_category) {
                 return
@@ -71,9 +80,15 @@ const FooterCategoriesLinks = async ({ className }: { className?: string }) => {
                   id: child.id,
                 })) || null
               return (
-                <li className="txt-small flex flex-col gap-2 text-ui-fg-subtle" key={c.id}>
+                <li
+                  className="txt-small flex flex-col gap-2 text-ui-fg-subtle"
+                  key={c.id}
+                >
                   <LocalizedClientLink
-                    className={cn('hover:text-ui-fg-base', children && 'txt-small-plus')}
+                    className={cn(
+                      'hover:text-ui-fg-base',
+                      children && 'txt-small-plus'
+                    )}
                     href={`/categories/${c.handle}`}
                     data-testid="category-link"
                   >
@@ -109,16 +124,23 @@ const FooterCategoriesLinks = async ({ className }: { className?: string }) => {
   )
 }
 
-const FooterCollectionsLinks = async ({ className }: { className?: string }) => {
+const FooterCollectionsLinks = async ({
+  className,
+}: {
+  className?: string
+}) => {
   return (
     <>
       {collections && collections.length > 0 && (
         <div className={cn('flex flex-col gap-y-2', className)}>
           <span className="txt-ui-fg-base txt-small-plus">Collections</span>
           <ul
-            className={cn('txt-small grid grid-cols-1 gap-2 text-ui-fg-subtle', {
-              'grid-cols-2': (collections?.length || 0) > 6,
-            })}
+            className={cn(
+              'txt-small grid grid-cols-1 gap-2 text-ui-fg-subtle',
+              {
+                'grid-cols-2': (collections?.length || 0) > 6,
+              }
+            )}
           >
             {collections?.slice(0, 6).map((c) => (
               <li key={c.id}>
@@ -147,10 +169,16 @@ const FooterMedusaLinks = ({
   devices?: 'mobile' | 'desktop' | 'all'
 }) => {
   const deviceClasses =
-    devices === 'mobile' ? 'flex md:hidden' : devices === 'desktop' ? 'md:flex hidden' : 'flex'
+    devices === 'mobile'
+      ? 'flex md:hidden'
+      : devices === 'desktop'
+        ? 'md:flex hidden'
+        : 'flex'
   return (
     <div className={cn('flex flex-col gap-y-2', deviceClasses, className)}>
-      {displayHeader && <span className="txt-ui-fg-base txt-small-plus">Medusa</span>}
+      {displayHeader && (
+        <span className="txt-ui-fg-base txt-small-plus">Medusa</span>
+      )}
       <ul className="txt-small grid grid-cols-1 gap-y-2 text-ui-fg-subtle">
         <li>
           <a
@@ -197,11 +225,17 @@ const FooterQuickLinks = ({
   devices?: 'mobile' | 'desktop' | 'all'
 }) => {
   const deviceClasses =
-    devices === 'mobile' ? 'flex md:hidden' : devices === 'desktop' ? 'md:flex hidden' : 'flex'
+    devices === 'mobile'
+      ? 'flex md:hidden'
+      : devices === 'desktop'
+        ? 'md:flex hidden'
+        : 'flex'
 
   return (
     <div className={cn('flex-col gap-y-2', deviceClasses, className)}>
-      {displayHeader && <span className="txt-ui-fg-base txt-small-plus">Links</span>}
+      {displayHeader && (
+        <span className="txt-ui-fg-base txt-small-plus">Links</span>
+      )}
       <ul className="txt-small grid grid-cols-1 gap-y-2 text-ui-fg-subtle">
         <li>
           <LocalizedClientLink href="/about" className="hover:text-ui-fg-base">
@@ -209,22 +243,34 @@ const FooterQuickLinks = ({
           </LocalizedClientLink>
         </li>
         <li>
-          <LocalizedClientLink href="/about/contact" className="hover:text-ui-fg-base">
+          <LocalizedClientLink
+            href="/about/contact"
+            className="hover:text-ui-fg-base"
+          >
             Contact
           </LocalizedClientLink>
         </li>
         <li>
-          <LocalizedClientLink href="/about/privacy-policy" className="hover:text-ui-fg-base">
+          <LocalizedClientLink
+            href="/about/privacy-policy"
+            className="hover:text-ui-fg-base"
+          >
             Privacy Policy
           </LocalizedClientLink>
         </li>
         <li>
-          <LocalizedClientLink href="/about/terms-of-service" className="hover:text-ui-fg-base">
+          <LocalizedClientLink
+            href="/about/terms-of-service"
+            className="hover:text-ui-fg-base"
+          >
             Terms of Service
           </LocalizedClientLink>
         </li>
         <li>
-          <LocalizedClientLink href="/about/customer-service" className="hover:text-ui-fg-base">
+          <LocalizedClientLink
+            href="/about/customer-service"
+            className="hover:text-ui-fg-base"
+          >
             Customer Service
           </LocalizedClientLink>
         </li>
@@ -233,7 +279,11 @@ const FooterQuickLinks = ({
   )
 }
 
-const FooterCTA = ({ devices = 'desktop' }: { devices?: 'mobile' | 'desktop' }) => {
+const FooterCTA = ({
+  devices = 'desktop',
+}: {
+  devices?: 'mobile' | 'desktop'
+}) => {
   return (
     <>
       {devices === 'desktop' && (
@@ -266,7 +316,12 @@ const FooterCTA = ({ devices = 'desktop' }: { devices?: 'mobile' | 'desktop' }) 
 
 const FooterCopyright = ({ className }: { className?: string }) => {
   return (
-    <div className={cn('txt-compact-small bg-background text-center text-ui-fg-muted', className)}>
+    <div
+      className={cn(
+        'txt-compact-small bg-background text-center text-ui-fg-muted',
+        className
+      )}
+    >
       <div className="content-container py-2">
         <p>
           © {new Date().getFullYear()} {storeName}. All rights reserved.

@@ -1,10 +1,10 @@
-import React from "react"
+import React from 'react'
 
-import { IconProps } from "types/icon"
+import { IconProps } from 'types/icon'
 
 const Medusa: React.FC<IconProps> = ({
-  size = "20",
-  color = "#9CA3AF",
+  size = '20',
+  color = '#9CA3AF',
   ...attributes
 }) => {
   return (

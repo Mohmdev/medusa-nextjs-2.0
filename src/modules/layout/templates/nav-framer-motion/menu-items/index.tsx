@@ -1,9 +1,9 @@
-import { m } from 'framer-motion'
-import { links, footerLinks } from '../data'
+import { cn } from '@/lib/util/cn'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import ModeToggle from '@/ui/mode-toggle/toggle'
+import { m } from 'framer-motion'
 import RegionSelectDropdown from '../components/region-select-dropdown'
-import { cn } from '@/lib/util/cn'
+import { footerLinks, links } from '../data'
 
 const perspective = {
   initial: {
@@ -28,7 +28,12 @@ const perspective = {
   }),
   exit: {
     opacity: 0,
-    transition: { duration: 0.5, delay: 0.2, type: 'linear', ease: [0.76, 0, 0.24, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.2,
+      type: 'linear',
+      ease: [0.76, 0, 0.24, 1],
+    },
   },
 }
 

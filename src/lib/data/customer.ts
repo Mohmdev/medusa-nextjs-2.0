@@ -15,7 +15,9 @@ export const getCustomer = cache(async function () {
     .catch(() => null)
 })
 
-export const updateCustomer = cache(async function (body: HttpTypes.StoreUpdateCustomer) {
+export const updateCustomer = cache(async function (
+  body: HttpTypes.StoreUpdateCustomer
+) {
   const updateRes = await sdk.store.customer
     .update(body, {}, getAuthHeaders())
     .then(({ customer }) => customer)
@@ -68,11 +70,13 @@ export async function login(_currentState: unknown, formData: FormData) {
   const password = formData.get('password') as string
 
   try {
-    await sdk.auth.login('customer', 'emailpass', { email, password }).then((token) => {
-      // @ts-expect-error
-      setAuthToken(token)
-      revalidateTag('customer')
-    })
+    await sdk.auth
+      .login('customer', 'emailpass', { email, password })
+      .then((token) => {
+        // @ts-expect-error
+        setAuthToken(token)
+        revalidateTag('customer')
+      })
   } catch (error: any) {
     return error.toString()
   }
@@ -114,7 +118,9 @@ export const addCustomerAddress = async (
     })
 }
 
-export const deleteCustomerAddress = async (addressId: string): Promise<void> => {
+export const deleteCustomerAddress = async (
+  addressId: string
+): Promise<void> => {
   await sdk.store.customer
     .deleteAddress(addressId, getAuthHeaders())
     .then(() => {

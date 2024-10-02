@@ -1,9 +1,9 @@
-import { Container } from "@medusajs/ui"
+import { Container } from '@medusajs/ui'
 
-import ChevronDown from "@/modules/common/icons/chevron-down"
-import LocalizedClientLink from "@/modules/common/components/localized-client-link"
-import { convertToLocale } from "@/lib/util/money"
-import { HttpTypes } from "@medusajs/types"
+import { convertToLocale } from '@/lib/util/money'
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import ChevronDown from '@/modules/common/icons/chevron-down'
+import { HttpTypes } from '@medusajs/types'
 
 type OverviewProps = {
   customer: HttpTypes.StoreCustomer | null
@@ -19,7 +19,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
             Hello {customer?.first_name}
           </span>
           <span className="text-small-regular text-ui-fg-base">
-            Signed in as:{" "}
+            Signed in as:{' '}
             <span
               className="font-semibold"
               data-testid="customer-email"

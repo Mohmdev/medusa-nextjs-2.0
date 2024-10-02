@@ -1,14 +1,17 @@
-import Product from '../product-preview'
-import { getRegion } from '@/lib/data/regions'
 import { getProductsList } from '@/lib/data/products'
+import { getRegion } from '@/lib/data/regions'
 import { HttpTypes } from '@medusajs/types'
+import Product from '../product-preview'
 
 type RelatedProductsProps = {
   product: HttpTypes.StoreProduct
   countryCode: string
 }
 
-export default async function RelatedProducts({ product, countryCode }: RelatedProductsProps) {
+export default async function RelatedProducts({
+  product,
+  countryCode,
+}: RelatedProductsProps) {
   const region = await getRegion(countryCode)
 
   if (!region) {
@@ -37,7 +40,9 @@ export default async function RelatedProducts({ product, countryCode }: RelatedP
     queryParams,
     countryCode,
   }).then(({ response }) => {
-    return response.products.filter((responseProduct) => responseProduct.id !== product.id)
+    return response.products.filter(
+      (responseProduct) => responseProduct.id !== product.id
+    )
   })
 
   if (!products.length) {
@@ -47,7 +52,9 @@ export default async function RelatedProducts({ product, countryCode }: RelatedP
   return (
     <div className="product-page-constraint">
       <div className="mb-16 flex flex-col items-center text-center">
-        <span className="text-base-regular mb-6 text-gray-600">Related products</span>
+        <span className="text-base-regular mb-6 text-gray-600">
+          Related products
+        </span>
         <p className="text-2xl-regular max-w-lg text-ui-fg-base">
           You might also want to check out these products.
         </p>

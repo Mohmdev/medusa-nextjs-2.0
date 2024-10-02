@@ -1,11 +1,11 @@
-import { test as base } from "@playwright/test"
-import { AddressesPage } from "./addresses-page"
-import { LoginPage } from "./login-page"
-import { OrderPage } from "./order-page"
-import { OrdersPage } from "./orders-page"
-import { OverviewPage } from "./overview-page"
-import { ProfilePage } from "./profile-page"
-import { RegisterPage } from "./register-page"
+import { test as base } from '@playwright/test'
+import { AddressesPage } from './addresses-page'
+import { LoginPage } from './login-page'
+import { OrderPage } from './order-page'
+import { OrdersPage } from './orders-page'
+import { OverviewPage } from './overview-page'
+import { ProfilePage } from './profile-page'
+import { RegisterPage } from './register-page'
 
 export const accountFixtures = base.extend<{
   accountAddressesPage: AddressesPage

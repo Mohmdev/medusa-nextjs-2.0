@@ -1,7 +1,7 @@
 import { sdk } from '@/lib/config'
 import medusaError from '@/lib/util/medusa-error'
-import { cache } from 'react'
 import { HttpTypes } from '@medusajs/types'
+import { cache } from 'react'
 
 export const listRegions = cache(async function () {
   return sdk.store.region
@@ -37,7 +37,9 @@ export const getRegion = cache(async function (countryCode: string) {
       })
     })
 
-    const region = countryCode ? regionMap.get(countryCode) : regionMap.get('us')
+    const region = countryCode
+      ? regionMap.get(countryCode)
+      : regionMap.get('us')
 
     return region
   } catch (e: any) {

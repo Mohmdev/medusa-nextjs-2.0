@@ -57,4 +57,4 @@ const footerLinks = [
   },
 ]
 
-export { links, footerLinks }
+export { footerLinks, links }

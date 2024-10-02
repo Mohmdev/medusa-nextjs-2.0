@@ -1,11 +1,11 @@
-import { test as base, Page } from "@playwright/test"
-import { resetDatabase } from "../data/reset"
-import { CartPage } from "./cart-page"
-import { CategoryPage } from "./category-page"
-import { CheckoutPage } from "./checkout-page"
-import { OrderPage } from "./order-page"
-import { ProductPage } from "./product-page"
-import { StorePage } from "./store-page"
+import { test as base } from '@playwright/test'
+import { resetDatabase } from '../data/reset'
+import { CartPage } from './cart-page'
+import { CategoryPage } from './category-page'
+import { CheckoutPage } from './checkout-page'
+import { OrderPage } from './order-page'
+import { ProductPage } from './product-page'
+import { StorePage } from './store-page'
 
 export const fixtures = base.extend<{
   resetDatabaseFixture: void
@@ -17,7 +17,7 @@ export const fixtures = base.extend<{
   storePage: StorePage
 }>({
   page: async ({ page }, use) => {
-    await page.goto("/")
+    await page.goto('/')
     use(page)
   },
   resetDatabaseFixture: [

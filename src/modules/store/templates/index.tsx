@@ -29,7 +29,11 @@ const StoreTemplate = ({
           <h1 data-testid="store-page-title">All products</h1>
         </div>
         <Suspense fallback={<SkeletonProductGrid />}>
-          <PaginatedProducts sortBy={sort} page={pageNumber} countryCode={countryCode} />
+          <PaginatedProducts
+            sortBy={sort}
+            page={pageNumber}
+            countryCode={countryCode}
+          />
         </Suspense>
       </div>
     </div>

@@ -5,11 +5,11 @@ import { ArrowRightMini, XMark } from '@medusajs/icons'
 import { Text, clx, useToggleState } from '@medusajs/ui'
 import { Fragment } from 'react'
 
-import LocalizedClientLink from '@/modules/common/components/localized-client-link'
-import CountrySelect from '../../../components-shared/country-select'
-import { HttpTypes } from '@medusajs/types'
-import ModeToggle from '@/ui/mode-toggle/toggle'
 import { cn } from '@/lib/util/cn'
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import ModeToggle from '@/ui/mode-toggle/toggle'
+import { HttpTypes } from '@medusajs/types'
+import CountrySelect from '../../../components-shared/country-select'
 
 const SideMenuItems = {
   Home: '/',
@@ -86,7 +86,12 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                     onMouseEnter={toggleState.open}
                     onMouseLeave={toggleState.close}
                   >
-                    {regions && <CountrySelect toggleState={toggleState} regions={regions} />}
+                    {regions && (
+                      <CountrySelect
+                        toggleState={toggleState}
+                        regions={regions}
+                      />
+                    )}
                     <ArrowRightMini
                       className={clx(
                         'transition-transform duration-150',
@@ -96,7 +101,8 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                   </div>
                   <div className="flex flex-row flex-wrap items-start justify-between gap-4">
                     <Text className="txt-compact-small flex justify-between">
-                      © {new Date().getFullYear()} Medusa Store. All rights reserved.
+                      © {new Date().getFullYear()} Medusa Store. All rights
+                      reserved.
                     </Text>
                     <ModeToggle size={18} />
                   </div>

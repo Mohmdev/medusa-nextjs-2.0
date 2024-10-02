@@ -1,11 +1,11 @@
-import { HttpTypes } from "@medusajs/types"
-import { Container } from "@medusajs/ui"
-import Checkbox from "@/modules/common/components/checkbox"
-import Input from "@/modules/common/components/input"
-import { mapKeys } from "lodash"
-import React, { useEffect, useMemo, useState } from "react"
-import AddressSelect from "../address-select"
-import CountrySelect from "../country-select"
+import Checkbox from '@/modules/common/components/checkbox'
+import Input from '@/modules/common/components/input'
+import { HttpTypes } from '@medusajs/types'
+import { Container } from '@medusajs/ui'
+import { mapKeys } from 'lodash'
+import React, { useEffect, useMemo, useState } from 'react'
+import AddressSelect from '../address-select'
+import CountrySelect from '../country-select'
 
 const ShippingAddress = ({
   customer,
@@ -41,15 +41,15 @@ const ShippingAddress = ({
     address &&
       setFormData((prevState: Record<string, any>) => ({
         ...prevState,
-        "shipping_address.first_name": address?.first_name || "",
-        "shipping_address.last_name": address?.last_name || "",
-        "shipping_address.address_1": address?.address_1 || "",
-        "shipping_address.company": address?.company || "",
-        "shipping_address.postal_code": address?.postal_code || "",
-        "shipping_address.city": address?.city || "",
-        "shipping_address.country_code": address?.country_code || "",
-        "shipping_address.province": address?.province || "",
-        "shipping_address.phone": address?.phone || "",
+        'shipping_address.first_name': address?.first_name || '',
+        'shipping_address.last_name': address?.last_name || '',
+        'shipping_address.address_1': address?.address_1 || '',
+        'shipping_address.company': address?.company || '',
+        'shipping_address.postal_code': address?.postal_code || '',
+        'shipping_address.city': address?.city || '',
+        'shipping_address.country_code': address?.country_code || '',
+        'shipping_address.province': address?.province || '',
+        'shipping_address.phone': address?.phone || '',
       }))
 
     email &&
@@ -92,7 +92,7 @@ const ShippingAddress = ({
             addresses={customer.addresses}
             addressInput={
               mapKeys(formData, (_, key) =>
-                key.replace("shipping_address.", "")
+                key.replace('shipping_address.', '')
               ) as HttpTypes.StoreCartAddress
             }
             onSelect={setFormAddress}
@@ -104,7 +104,7 @@ const ShippingAddress = ({
           label="First name"
           name="shipping_address.first_name"
           autoComplete="given-name"
-          value={formData["shipping_address.first_name"]}
+          value={formData['shipping_address.first_name']}
           onChange={handleChange}
           required
           data-testid="shipping-first-name-input"
@@ -113,7 +113,7 @@ const ShippingAddress = ({
           label="Last name"
           name="shipping_address.last_name"
           autoComplete="family-name"
-          value={formData["shipping_address.last_name"]}
+          value={formData['shipping_address.last_name']}
           onChange={handleChange}
           required
           data-testid="shipping-last-name-input"
@@ -122,7 +122,7 @@ const ShippingAddress = ({
           label="Address"
           name="shipping_address.address_1"
           autoComplete="address-line1"
-          value={formData["shipping_address.address_1"]}
+          value={formData['shipping_address.address_1']}
           onChange={handleChange}
           required
           data-testid="shipping-address-input"
@@ -130,7 +130,7 @@ const ShippingAddress = ({
         <Input
           label="Company"
           name="shipping_address.company"
-          value={formData["shipping_address.company"]}
+          value={formData['shipping_address.company']}
           onChange={handleChange}
           autoComplete="organization"
           data-testid="shipping-company-input"
@@ -139,7 +139,7 @@ const ShippingAddress = ({
           label="Postal code"
           name="shipping_address.postal_code"
           autoComplete="postal-code"
-          value={formData["shipping_address.postal_code"]}
+          value={formData['shipping_address.postal_code']}
           onChange={handleChange}
           required
           data-testid="shipping-postal-code-input"
@@ -148,7 +148,7 @@ const ShippingAddress = ({
           label="City"
           name="shipping_address.city"
           autoComplete="address-level2"
-          value={formData["shipping_address.city"]}
+          value={formData['shipping_address.city']}
           onChange={handleChange}
           required
           data-testid="shipping-city-input"
@@ -157,7 +157,7 @@ const ShippingAddress = ({
           name="shipping_address.country_code"
           autoComplete="country"
           region={cart?.region}
-          value={formData["shipping_address.country_code"]}
+          value={formData['shipping_address.country_code']}
           onChange={handleChange}
           required
           data-testid="shipping-country-select"
@@ -166,7 +166,7 @@ const ShippingAddress = ({
           label="State / Province"
           name="shipping_address.province"
           autoComplete="address-level1"
-          value={formData["shipping_address.province"]}
+          value={formData['shipping_address.province']}
           onChange={handleChange}
           required
           data-testid="shipping-province-input"
@@ -197,7 +197,7 @@ const ShippingAddress = ({
           label="Phone"
           name="shipping_address.phone"
           autoComplete="tel"
-          value={formData["shipping_address.phone"]}
+          value={formData['shipping_address.phone']}
           onChange={handleChange}
           data-testid="shipping-phone-input"
         />

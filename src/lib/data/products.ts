@@ -1,9 +1,9 @@
 import { sdk } from '@/lib/config'
+import { sortProducts } from '@/lib/util/sort-products'
+import { SortOptions } from '@/modules/store/components/refinement-list/sort-products'
 import { HttpTypes } from '@medusajs/types'
 import { cache } from 'react'
 import { getRegion } from './regions'
-import { SortOptions } from '@/modules/store/components/refinement-list/sort-products'
-import { sortProducts } from '@/lib/util/sort-products'
 
 export const getProductsById = cache(async function ({
   ids,
@@ -24,7 +24,10 @@ export const getProductsById = cache(async function ({
     .then(({ products }) => products)
 })
 
-export const getProductByHandle = cache(async function (handle: string, regionId: string) {
+export const getProductByHandle = cache(async function (
+  handle: string,
+  regionId: string
+) {
   return sdk.store.product
     .list(
       {

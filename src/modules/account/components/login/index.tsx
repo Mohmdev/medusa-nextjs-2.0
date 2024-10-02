@@ -1,10 +1,10 @@
-import { useFormState } from "react-dom"
+import { useFormState } from 'react-dom'
 
-import { LOGIN_VIEW } from "@/modules/account/templates/login-template"
-import Input from "@/modules/common/components/input"
-import ErrorMessage from "@/modules/checkout/components/error-message"
-import { SubmitButton } from "@/modules/checkout/components/submit-button"
-import { login } from "@/lib/data/customer"
+import { login } from '@/lib/data/customer'
+import { LOGIN_VIEW } from '@/modules/account/templates/login-template'
+import ErrorMessage from '@/modules/checkout/components/error-message'
+import { SubmitButton } from '@/modules/checkout/components/submit-button'
+import Input from '@/modules/common/components/input'
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
@@ -48,7 +48,7 @@ const Login = ({ setCurrentView }: Props) => {
         </SubmitButton>
       </form>
       <span className="text-center text-ui-fg-base text-small-regular mt-6">
-        Not a member?{" "}
+        Not a member?{' '}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
           className="underline"

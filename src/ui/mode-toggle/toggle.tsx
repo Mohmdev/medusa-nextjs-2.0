@@ -1,16 +1,19 @@
 'use client'
 
+import { cn } from '@/lib/util/cn'
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import React, { useEffect, useState } from 'react'
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-import { cn } from '@/lib/util/cn'
 
 interface ModeToggleProps {
   size?: number
   className?: string
 }
 
-const ModeToggle: React.FC<ModeToggleProps> = ({ size = 24, className = '' }) => {
+const ModeToggle: React.FC<ModeToggleProps> = ({
+  size = 24,
+  className = '',
+}) => {
   const { theme, setTheme } = useTheme()
   const [isDarkMode, setIsDarkMode] = useState(theme === 'dark')
 

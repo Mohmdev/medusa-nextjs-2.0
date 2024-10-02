@@ -1,8 +1,8 @@
 'use client'
 
-import * as React from 'react'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
+import * as React from 'react'
 
 import { cn } from '@/lib/util/cn'
 
@@ -12,7 +12,11 @@ const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
-  <AccordionPrimitive.Item ref={ref} className={cn('border-b', className)} {...props} />
+  <AccordionPrimitive.Item
+    ref={ref}
+    className={cn('border-b', className)}
+    {...props}
+  />
 ))
 AccordionItem.displayName = 'AccordionItem'
 
@@ -50,4 +54,4 @@ const AccordionContent = React.forwardRef<
 ))
 AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger }

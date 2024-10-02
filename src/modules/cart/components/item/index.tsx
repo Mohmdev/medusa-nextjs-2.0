@@ -1,26 +1,26 @@
-"use client"
+'use client'
 
-import { Table, Text, clx } from "@medusajs/ui"
+import { Table, Text, clx } from '@medusajs/ui'
 
-import { updateLineItem } from "@/lib/data/cart"
-import { HttpTypes } from "@medusajs/types"
-import CartItemSelect from "@/modules/cart/components/cart-item-select"
-import ErrorMessage from "@/modules/checkout/components/error-message"
-import DeleteButton from "@/modules/common/components/delete-button"
-import LineItemOptions from "@/modules/common/components/line-item-options"
-import LineItemPrice from "@/modules/common/components/line-item-price"
-import LineItemUnitPrice from "@/modules/common/components/line-item-unit-price"
-import LocalizedClientLink from "@/modules/common/components/localized-client-link"
-import Spinner from "@/modules/common/icons/spinner"
-import Thumbnail from "@/modules/products/components/thumbnail"
-import { useState } from "react"
+import { updateLineItem } from '@/lib/data/cart'
+import CartItemSelect from '@/modules/cart/components/cart-item-select'
+import ErrorMessage from '@/modules/checkout/components/error-message'
+import DeleteButton from '@/modules/common/components/delete-button'
+import LineItemOptions from '@/modules/common/components/line-item-options'
+import LineItemPrice from '@/modules/common/components/line-item-price'
+import LineItemUnitPrice from '@/modules/common/components/line-item-unit-price'
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import Spinner from '@/modules/common/icons/spinner'
+import Thumbnail from '@/modules/products/components/thumbnail'
+import { HttpTypes } from '@medusajs/types'
+import { useState } from 'react'
 
 type ItemProps = {
   item: HttpTypes.StoreCartLineItem
-  type?: "full" | "preview"
+  type?: 'full' | 'preview'
 }
 
-const Item = ({ item, type = "full" }: ItemProps) => {
+const Item = ({ item, type = 'full' }: ItemProps) => {
   const [updating, setUpdating] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -51,9 +51,9 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       <Table.Cell className="!pl-0 p-4 w-24">
         <LocalizedClientLink
           href={`/products/${handle}`}
-          className={clx("flex", {
-            "w-16": type === "preview",
-            "small:w-24 w-12": type === "full",
+          className={clx('flex', {
+            'w-16': type === 'preview',
+            'small:w-24 w-12': type === 'full',
           })}
         >
           <Thumbnail
@@ -74,7 +74,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
         <LineItemOptions variant={item.variant} data-testid="product-variant" />
       </Table.Cell>
 
-      {type === "full" && (
+      {type === 'full' && (
         <Table.Cell>
           <div className="flex gap-2 items-center w-28">
             <DeleteButton id={item.id} data-testid="product-delete-button" />
@@ -106,7 +106,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
         </Table.Cell>
       )}
 
-      {type === "full" && (
+      {type === 'full' && (
         <Table.Cell className="hidden small:table-cell">
           <LineItemUnitPrice item={item} style="tight" />
         </Table.Cell>
@@ -114,11 +114,11 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
       <Table.Cell className="!pr-0">
         <span
-          className={clx("!pr-0", {
-            "flex flex-col items-end h-full justify-center": type === "preview",
+          className={clx('!pr-0', {
+            'flex flex-col items-end h-full justify-center': type === 'preview',
           })}
         >
-          {type === "preview" && (
+          {type === 'preview' && (
             <span className="flex gap-x-1 ">
               <Text className="text-ui-fg-muted">{item.quantity}x </Text>
               <LineItemUnitPrice item={item} style="tight" />

@@ -1,14 +1,5 @@
-import React from 'react'
-import {
-  LazyMotion,
-  domAnimation,
-  m,
-  AnimatePresence,
-  type Variants,
-  type SVGMotionProps,
-  useCycle,
-} from 'framer-motion'
 import { cn } from '@/lib/util/cn'
+import { m } from 'framer-motion'
 
 const ToggleText = ({
   menuState,

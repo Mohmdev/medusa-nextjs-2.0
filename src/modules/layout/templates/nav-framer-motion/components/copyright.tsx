@@ -1,4 +1,3 @@
-import React from 'react'
 import ModeToggle from '@/ui/mode-toggle/toggle'
 
 const NavCopyright = () => {

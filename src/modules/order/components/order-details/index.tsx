@@ -1,5 +1,5 @@
-import { HttpTypes } from "@medusajs/types"
-import { Text } from "@medusajs/ui"
+import { HttpTypes } from '@medusajs/types'
+import { Text } from '@medusajs/ui'
 
 type OrderDetailsProps = {
   order: HttpTypes.StoreOrder
@@ -8,7 +8,7 @@ type OrderDetailsProps = {
 
 const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
   const formatStatus = (str: string) => {
-    const formatted = str.split("_").join(" ")
+    const formatted = str.split('_').join(' ')
 
     return formatted.slice(0, 1).toUpperCase() + formatted.slice(1)
   }
@@ -16,7 +16,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
   return (
     <div>
       <Text>
-        We have sent the order confirmation details to{" "}
+        We have sent the order confirmation details to{' '}
         <span
           className="text-ui-fg-medium-plus font-semibold"
           data-testid="order-email"
@@ -26,7 +26,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
         .
       </Text>
       <Text className="mt-2">
-        Order date:{" "}
+        Order date:{' '}
         <span data-testid="order-date">
           {new Date(order.created_at).toDateString()}
         </span>
@@ -39,14 +39,14 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
         {showStatus && (
           <>
             <Text>
-              Order status:{" "}
+              Order status:{' '}
               <span className="text-ui-fg-subtle " data-testid="order-status">
                 {/* TODO: Check where the statuses should come from */}
                 {/* {formatStatus(order.fulfillment_status)} */}
               </span>
             </Text>
             <Text>
-              Payment status:{" "}
+              Payment status:{' '}
               <span
                 className="text-ui-fg-subtle "
                 sata-testid="order-payment-status"

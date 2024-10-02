@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ToggleSVG from './toggle-svg'
 import ToggleText from './toggle-text'
 

@@ -41,7 +41,12 @@ export async function getOrSetCart(countryCode: string) {
   }
 
   if (cart && cart?.region_id !== region.id) {
-    await sdk.store.cart.update(cart.id, { region_id: region.id }, {}, getAuthHeaders())
+    await sdk.store.cart.update(
+      cart.id,
+      { region_id: region.id },
+      {},
+      getAuthHeaders()
+    )
     revalidateTag('cart')
   }
 
@@ -97,7 +102,13 @@ export async function addToCart({
     .catch(medusaError)
 }
 
-export async function updateLineItem({ lineId, quantity }: { lineId: string; quantity: number }) {
+export async function updateLineItem({
+  lineId,
+  quantity,
+}: {
+  lineId: string
+  quantity: number
+}) {
   if (!lineId) {
     throw new Error('Missing lineItem ID when updating line item')
   }
@@ -135,7 +146,10 @@ export async function deleteLineItem(lineId: string) {
 }
 
 export async function enrichLineItems(
-  lineItems: HttpTypes.StoreCartLineItem[] | HttpTypes.StoreOrderLineItem[] | null,
+  lineItems:
+    | HttpTypes.StoreCartLineItem[]
+    | HttpTypes.StoreOrderLineItem[]
+    | null,
   regionId: string
 ) {
   if (!lineItems) return []
@@ -156,7 +170,9 @@ export async function enrichLineItems(
   // Enrich line items with product and variant information
   const enrichedItems = lineItems.map((item) => {
     const product = products.find((p: any) => p.id === item.product_id)
-    const variant = product?.variants?.find((v: any) => v.id === item.variant_id)
+    const variant = product?.variants?.find(
+      (v: any) => v.id === item.variant_id
+    )
 
     // If product or variant is not found, return the original item
     if (!product || !variant) {
@@ -184,7 +200,12 @@ export async function setShippingMethod({
   shippingMethodId: string
 }) {
   return sdk.store.cart
-    .addShippingMethod(cartId, { option_id: shippingMethodId }, {}, getAuthHeaders())
+    .addShippingMethod(
+      cartId,
+      { option_id: shippingMethodId },
+      {},
+      getAuthHeaders()
+    )
     .then(() => {
       revalidateTag('cart')
     })
@@ -263,7 +284,10 @@ export async function removeGiftCard(
   //   }
 }
 
-export async function submitPromotionForm(currentState: unknown, formData: FormData) {
+export async function submitPromotionForm(
+  currentState: unknown,
+  formData: FormData
+) {
   const code = formData.get('code') as string
   try {
     await applyPromotions([code])
@@ -320,7 +344,9 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
     return e.message
   }
 
-  redirect(`/${formData.get('shipping_address.country_code')}/checkout?step=delivery`)
+  redirect(
+    `/${formData.get('shipping_address.country_code')}/checkout?step=delivery`
+  )
 }
 
 export async function placeOrder() {
@@ -338,7 +364,8 @@ export async function placeOrder() {
     .catch(medusaError)
 
   if (cartRes?.type === 'order') {
-    const countryCode = cartRes.order.shipping_address?.country_code?.toLowerCase()
+    const countryCode =
+      cartRes.order.shipping_address?.country_code?.toLowerCase()
     removeCartId()
     redirect(`/${countryCode}/order/confirmed/${cartRes?.order.id}`)
   }

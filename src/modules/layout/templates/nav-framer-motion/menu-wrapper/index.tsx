@@ -1,8 +1,8 @@
 import React from 'react'
-import DropdownWrapper from './drop-down'
-import SlideUpWrapper from './slide-up'
-import SlideRightWrapper from './slide-right'
 import DrawerWrapper from './drawer'
+import DropdownWrapper from './drop-down'
+import SlideRightWrapper from './slide-right'
+import SlideUpWrapper from './slide-up'
 
 const MenuWrapper = ({
   initial,

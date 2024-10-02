@@ -1,10 +1,10 @@
-import { Button } from "@medusajs/ui"
-import { useMemo } from "react"
+import { Button } from '@medusajs/ui'
+import { useMemo } from 'react'
 
-import Thumbnail from "@/modules/products/components/thumbnail"
-import LocalizedClientLink from "@/modules/common/components/localized-client-link"
-import { convertToLocale } from "@/lib/util/money"
-import { HttpTypes } from "@medusajs/types"
+import { convertToLocale } from '@/lib/util/money'
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import Thumbnail from '@/modules/products/components/thumbnail'
+import { HttpTypes } from '@medusajs/types'
 
 type OrderCardProps = {
   order: HttpTypes.StoreOrder
@@ -39,7 +39,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
           })}
         </span>
         <span className="pl-2">{`${numberOfLines} ${
-          numberOfLines > 1 ? "items" : "item"
+          numberOfLines > 1 ? 'items' : 'item'
         }`}</span>
       </div>
       <div className="grid grid-cols-2 small:grid-cols-4 gap-4 my-4">

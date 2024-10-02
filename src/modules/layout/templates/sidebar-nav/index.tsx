@@ -1,25 +1,16 @@
 'use client'
+import { SVGMotionProps, motion, useCycle } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import {
-  LazyMotion,
-  domAnimation,
-  m,
-  motion,
-  AnimatePresence,
-  useCycle,
-  SVGMotionProps,
-} from 'framer-motion'
-import { cn } from '@/lib/util/cn'
-import classes from './index.module.scss'
-import {
-  menuWrapper,
-  menuItems,
-  menuItem,
-  hamburgerTopLine,
-  hamburgerMiddleLine,
   hamburgerBottomLine,
+  hamburgerMiddleLine,
+  hamburgerTopLine,
+  menuItem,
+  menuItems,
+  menuWrapper,
 } from './animations'
-import { itemIds, itemColors } from './data'
+import { itemColors, itemIds } from './data'
+import classes from './index.module.scss'
 
 // A very basic abstraction for getting the dimensions of an element
 const useDimensions = (ref: React.RefObject<HTMLElement>) => {
@@ -80,7 +71,10 @@ export const SidebarNav = () => {
           </AnimatePresence> */}
         </motion.div>
 
-        <motion.button onClick={() => toggleOpen()} className={classes.toggleButton}>
+        <motion.button
+          onClick={() => toggleOpen()}
+          className={classes.toggleButton}
+        >
           <svg width="23" height="23" viewBox="0 0 23 23">
             <Path variants={hamburgerTopLine} />
             <Path

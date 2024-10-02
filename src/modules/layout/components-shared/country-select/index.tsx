@@ -4,11 +4,11 @@ import { Listbox, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useMemo, useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
 
-import { StateType } from '@/lib/hooks/use-toggle-state'
-import { useParams, usePathname } from 'next/navigation'
 import { updateRegion } from '@/lib/data/cart'
-import { HttpTypes } from '@medusajs/types'
+import { StateType } from '@/lib/hooks/use-toggle-state'
 import { cn } from '@/lib/util/cn'
+import { HttpTypes } from '@medusajs/types'
+import { useParams, usePathname } from 'next/navigation'
 
 type CountryOption = {
   country: string
@@ -23,7 +23,8 @@ type CountrySelectProps = {
 
 const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
   const [current, setCurrent] = useState<
-    { country: string | undefined; region: string; label: string | undefined } | undefined
+    | { country: string | undefined; region: string; label: string | undefined }
+    | undefined
   >(undefined)
 
   const { countryCode } = useParams()
@@ -61,7 +62,11 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
       <Listbox
         as="span"
         onChange={handleChange}
-        defaultValue={countryCode ? options?.find((o) => o?.country === countryCode) : undefined}
+        defaultValue={
+          countryCode
+            ? options?.find((o) => o?.country === countryCode)
+            : undefined
+        }
       >
         <Listbox.Button className="w-full py-1">
           <div className="txt-compact-small flex items-start gap-x-2">

@@ -1,7 +1,7 @@
-import Medusa from '@/modules/common/icons/medusa'
 import { cn } from '@/lib/util/cn'
-import Image from 'next/image'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import Medusa from '@/modules/common/icons/medusa'
+import Image from 'next/image'
 
 export type SiteLogoProps = {
   text?: string
@@ -23,7 +23,15 @@ const SiteLogo = ({
 
   const renderSvg = () => {
     if (svgUrl) {
-      return <Image src={svgUrl} alt="Site logo" className="" width={width} height={height} /> // Renders SVG from an external URL
+      return (
+        <Image
+          src={svgUrl}
+          alt="Site logo"
+          className=""
+          width={width}
+          height={height}
+        />
+      ) // Renders SVG from an external URL
     }
 
     if (svgComponent) {
@@ -37,7 +45,10 @@ const SiteLogo = ({
     <div className="flex max-w-max flex-row items-center justify-center gap-2">
       {renderSvg()}
       <span
-        className={cn('txt-compact-xlarge-plus uppercase hover:text-ui-fg-base', textClassName)}
+        className={cn(
+          'txt-compact-xlarge-plus uppercase hover:text-ui-fg-base',
+          textClassName
+        )}
       >
         {text}
       </span>
@@ -45,7 +56,11 @@ const SiteLogo = ({
   )
 
   return localized ? (
-    <LocalizedClientLink href="/" data-testid="nav-store-link" className="flex h-full items-center">
+    <LocalizedClientLink
+      href="/"
+      data-testid="nav-store-link"
+      className="flex h-full items-center"
+    >
       {content}
     </LocalizedClientLink>
   ) : (

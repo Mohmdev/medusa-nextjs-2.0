@@ -8,8 +8,8 @@ import ReactCountryFlag from 'react-country-flag'
 import { updateRegion } from '@/lib/data/cart'
 import type { HttpTypes } from '@medusajs/types'
 // import { StateType } from '@/lib/hooks/use-toggle-state'
-import { ArrowRightMini } from '@medusajs/icons'
 import { cn } from '@/lib/util/cn'
+import { ArrowRightMini } from '@medusajs/icons'
 import { useToggleState } from '@medusajs/ui'
 
 type CountryOption = {
@@ -27,7 +27,8 @@ const CountrySelect = ({
   regions?: HttpTypes.StoreRegion[]
 }) => {
   const [current, setCurrent] = useState<
-    { country: string | undefined; region: string; label: string | undefined } | undefined
+    | { country: string | undefined; region: string; label: string | undefined }
+    | undefined
   >(undefined)
 
   // const toggleState = useToggleState()
@@ -71,7 +72,11 @@ const CountrySelect = ({
         <Listbox
           as="span"
           onChange={handleChange}
-          defaultValue={countryCode ? options?.find((o) => o?.country === countryCode) : undefined}
+          defaultValue={
+            countryCode
+              ? options?.find((o) => o?.country === countryCode)
+              : undefined
+          }
         >
           <Listbox.Button className="w-full py-1">
             <div className="txt-compact-small flex items-start gap-x-2">
@@ -128,7 +133,10 @@ const CountrySelect = ({
         </Listbox>
       )}
       <ArrowRightMini
-        className={cn('transition-transform duration-150', toggleState.state ? '-rotate-90' : '')}
+        className={cn(
+          'transition-transform duration-150',
+          toggleState.state ? '-rotate-90' : ''
+        )}
       />
     </div>
   )

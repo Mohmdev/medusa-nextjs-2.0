@@ -8,7 +8,12 @@ type InteractiveLinkProps = {
   onClick?: () => void
 }
 
-const InteractiveLink = ({ href, children, onClick, ...props }: InteractiveLinkProps) => {
+const InteractiveLink = ({
+  href,
+  children,
+  onClick,
+  ...props
+}: InteractiveLinkProps) => {
   return (
     <LocalizedClientLink
       className="group flex items-center gap-x-2"

@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import { XMark } from "@medusajs/icons"
-import React from "react"
+import { XMark } from '@medusajs/icons'
+import React from 'react'
 
-import Help from "@/modules/order/components/help"
-import Items from "@/modules/order/components/items"
-import OrderDetails from "@/modules/order/components/order-details"
-import OrderSummary from "@/modules/order/components/order-summary"
-import ShippingDetails from "@/modules/order/components/shipping-details"
-import LocalizedClientLink from "@/modules/common/components/localized-client-link"
-import { HttpTypes } from "@medusajs/types"
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import Help from '@/modules/order/components/help'
+import Items from '@/modules/order/components/items'
+import OrderDetails from '@/modules/order/components/order-details'
+import OrderSummary from '@/modules/order/components/order-summary'
+import ShippingDetails from '@/modules/order/components/shipping-details'
+import { HttpTypes } from '@medusajs/types'
 
 type OrderDetailsTemplateProps = {
   order: HttpTypes.StoreOrder

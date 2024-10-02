@@ -1,8 +1,9 @@
 'use client'
 
-import * as React from 'react'
-import { ChevronsUpDown } from 'lucide-react'
+import { updateRegion } from '@/lib/data/cart'
 import { listRegions } from '@/lib/data/regions'
+import { cn } from '@/lib/util/cn'
+import Spinner from '@/modules/common/icons/spinner'
 import { Button } from '@/ui/shadcn/button'
 import {
   DropdownMenu,
@@ -15,15 +16,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/ui/shadcn/dropdown-menu'
-import { cn } from '@/lib/util/cn'
-import { updateRegion } from '@/lib/data/cart'
-import { useParams, usePathname } from 'next/navigation'
-import ReactCountryFlag from 'react-country-flag'
 import type {
   // HttpTypes,
   StoreRegion,
 } from '@medusajs/types'
-import Spinner from '@/modules/common/icons/spinner'
+import { ChevronsUpDown } from 'lucide-react'
+import { useParams, usePathname } from 'next/navigation'
+import * as React from 'react'
+import ReactCountryFlag from 'react-country-flag'
 
 type RegionOption = {
   country: string
@@ -34,7 +34,9 @@ type RegionOption = {
 const RegionSelectDropdown = ({ width = '12rem' }: { width?: string }) => {
   const [regions, setRegions] = React.useState<StoreRegion[]>([])
   const [loading, setLoading] = React.useState(true)
-  const [selectedRegion, setSelectedRegion] = React.useState<RegionOption | undefined>(undefined)
+  const [selectedRegion, setSelectedRegion] = React.useState<
+    RegionOption | undefined
+  >(undefined)
   const { countryCode } = useParams()
   const currentPath = usePathname().split(`/${countryCode}`)[1]
 
@@ -117,7 +119,9 @@ const RegionSelectDropdown = ({ width = '12rem' }: { width?: string }) => {
           ) : (
             'Select country...'
           )}
-          {!loading && <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />}
+          {!loading && (
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

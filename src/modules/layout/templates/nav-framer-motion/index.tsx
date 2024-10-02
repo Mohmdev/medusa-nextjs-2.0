@@ -1,7 +1,11 @@
 'use client'
-import React from 'react'
-import { LazyMotion, domAnimation, AnimatePresence, useCycle } from 'framer-motion'
 import { cn } from '@/lib/util/cn'
+import {
+  AnimatePresence,
+  LazyMotion,
+  domAnimation,
+  useCycle,
+} from 'framer-motion'
 
 import MenuItems from './menu-items'
 import MenuWrapper from './menu-wrapper'
@@ -31,7 +35,11 @@ const SideMenuNav = () => {
           >
             <AnimatePresence>{menuState && <MenuItems />}</AnimatePresence>
           </MenuWrapper>
-          <ToggleButton variant="svg" menuState={menuState} toggleMenuState={toggleMenuState} />
+          <ToggleButton
+            variant="svg"
+            menuState={menuState}
+            toggleMenuState={toggleMenuState}
+          />
         </LazyMotion>
       </div>
     </div>

@@ -13,7 +13,12 @@ const menuWrapper = {
     opacity: 0,
     top: '50px',
     background: 'transparent',
-    transition: { duration: 0.5, delay: 0.5, type: 'tween', ease: [0.76, 0, 0.24, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.5,
+      type: 'tween',
+      ease: [0.76, 0, 0.24, 1],
+    },
   },
 }
 
@@ -79,10 +84,10 @@ const hamburgerBottomLine = {
 }
 
 export {
-  menuWrapper,
-  menuItems,
-  menuItem,
-  hamburgerTopLine,
-  hamburgerMiddleLine,
   hamburgerBottomLine,
+  hamburgerMiddleLine,
+  hamburgerTopLine,
+  menuItem,
+  menuItems,
+  menuWrapper,
 }

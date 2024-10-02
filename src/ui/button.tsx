@@ -1,8 +1,8 @@
+import { cn } from '@/lib/util/cn'
+import Spinner from '@/modules/common/icons/spinner'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
-import Spinner from '@/modules/common/icons/spinner'
-import { cn } from '@/lib/util/cn'
 
 const buttonVariants = cva(
   cn(
@@ -71,7 +71,19 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, children, disabled, isLoading, asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      children,
+      disabled,
+      isLoading,
+      asChild = false,
+      ...props
+    },
+    ref
+  ) => {
     const Component = asChild ? Slot : 'button'
 
     /**

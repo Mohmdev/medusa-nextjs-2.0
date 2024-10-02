@@ -1,5 +1,5 @@
-import { m, type Variants } from 'framer-motion'
 import { cn } from '@/lib/util/cn'
+import { m, type Variants } from 'framer-motion'
 
 const dropdownVariants: Variants = {
   open: {
@@ -14,7 +14,12 @@ const dropdownVariants: Variants = {
     height: '0',
     opacity: 0,
     visibility: 'hidden',
-    transition: { duration: 0.5, delay: 0.35, type: 'tween', ease: [0.76, 0, 0.24, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.35,
+      type: 'tween',
+      ease: [0.76, 0, 0.24, 1],
+    },
   },
 }
 

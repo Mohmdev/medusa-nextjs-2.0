@@ -1,12 +1,12 @@
-import { Label } from "@medusajs/ui"
-import React, { useEffect, useImperativeHandle, useState } from "react"
+import { Label } from '@medusajs/ui'
+import React, { useEffect, useImperativeHandle, useState } from 'react'
 
-import Eye from "@/modules/common/icons/eye"
-import EyeOff from "@/modules/common/icons/eye-off"
+import Eye from '@/modules/common/icons/eye'
+import EyeOff from '@/modules/common/icons/eye-off'
 
 type InputProps = Omit<
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
-  "placeholder"
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
+  'placeholder'
 > & {
   label: string
   errors?: Record<string, unknown>
@@ -22,12 +22,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const [inputType, setInputType] = useState(type)
 
     useEffect(() => {
-      if (type === "password" && showPassword) {
-        setInputType("text")
+      if (type === 'password' && showPassword) {
+        setInputType('text')
       }
 
-      if (type === "password" && !showPassword) {
-        setInputType("password")
+      if (type === 'password' && !showPassword) {
+        setInputType('password')
       }
     }, [type, showPassword])
 
@@ -56,7 +56,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {label}
             {required && <span className="text-rose-500">*</span>}
           </label>
-          {type === "password" && (
+          {type === 'password' && (
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
@@ -71,6 +71,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 )
 
-Input.displayName = "Input"
+Input.displayName = 'Input'
 
 export default Input

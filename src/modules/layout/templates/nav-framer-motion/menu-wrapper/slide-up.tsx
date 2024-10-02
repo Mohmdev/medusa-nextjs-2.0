@@ -1,5 +1,5 @@
-import { m, type Variants } from 'framer-motion'
 import { cn } from '@/lib/util/cn'
+import { m, type Variants } from 'framer-motion'
 
 const slideUpFullVariants: Variants = {
   open: {
@@ -18,7 +18,13 @@ const slideUpFullVariants: Variants = {
     height: '100dvh',
     // opacity: 0,
     // visibility: 'hidden',
-    transition: { duration: 0.3, delay: 0.3, type: 'spring', stiffness: 100, damping: 20 },
+    transition: {
+      duration: 0.3,
+      delay: 0.3,
+      type: 'spring',
+      stiffness: 100,
+      damping: 20,
+    },
   },
 }
 

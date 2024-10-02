@@ -18,13 +18,17 @@ type AccordionItemProps = AccordionPrimitive.AccordionItemProps & {
 }
 
 type AccordionProps =
-  | (AccordionPrimitive.AccordionSingleProps & React.RefAttributes<HTMLDivElement>)
-  | (AccordionPrimitive.AccordionMultipleProps & React.RefAttributes<HTMLDivElement>)
+  | (AccordionPrimitive.AccordionSingleProps &
+      React.RefAttributes<HTMLDivElement>)
+  | (AccordionPrimitive.AccordionMultipleProps &
+      React.RefAttributes<HTMLDivElement>)
 
 const Accordion: React.FC<AccordionProps> & {
   Item: React.FC<AccordionItemProps>
 } = ({ children, ...props }) => {
-  return <AccordionPrimitive.Root {...props}>{children}</AccordionPrimitive.Root>
+  return (
+    <AccordionPrimitive.Root {...props}>{children}</AccordionPrimitive.Root>
+  )
 }
 
 const Item: React.FC<AccordionItemProps> = ({
@@ -42,7 +46,11 @@ const Item: React.FC<AccordionItemProps> = ({
   return (
     <AccordionPrimitive.Item
       {...props}
-      className={clx('group border-t border-grey-20 last:mb-0 last:border-b', 'py-3', className)}
+      className={clx(
+        'group border-t border-grey-20 last:mb-0 last:border-b',
+        'py-3',
+        className
+      )}
     >
       <AccordionPrimitive.Header className="px-1">
         <div className="flex flex-col">

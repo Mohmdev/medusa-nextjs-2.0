@@ -7,7 +7,10 @@ export const listCategories = cache(async function () {
     .then(({ product_categories }) => product_categories)
 })
 
-export const getCategoriesList = cache(async function (offset: number = 0, limit: number = 100) {
+export const getCategoriesList = cache(async function (
+  offset: number = 0,
+  limit: number = 100
+) {
   return sdk.store.category.list(
     // TODO: Look into fixing the type
     // @ts-expect-error
@@ -16,7 +19,9 @@ export const getCategoriesList = cache(async function (offset: number = 0, limit
   )
 })
 
-export const getCategoryByHandle = cache(async function (categoryHandle: string[]) {
+export const getCategoryByHandle = cache(async function (
+  categoryHandle: string[]
+) {
   return sdk.store.category.list(
     // TODO: Look into fixing the type
     // @ts-expect-error

@@ -1,7 +1,7 @@
 import { sdk } from '@/lib/config'
+import { HttpTypes } from '@medusajs/types'
 import { cache } from 'react'
 import { getProductsList } from './products'
-import { HttpTypes } from '@medusajs/types'
 
 export const retrieveCollection = cache(async function (id: string) {
   return sdk.store.collection
@@ -35,7 +35,9 @@ export const getCollectionsWithProducts = cache(
       return null
     }
 
-    const collectionIds = collections.map((collection) => collection.id).filter(Boolean) as string[]
+    const collectionIds = collections
+      .map((collection) => collection.id)
+      .filter(Boolean) as string[]
 
     const { response } = await getProductsList({
       queryParams: { collection_id: collectionIds },
@@ -43,7 +45,9 @@ export const getCollectionsWithProducts = cache(
     })
 
     response.products.forEach((product) => {
-      const collection = collections.find((collection) => collection.id === product.collection_id)
+      const collection = collections.find(
+        (collection) => collection.id === product.collection_id
+      )
 
       if (collection) {
         if (!collection.products) {

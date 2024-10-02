@@ -1,13 +1,16 @@
 import { Text } from '@medusajs/ui'
 
+import { cn } from '@/lib/util/cn'
 import Medusa from '../../../common/icons/medusa'
 import NextJs from '../../../common/icons/nextjs'
-import { cn } from '@/lib/util/cn'
 
 const MedusaCTA = ({ className }: { className?: string }) => {
   return (
     <Text
-      className={cn('txt-compact-small-plus flex items-center gap-x-2 text-[#9ca3af]', className)}
+      className={cn(
+        'txt-compact-small-plus flex items-center gap-x-2 text-[#9ca3af]',
+        className
+      )}
     >
       Powered by
       <a href="https://www.medusajs.com" target="_blank" rel="noreferrer">
