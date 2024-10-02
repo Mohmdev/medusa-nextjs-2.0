@@ -14,17 +14,19 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@lib/*": ["lib/*"],
-      "@modules/*": ["modules/*"],
-      "@pages/*": ["pages/*"]
-    },
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"],
+      "@/ui/*": ["ui/*"],
+      "@/modules/*": ["modules/*"],
+      "@/pages/*": ["pages/*"],
+      "@/lib/*": ["lib/*"]
+    }
   },
   "include": [
     "next-env.d.ts",

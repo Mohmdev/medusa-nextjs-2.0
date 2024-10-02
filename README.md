@@ -137,7 +137,7 @@ To do this you will need to add `algoliasearch` to the project, by running
 yarn add algoliasearch
 ```
 
-After this you will need to switch the current MeiliSearch `SearchClient` out with a Alogolia client. To do this update `@lib/search-client`.
+After this you will need to switch the current MeiliSearch `SearchClient` out with a Alogolia client. To do this update `@/lib/search-client`.
 
 ```ts
 import algoliasearch from "algoliasearch/lite"
@@ -157,7 +157,7 @@ Then, in `src/app/(main)/search/actions.ts`, remove the MeiliSearch code (line 1
 ```ts
 "use server"
 
-import { searchClient, SEARCH_INDEX_NAME } from "@lib/search-client"
+import { searchClient, SEARCH_INDEX_NAME } from "@/lib/search-client"
 
 /**
  * Uses MeiliSearch or Algolia to search for a query
@@ -233,7 +233,7 @@ This structure enables efficient routing and organization of different parts of 
 
 The lib directory contains all utilities like the Medusa JS client functions, util functions, config and constants. 
 
-The most important file here is `/lib/data/index.ts`. This file defines various functions for interacting with the Medusa API, using the JS client. The functions cover a range of actions related to shopping carts, orders, shipping, authentication, customer management, regions, products, collections, and categories. It also includes utility functions for handling headers and errors, as well as some functions for sorting and transforming product data.
+The most important file here is `@/lib/data/index.ts`. This file defines various functions for interacting with the Medusa API, using the JS client. The functions cover a range of actions related to shopping carts, orders, shipping, authentication, customer management, regions, products, collections, and categories. It also includes utility functions for handling headers and errors, as well as some functions for sorting and transforming product data.
 
 These functions are used in different Server Actions.
 

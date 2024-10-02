@@ -1,10 +1,12 @@
-import { getProductsListWithSort } from "@lib/data/products"
-import { getRegion } from "@lib/data/regions"
-import ProductPreview from "@modules/products/components/product-preview"
-import { Pagination } from "@modules/store/components/pagination"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { getProductsListWithSort } from "@/lib/data/products"
+import { getRegion } from "@/lib/data/regions"
+import ProductPreview from "@/modules/products/components/product-preview"
+import { Pagination } from "@/modules/store/components/pagination"
+import { SortOptions } from "@/modules/store/components/refinement-list/sort-products"
 
-const PRODUCT_LIMIT = 12
+// const PRODUCT_LIMIT = 12
+const DEFAULT_PRODUCT_LIMIT = 12
+
 
 type PaginatedProductsParams = {
   limit: number
@@ -21,6 +23,7 @@ export default async function PaginatedProducts({
   categoryId,
   productsIds,
   countryCode,
+  productsPerPage,
 }: {
   sortBy?: SortOptions
   page: number
@@ -28,9 +31,12 @@ export default async function PaginatedProducts({
   categoryId?: string
   productsIds?: string[]
   countryCode: string
+  productsPerPage?: number
 }) {
+  const PRODUCT_LIMIT = productsPerPage ?? DEFAULT_PRODUCT_LIMIT
+
   const queryParams: PaginatedProductsParams = {
-    limit: 12,
+    limit: PRODUCT_LIMIT,
   }
 
   if (collectionId) {
