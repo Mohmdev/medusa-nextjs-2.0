@@ -49,7 +49,7 @@ export function Pagination({
   const renderEllipsis = (key: string) => (
     <span
       key={key}
-      className="txt-xlarge-plus text-ui-fg-muted items-center cursor-default"
+      className="txt-xlarge-plus cursor-default items-center text-ui-fg-muted"
     >
       ...
     </span>
@@ -107,8 +107,8 @@ export function Pagination({
 
   // Render the component
   return (
-    <div className="flex justify-center w-full mt-12">
-      <div className="flex gap-3 items-end" data-testid={dataTestid}>
+    <div className="mt-12 flex w-full justify-center">
+      <div className="flex items-end gap-3" data-testid={dataTestid}>
         {renderPageButtons()}
       </div>
     </div>

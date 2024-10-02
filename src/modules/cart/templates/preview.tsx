@@ -17,12 +17,12 @@ const ItemsPreviewTemplate = ({ items }: ItemsTemplateProps) => {
   return (
     <div
       className={clx({
-        'pl-[1px] overflow-y-scroll overflow-x-hidden no-scrollbar max-h-[420px]':
+        'no-scrollbar max-h-[420px] overflow-x-hidden overflow-y-scroll pl-[1px]':
           hasOverflow,
       })}
     >
       <Table>
-        <Table.Body data-testid="items-table">
+        <Table.Body data-testid="items-table" className="border-b-0">
           {items
             ? items
                 .sort((a, b) => {

@@ -12,12 +12,12 @@ type ItemsTemplateProps = {
 const ItemsTemplate = ({ items }: ItemsTemplateProps) => {
   return (
     <div>
-      <div className="pb-3 flex items-center">
+      <div className="flex items-center pb-3">
         <Heading className="text-[2rem] leading-[2.75rem]">Cart</Heading>
       </div>
       <Table>
         <Table.Header className="border-t-0">
-          <Table.Row className="text-ui-fg-subtle txt-medium-plus">
+          <Table.Row className="txt-medium-plus bg-transparent text-ui-fg-subtle hover:!bg-transparent">
             <Table.HeaderCell className="!pl-0">Item</Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>Quantity</Table.HeaderCell>
@@ -29,7 +29,7 @@ const ItemsTemplate = ({ items }: ItemsTemplateProps) => {
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-        <Table.Body>
+        <Table.Body className="border-b-0">
           {items
             ? items
                 .sort((a, b) => {

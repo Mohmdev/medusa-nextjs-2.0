@@ -78,7 +78,7 @@ export default function ProductActions({
     // If there is inventory available, we can add to cart
     if (
       selectedVariant?.manage_inventory &&
-      (selectedVariant?.inventory_quantity || 0) > 0
+      (selectedVariant.inventory_quantity || 0) > 0
     ) {
       return true
     }
@@ -137,7 +137,7 @@ export default function ProductActions({
           onClick={handleAddToCart}
           disabled={!inStock || !selectedVariant || !!disabled || isAdding}
           variant="primary"
-          className="w-full h-10"
+          className="h-10 w-full"
           isLoading={isAdding}
           data-testid="add-product-button"
         >

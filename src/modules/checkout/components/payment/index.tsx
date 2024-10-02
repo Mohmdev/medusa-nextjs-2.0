@@ -114,14 +114,14 @@ const Payment = ({
   }, [isOpen])
 
   return (
-    <div className="bg-white">
-      <div className="flex flex-row items-center justify-between mb-6">
+    <div>
+      <div className="mb-6 flex flex-row items-center justify-between">
         <Heading
           level="h2"
           className={clx(
-            'flex flex-row text-3xl-regular gap-x-2 items-baseline',
+            'text-3xl-regular flex flex-row items-baseline gap-x-2',
             {
-              'opacity-50 pointer-events-none select-none':
+              'pointer-events-none select-none opacity-50':
                 !isOpen && !paymentReady,
             }
           )}
@@ -166,7 +166,7 @@ const Payment = ({
               </RadioGroup>
               {isStripe && stripeReady && (
                 <div className="mt-5 transition-all duration-150 ease-in-out">
-                  <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                  <Text className="txt-medium-plus mb-1 text-ui-fg-base">
                     Enter your card details:
                   </Text>
 
@@ -187,8 +187,8 @@ const Payment = ({
           )}
 
           {paidByGiftcard && (
-            <div className="flex flex-col w-1/3">
-              <Text className="txt-medium-plus text-ui-fg-base mb-1">
+            <div className="flex w-1/3 flex-col">
+              <Text className="txt-medium-plus mb-1 text-ui-fg-base">
                 Payment method
               </Text>
               <Text
@@ -224,9 +224,9 @@ const Payment = ({
 
         <div className={isOpen ? 'hidden' : 'block'}>
           {cart && paymentReady && activeSession ? (
-            <div className="flex items-start gap-x-1 w-full">
-              <div className="flex flex-col w-1/3">
-                <Text className="txt-medium-plus text-ui-fg-base mb-1">
+            <div className="flex w-full items-start gap-x-1">
+              <div className="flex w-1/3 flex-col">
+                <Text className="txt-medium-plus mb-1 text-ui-fg-base">
                   Payment method
                 </Text>
                 <Text
@@ -237,15 +237,15 @@ const Payment = ({
                     selectedPaymentMethod}
                 </Text>
               </div>
-              <div className="flex flex-col w-1/3">
-                <Text className="txt-medium-plus text-ui-fg-base mb-1">
+              <div className="flex w-1/3 flex-col">
+                <Text className="txt-medium-plus mb-1 text-ui-fg-base">
                   Payment details
                 </Text>
                 <div
-                  className="flex gap-2 txt-medium text-ui-fg-subtle items-center"
+                  className="txt-medium flex items-center gap-2 text-ui-fg-subtle"
                   data-testid="payment-details-summary"
                 >
-                  <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
+                  <Container className="flex h-7 w-fit items-center bg-ui-button-neutral-hover p-2">
                     {paymentInfoMap[selectedPaymentMethod]?.icon || (
                       <CreditCard />
                     )}
@@ -259,8 +259,8 @@ const Payment = ({
               </div>
             </div>
           ) : paidByGiftcard ? (
-            <div className="flex flex-col w-1/3">
-              <Text className="txt-medium-plus text-ui-fg-base mb-1">
+            <div className="flex w-1/3 flex-col">
+              <Text className="txt-medium-plus mb-1 text-ui-fg-base">
                 Payment method
               </Text>
               <Text

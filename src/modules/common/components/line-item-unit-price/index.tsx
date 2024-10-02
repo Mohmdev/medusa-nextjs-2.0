@@ -21,7 +21,7 @@ const LineItemUnitPrice = ({
   const hasReducedPrice = calculated_price_number < original_price_number
 
   return (
-    <div className="flex flex-col text-ui-fg-muted justify-center h-full">
+    <div className="flex h-full flex-col justify-center text-ui-fg-muted">
       {hasReducedPrice && (
         <>
           <p>
