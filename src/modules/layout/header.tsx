@@ -4,12 +4,12 @@ import { listRegions } from '@/lib/data/regions'
 import { StoreRegion } from '@medusajs/types'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import CartButton from '@/modules/layout/components-shared/cart-button'
-import SideMenu from '@/modules/layout/templates/nav/side-menu'
 import { cn } from '@/lib/util/cn'
 import SiteLogo from '@/ui/site-logo'
 import Medusa from '@/modules/common/icons/medusa'
+import SideMenuNav from './templates/nav-framer-motion'
 
-export default async function Nav({ className }: { className?: string }) {
+export default async function Header({ className }: { className?: string }) {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
   const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Medusa Store'
 
@@ -22,26 +22,25 @@ export default async function Nav({ className }: { className?: string }) {
         className
       )}
     >
-      <nav className="content-container text-small-regular txt-xsmall-plus flex h-full w-full items-center justify-between text-ui-fg-subtle">
-        <div className="flex h-full flex-1 basis-0 items-center">
-          <div className="h-full">
+      <nav className="content-container text-small-regular txt-xsmall-plus relative flex h-full w-full items-center justify-between text-ui-fg-subtle">
+        <div data-testid="nav-menu" className="flex h-full flex-1 basis-0 items-center">
+          {/* <div className="h-full">
             <SideMenu regions={regions} />
-          </div>
+          </div> */}
+          <SideMenuNav />
         </div>
 
-        <LocalizedClientLink
-          href="/"
-          data-testid="nav-store-link"
-          className="flex h-full items-center"
-        >
-          <SiteLogo
-            text={storeName}
-            textClassName="text-ui-fg-subtle"
-            svgComponent={<Medusa color="var(--fg-subtle)" size="22" />}
-          />
-        </LocalizedClientLink>
+        <SiteLogo
+          text={storeName}
+          textClassName="text-ui-fg-subtle"
+          svgComponent={<Medusa color="var(--fg-subtle)" size="22" />}
+          localized={true}
+        />
 
-        <div className="flex h-full flex-1 basis-0 items-center justify-end gap-x-6">
+        <div
+          data-testid="nav-actions"
+          className="flex h-full flex-1 basis-0 items-center justify-end gap-x-6"
+        >
           <div className="hidden h-full items-center gap-x-6 small:flex">
             {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
               <LocalizedClientLink

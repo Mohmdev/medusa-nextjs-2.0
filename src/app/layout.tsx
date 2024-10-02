@@ -1,9 +1,10 @@
-import { getBaseURL } from "@/lib/util/env"
-import { Metadata } from "next"
+import { getBaseURL } from '@/lib/util/env'
+import { Metadata } from 'next'
 import '@/styles/base.css'
 import '@/styles/utilities.css'
 import '@/styles/components.css'
 import '@/styles/custom.css'
+import { ThemeProvider } from '@/ui/theme-provider'
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -11,9 +12,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-mode="light">
+    <html lang="en" data-mode="dark">
       <body>
-        <main className="relative">{props.children}</main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          // disableTransitionOnChange
+        >
+          <main className="relative grid min-h-screen grid-rows-[max-content_1fr_max-content]">
+            {props.children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   )
