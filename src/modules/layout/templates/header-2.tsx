@@ -4,12 +4,12 @@ import SiteLogo from '@/ui/site-logo'
 import SideMenu from '../component-templates/sidemenu-framer-motion'
 import NavAccount from '../component-templates/~sub-components/nav-account/svg'
 import NavCart from '../component-templates/~sub-components/nav-cart'
+import NavDropdown from '../component-templates/~sub-components/nav-dropdown'
 import NavSearch from '../component-templates/~sub-components/nav-search/svg'
 // import { StoreRegion } from '@medusajs/types'
 
 export default async function Header({ className }: { className?: string }) {
   // const regions = await listRegions().then((regions: StoreRegion[]) => regions)
-  const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Medusa Store'
 
   return (
     <header
@@ -20,14 +20,20 @@ export default async function Header({ className }: { className?: string }) {
         className
       )}
     >
-      <section className="content-container text-small-regular txt-xsmall-plus relative flex h-full w-full items-center justify-between text-ui-fg-subtle">
+      <section
+        className={cn(
+          'content-container relative',
+          'grid h-full w-full gap-4',
+          'grid-cols-[1fr,auto,1fr]',
+          'nav:grid-cols-[max-content,auto,1fr]',
+          'text-ui-fg-subtle text-small-regular txt-xsmall-plus'
+        )}
+      >
         <SiteLogo
-          text={storeName}
-          textClassName=""
-          className="z-[51]"
+          className="z-50"
           svgComponent={
             <Medusa
-              className="*:fill-secondary-foreground group-hover:*:fill-[var(--ui-subtle)]"
+              className="*:fill-secondary-foreground/90 hover:*:fill-secondary-subtle *:duration-150 *:ease-linear"
               size="22"
             />
           }
@@ -35,22 +41,24 @@ export default async function Header({ className }: { className?: string }) {
 
         <div
           data-testid="nav-actions"
-          className="flex h-full flex-1 basis-0 items-center justify-end gap-x-6"
+          className={cn(
+            'flex flex-1 basis-0 items-center justify-center gap-x-6 ',
+            'w-max h-full',
+            // 'bg-red-500',
+            ''
+          )}
         >
-          {/* <NavSearch />
-          <NavAccount />
-
-          <NavCart buttonVariant="svg" /> */}
+          <NavDropdown className="hidden nav:flex text-secondary-foreground/90 hover:*:text-secondary-subtle" />
         </div>
 
         <div
           data-testid="nav-menu"
-          className="flex h-full flex-1 basis-0 items-center justify-end gap-4"
+          className="flex h-full flex-1 basis-0 items-center justify-end gap-5"
         >
           <div
             className={cn(
               'z-50',
-              'flex h-full flex-1 basis-0 items-center justify-end gap-3'
+              'flex h-full flex-1 basis-0 items-center justify-end gap-3 -mt-0.5'
             )}
           >
             <NavSearch />

@@ -7,9 +7,9 @@ const NavAccount = ({ className }: { className?: string }) => {
     <LocalizedClientLink
       href="/account"
       data-testid="nav-account-link"
-      className={cn('hover:text-ui-fg-base', className)}
+      className={cn('text-secondary-foreground/90', className)}
     >
-      <User size={26} />
+      <User size={24} className="" strokeWidth={1.5} />
     </LocalizedClientLink>
   )
 }

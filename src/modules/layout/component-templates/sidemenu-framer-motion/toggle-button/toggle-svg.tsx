@@ -46,11 +46,17 @@ const ToggleSVG = ({
       onClick={() => toggleMenuState()}
       className={cn(
         'z-50 h-max w-max',
-        'm-0 mt-1 border-0 p-0',
-        'cursor-pointer select-none outline-0'
+        'm-0 mt-[5px] border-0 p-0',
+        'cursor-pointer select-none outline-0',
+        'stroke-secondary-foreground/90 hover:stroke-secondary-subtle transition-colors duration-150 ease-linear'
       )}
     >
-      <svg width="23" height="23" viewBox="0 0 23 23">
+      <svg
+        width="23"
+        height="23"
+        viewBox="0 0 23 23"
+        // className="stroke-red-500"
+      >
         <Path variants={hamburgerTopLine} menuState={menuState} />
         <Path
           d="M 2 9.423 L 20 9.423"
@@ -66,7 +72,7 @@ const ToggleSVG = ({
 const Path: React.FC<PathProps> = ({ menuState, ...props }) => (
   <m.path
     strokeWidth="2"
-    stroke="var(--fg-subtle)"
+    // stroke="var(--fg-subtle)"
     // stroke="hsl(var(--secondary-foreground))"
     strokeLinecap="round"
     animate={menuState ? 'open' : 'closed'}

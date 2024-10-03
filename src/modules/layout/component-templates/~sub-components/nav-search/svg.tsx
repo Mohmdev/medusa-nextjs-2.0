@@ -10,9 +10,12 @@ const NavSearch = ({ className }: { className?: string }) => {
           href="/search"
           scroll={false}
           data-testid="nav-search-link"
-          className={cn('hover:text-ui-fg-base', className)}
+          className={cn(
+            'text-secondary-foreground/90 hover:text-secondary-subtle focs:text-secondary-subtle transition-colors duration-150 ease-linear',
+            className
+          )}
         >
-          <Search size={22} />
+          <Search size={21} strokeWidth={1.5} />
         </LocalizedClientLink>
       )}
     </>

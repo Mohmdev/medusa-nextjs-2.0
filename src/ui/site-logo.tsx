@@ -3,7 +3,7 @@ import LocalizedClientLink from '@/modules/common/components/localized-client-li
 import Medusa from '@/modules/common/icons/medusa'
 
 const SiteLogo = ({
-  text = 'Medusa 2.0',
+  text,
   className,
   textClassName,
   svgComponent,
@@ -18,7 +18,7 @@ const SiteLogo = ({
       return (
         <>
           <LocalizedClientLink
-            className="group-hover:*:fill-[var(--fg-muted)] "
+            className="group-hover:*:fill-[var(--fg-muted)]"
             href="/"
           >
             {svgComponent}

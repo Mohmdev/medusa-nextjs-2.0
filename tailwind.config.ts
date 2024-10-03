@@ -57,6 +57,7 @@ const tailwindConfig: Config = {
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+          subtle: 'hsl(var(--secondary-subtle))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -112,6 +113,7 @@ const tailwindConfig: Config = {
       screens: {
         '2xsmall': '320px',
         xsmall: '512px',
+        nav: '864px',
         small: '1024px',
         medium: '1280px',
         large: '1440px',
