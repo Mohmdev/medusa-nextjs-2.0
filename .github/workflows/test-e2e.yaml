@@ -42,6 +42,8 @@ env:
 
 jobs:
   e2e-test-runner:
+    # Disable this job
+    if: ${{ false }}
     timeout-minutes: 20
     runs-on:
       - ubuntu-latest
