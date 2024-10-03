@@ -65,7 +65,7 @@ const ToggleSVG = ({
 }
 const Path: React.FC<PathProps> = ({ menuState, ...props }) => (
   <m.path
-    strokeWidth="3"
+    strokeWidth="2"
     stroke="var(--fg-subtle)"
     // stroke="hsl(var(--secondary-foreground))"
     strokeLinecap="round"

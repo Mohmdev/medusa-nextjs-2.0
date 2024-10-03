@@ -11,7 +11,7 @@ import MenuItems from './menu-items'
 import MenuWrapper from './menu-wrapper'
 import ToggleButton from './toggle-button'
 
-const SideMenuNav = () => {
+const SideMenu = ({ className }: { className?: string }) => {
   const [menuState, toggleMenuState] = useCycle(false, true)
 
   return (
@@ -20,9 +20,10 @@ const SideMenuNav = () => {
     <div
       className={cn(
         'h-10',
-        'flex flex-col items-center justify-center',
+        'flex flex-col items-center justify-center z-50',
         'box-content w-max max-w-[90vw]',
-        'z-50 border-0 border-none'
+        'border-0 border-none',
+        className
       )}
     >
       {/* Wrapper will be relative to this container */}
@@ -46,4 +47,4 @@ const SideMenuNav = () => {
   )
 }
 
-export default SideMenuNav
+export default SideMenu

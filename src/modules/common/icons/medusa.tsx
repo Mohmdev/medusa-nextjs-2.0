@@ -5,6 +5,7 @@ import { IconProps } from 'types/icon'
 const Medusa: React.FC<IconProps> = ({
   size = '20',
   color = '#9CA3AF',
+  className,
   ...attributes
 }) => {
   return (
@@ -14,6 +15,7 @@ const Medusa: React.FC<IconProps> = ({
       height="18"
       viewBox="0 0 18 18"
       fill="none"
+      className={className}
       {...attributes}
     >
       <path

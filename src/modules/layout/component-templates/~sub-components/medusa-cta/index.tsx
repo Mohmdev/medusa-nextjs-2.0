@@ -1,8 +1,8 @@
 import { Text } from '@medusajs/ui'
 
 import { cn } from '@/lib/util/cn'
-import Medusa from '../../../common/icons/medusa'
-import NextJs from '../../../common/icons/nextjs'
+import Medusa from '../../../../common/icons/medusa'
+import NextJs from '../../../../common/icons/nextjs'
 
 const MedusaCTA = ({ className }: { className?: string }) => {
   return (

@@ -1,70 +1,57 @@
 import { cn } from '@/lib/util/cn'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import Medusa from '@/modules/common/icons/medusa'
-import Image from 'next/image'
-
-export type SiteLogoProps = {
-  text?: string
-  textClassName?: string
-  svgUrl?: string
-  svgComponent?: React.ReactNode
-  localized?: boolean
-}
 
 const SiteLogo = ({
-  text = 'Medusa Store',
+  text = 'Medusa 2.0',
+  className,
   textClassName,
-  svgUrl,
   svgComponent,
-  localized = false,
-}: SiteLogoProps) => {
-  const width = 30
-  const height = 30
-
+}: {
+  text?: string
+  className?: string
+  textClassName?: string
+  svgComponent?: React.ReactNode
+}) => {
   const renderSvg = () => {
-    if (svgUrl) {
-      return (
-        <Image
-          src={svgUrl}
-          alt="Site logo"
-          className=""
-          width={width}
-          height={height}
-        />
-      ) // Renders SVG from an external URL
-    }
-
     if (svgComponent) {
-      return <>{svgComponent}</>
+      return (
+        <>
+          <LocalizedClientLink
+            className="group-hover:*:fill-[var(--fg-muted)] "
+            href="/"
+          >
+            {svgComponent}
+          </LocalizedClientLink>
+        </>
+      )
     }
 
-    return <Medusa fill="#9ca3af" className="fill-[#9ca3af]" />
+    return <Medusa fill="#9ca3af" className="fill-black dark:fill-white" />
   }
 
-  const content = (
-    <div className="flex max-w-max flex-row items-center justify-center gap-2">
+  return (
+    <div
+      data-testid="nav-store-link"
+      className={cn(
+        'group *:transition-colors *:duration-200 *:ease-linear',
+        'flex max-w-max flex-row items-center justify-center gap-1.5',
+        className
+      )}
+    >
       {renderSvg()}
-      <span
+
+      <LocalizedClientLink
+        href="/"
         className={cn(
-          'txt-compact-xlarge-plus uppercase hover:text-ui-fg-base',
+          'txt-compact-xlarge-plus flex h-full items-center uppercase text-secondary-foreground',
+          'group-hover:text-ui-fg-muted ',
           textClassName
         )}
       >
         {text}
-      </span>
+      </LocalizedClientLink>
     </div>
-  )
-
-  return localized ? (
-    <LocalizedClientLink
-      href="/"
-      data-testid="nav-store-link"
-      className="flex h-full items-center"
-    >
-      {content}
-    </LocalizedClientLink>
-  ) : (
-    content
   )
 }
 

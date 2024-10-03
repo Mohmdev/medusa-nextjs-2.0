@@ -9,7 +9,7 @@ import { cn } from '@/lib/util/cn'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import ModeToggle from '@/ui/mode-toggle/toggle'
 import { HttpTypes } from '@medusajs/types'
-import CountrySelect from '../../../components-shared/country-select'
+import CountrySelect from '../~sub-components/country-select'
 
 const SideMenuItems = {
   Home: '/',

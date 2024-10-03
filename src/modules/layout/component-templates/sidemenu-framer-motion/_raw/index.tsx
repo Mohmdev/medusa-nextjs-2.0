@@ -26,7 +26,7 @@ const useDimensions = (ref: React.RefObject<HTMLElement>) => {
   return dimensions.current
 }
 
-export const SidebarNav = () => {
+export const SideMenu = () => {
   const [isOpen, toggleOpen] = useCycle(false, true)
   const containerRef = useRef(null)
   const { height } = useDimensions(containerRef)

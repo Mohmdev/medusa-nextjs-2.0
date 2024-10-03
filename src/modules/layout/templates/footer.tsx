@@ -3,7 +3,8 @@ import { getCollectionsList } from '@/lib/data/collections'
 import { cn } from '@/lib/util/cn'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import ModeToggleDropdown from '@/ui/mode-toggle/dropdown'
-import MedusaCTA from '../../components-shared/medusa-cta'
+import MedusaCTA from '../component-templates/~sub-components/medusa-cta'
+// import MedusaCTA from '../../components-shared/medusa-cta'
 
 const { collections } = await getCollectionsList(0, 6)
 const { product_categories } = await getCategoriesList(0, 6)
@@ -297,9 +298,9 @@ const FooterCTA = ({
             {/* <FooterQuickLinks displayHeader={false} devices="desktop" /> */}
             <FooterMedusaLinks displayHeader={false} />
           </div>
-          <div className="grid grid-cols-[max-content,_1fr] items-center justify-between gap-3">
+          <div className="flex flex-col items-start justify-between gap-2">
+            <MedusaCTA />
             <ModeToggleDropdown size="icon" align="start" />
-            <MedusaCTA className="" />
           </div>
         </div>
       )}
