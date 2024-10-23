@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test"
+import { Locator, Page } from '@playwright/test'
 
 export class NavMenu {
   page: Page
@@ -16,17 +16,17 @@ export class NavMenu {
 
   constructor(page: Page) {
     this.page = page
-    this.navMenuButton = page.getByTestId("nav-menu-button")
-    this.navMenu = page.getByTestId("nav-menu-popup")
-    this.navAccountLink = page.getByTestId("nav-account-link")
-    this.homeLink = this.navMenu.getByTestId("home-link")
-    this.storeLink = this.navMenu.getByTestId("store-link")
-    this.searchLink = this.navMenu.getByTestId("search-link")
-    this.accountLink = this.navMenu.getByTestId("account-link")
-    this.cartLink = this.navMenu.getByTestId("nav-cart-link")
-    this.closeButton = this.navMenu.getByTestId("close-menu-button")
-    this.shippingToLink = this.navMenu.getByTestId("shipping-to-button")
-    this.shippingToMenu = this.navMenu.getByTestId("shipping-to-choices")
+    this.navMenuButton = page.getByTestId('nav-menu-button')
+    this.navMenu = page.getByTestId('nav-menu-popup')
+    this.navAccountLink = page.getByTestId('nav-account-link')
+    this.homeLink = this.navMenu.getByTestId('home-link')
+    this.storeLink = this.navMenu.getByTestId('store-link')
+    this.searchLink = this.navMenu.getByTestId('search-link')
+    this.accountLink = this.navMenu.getByTestId('account-link')
+    this.cartLink = this.navMenu.getByTestId('nav-cart-link')
+    this.closeButton = this.navMenu.getByTestId('close-menu-button')
+    this.shippingToLink = this.navMenu.getByTestId('shipping-to-button')
+    this.shippingToMenu = this.navMenu.getByTestId('shipping-to-choices')
   }
 
   async selectShippingCountry(country: string) {
@@ -43,13 +43,13 @@ export class NavMenu {
     )
     await this.shippingToLink.hover()
     await this.shippingToMenu.waitFor({
-      state: "visible",
+      state: 'visible',
     })
     await countryLink.click()
   }
 
   async open() {
     await this.navMenuButton.click()
-    await this.navMenu.waitFor({ state: "visible" })
+    await this.navMenu.waitFor({ state: 'visible' })
   }
 }

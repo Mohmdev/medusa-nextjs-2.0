@@ -1,17 +1,17 @@
-"use client"
+'use client'
 
-import { RadioGroup } from "@headlessui/react"
-import { CheckCircleSolid } from "@medusajs/icons"
-import { Button, Heading, Text, clx } from "@medusajs/ui"
+import { RadioGroup } from '@headlessui/react'
+import { CheckCircleSolid } from '@medusajs/icons'
+import { Button, Heading, Text, clx } from '@medusajs/ui'
 
-import Divider from "@modules/common/components/divider"
-import Radio from "@modules/common/components/radio"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import { useRouter, useSearchParams, usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
-import { setShippingMethod } from "@lib/data/cart"
-import { convertToLocale } from "@lib/util/money"
-import { HttpTypes } from "@medusajs/types"
+import { setShippingMethod } from '@lib/data/cart'
+import { convertToLocale } from '@lib/util/money'
+import { HttpTypes } from '@medusajs/types'
+import ErrorMessage from '@modules/checkout/components/error-message'
+import Divider from '@modules/common/components/divider'
+import Radio from '@modules/common/components/radio'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 type ShippingProps = {
   cart: HttpTypes.StoreCart
@@ -29,7 +29,7 @@ const Shipping: React.FC<ShippingProps> = ({
   const router = useRouter()
   const pathname = usePathname()
 
-  const isOpen = searchParams.get("step") === "delivery"
+  const isOpen = searchParams.get('step') === 'delivery'
 
   const selectedShippingMethod = availableShippingMethods?.find(
     // To do: remove the previously selected shipping method instead of using the last one
@@ -37,11 +37,11 @@ const Shipping: React.FC<ShippingProps> = ({
   )
 
   const handleEdit = () => {
-    router.push(pathname + "?step=delivery", { scroll: false })
+    router.push(pathname + '?step=delivery', { scroll: false })
   }
 
   const handleSubmit = () => {
-    router.push(pathname + "?step=payment", { scroll: false })
+    router.push(pathname + '?step=payment', { scroll: false })
   }
 
   const set = async (id: string) => {
@@ -65,9 +65,9 @@ const Shipping: React.FC<ShippingProps> = ({
         <Heading
           level="h2"
           className={clx(
-            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
+            'flex flex-row text-3xl-regular gap-x-2 items-baseline',
             {
-              "opacity-50 pointer-events-none select-none":
+              'opacity-50 pointer-events-none select-none':
                 !isOpen && cart.shipping_methods?.length === 0,
             }
           )}
@@ -103,9 +103,9 @@ const Shipping: React.FC<ShippingProps> = ({
                     value={option.id}
                     data-testid="delivery-option-radio"
                     className={clx(
-                      "flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-rounded px-8 mb-2 hover:shadow-borders-interactive-with-active",
+                      'flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-rounded px-8 mb-2 hover:shadow-borders-interactive-with-active',
                       {
-                        "border-ui-border-interactive":
+                        'border-ui-border-interactive':
                           option.id === selectedShippingMethod?.id,
                       }
                     )}
@@ -153,7 +153,7 @@ const Shipping: React.FC<ShippingProps> = ({
                   Method
                 </Text>
                 <Text className="txt-medium text-ui-fg-subtle">
-                  {selectedShippingMethod?.name}{" "}
+                  {selectedShippingMethod?.name}{' '}
                   {convertToLocale({
                     amount: selectedShippingMethod?.amount!,
                     currency_code: cart?.currency_code,

@@ -1,12 +1,12 @@
-import { Metadata } from "next"
+import { Metadata } from 'next'
 
-import OrderOverview from "@modules/account/components/order-overview"
-import { notFound } from "next/navigation"
-import { listOrders } from "@lib/data/orders"
+import { listOrders } from '@lib/data/orders'
+import OrderOverview from '@modules/account/components/order-overview'
+import { notFound } from 'next/navigation'
 
 export const metadata: Metadata = {
-  title: "Orders",
-  description: "Overview of your previous orders.",
+  title: 'Orders',
+  description: 'Overview of your previous orders.',
 }
 
 export default async function Orders() {

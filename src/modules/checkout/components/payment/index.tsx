@@ -1,19 +1,19 @@
-"use client"
+'use client'
 
-import { useCallback, useContext, useEffect, useMemo, useState } from "react"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { RadioGroup } from "@headlessui/react"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import { CheckCircleSolid, CreditCard } from "@medusajs/icons"
-import { Button, Container, Heading, Text, Tooltip, clx } from "@medusajs/ui"
-import { CardElement } from "@stripe/react-stripe-js"
-import { StripeCardElementOptions } from "@stripe/stripe-js"
+import { RadioGroup } from '@headlessui/react'
+import { CheckCircleSolid, CreditCard } from '@medusajs/icons'
+import { Button, Container, Heading, Text, clx } from '@medusajs/ui'
+import ErrorMessage from '@modules/checkout/components/error-message'
+import { CardElement } from '@stripe/react-stripe-js'
+import { StripeCardElementOptions } from '@stripe/stripe-js'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
-import Divider from "@modules/common/components/divider"
-import PaymentContainer from "@modules/checkout/components/payment-container"
-import { isStripe as isStripeFunc, paymentInfoMap } from "@lib/constants"
-import { StripeContext } from "@modules/checkout/components/payment-wrapper"
-import { initiatePaymentSession } from "@lib/data/cart"
+import { isStripe as isStripeFunc, paymentInfoMap } from '@lib/constants'
+import { initiatePaymentSession } from '@lib/data/cart'
+import PaymentContainer from '@modules/checkout/components/payment-container'
+import { StripeContext } from '@modules/checkout/components/payment-wrapper'
+import Divider from '@modules/common/components/divider'
 
 const Payment = ({
   cart,
@@ -23,7 +23,7 @@ const Payment = ({
   availablePaymentMethods: any[]
 }) => {
   const activeSession = cart.payment_collection?.payment_sessions?.find(
-    (paymentSession: any) => paymentSession.status === "pending"
+    (paymentSession: any) => paymentSession.status === 'pending'
   )
 
   const [isLoading, setIsLoading] = useState(false)
@@ -31,14 +31,14 @@ const Payment = ({
   const [cardBrand, setCardBrand] = useState<string | null>(null)
   const [cardComplete, setCardComplete] = useState(false)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
-    activeSession?.provider_id ?? ""
+    activeSession?.provider_id ?? ''
   )
 
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
 
-  const isOpen = searchParams.get("step") === "payment"
+  const isOpen = searchParams.get('step') === 'payment'
 
   const isStripe = isStripeFunc(activeSession?.provider_id)
   const stripeReady = useContext(StripeContext)
@@ -53,15 +53,15 @@ const Payment = ({
     return {
       style: {
         base: {
-          fontFamily: "Inter, sans-serif",
-          color: "#424270",
-          "::placeholder": {
-            color: "rgb(107 114 128)",
+          fontFamily: 'Inter, sans-serif',
+          color: '#424270',
+          '::placeholder': {
+            color: 'rgb(107 114 128)',
           },
         },
       },
       classes: {
-        base: "pt-3 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover transition-all duration-300 ease-in-out",
+        base: 'pt-3 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover transition-all duration-300 ease-in-out',
       },
     }
   }, [])
@@ -77,7 +77,7 @@ const Payment = ({
   )
 
   const handleEdit = () => {
-    router.push(pathname + "?" + createQueryString("step", "payment"), {
+    router.push(pathname + '?' + createQueryString('step', 'payment'), {
       scroll: false,
     })
   }
@@ -96,7 +96,7 @@ const Payment = ({
 
       if (!shouldInputCard) {
         return router.push(
-          pathname + "?" + createQueryString("step", "review"),
+          pathname + '?' + createQueryString('step', 'review'),
           {
             scroll: false,
           }
@@ -119,9 +119,9 @@ const Payment = ({
         <Heading
           level="h2"
           className={clx(
-            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
+            'flex flex-row text-3xl-regular gap-x-2 items-baseline',
             {
-              "opacity-50 pointer-events-none select-none":
+              'opacity-50 pointer-events-none select-none':
                 !isOpen && !paymentReady,
             }
           )}
@@ -142,7 +142,7 @@ const Payment = ({
         )}
       </div>
       <div>
-        <div className={isOpen ? "block" : "hidden"}>
+        <div className={isOpen ? 'block' : 'hidden'}>
           {!paidByGiftcard && availablePaymentMethods?.length && (
             <>
               <RadioGroup
@@ -217,12 +217,12 @@ const Payment = ({
             data-testid="submit-payment-button"
           >
             {!activeSession && isStripeFunc(selectedPaymentMethod)
-              ? " Enter card details"
-              : "Continue to review"}
+              ? ' Enter card details'
+              : 'Continue to review'}
           </Button>
         </div>
 
-        <div className={isOpen ? "hidden" : "block"}>
+        <div className={isOpen ? 'hidden' : 'block'}>
           {cart && paymentReady && activeSession ? (
             <div className="flex items-start gap-x-1 w-full">
               <div className="flex flex-col w-1/3">
@@ -253,7 +253,7 @@ const Payment = ({
                   <Text>
                     {isStripeFunc(selectedPaymentMethod) && cardBrand
                       ? cardBrand
-                      : "Another step will appear"}
+                      : 'Another step will appear'}
                   </Text>
                 </div>
               </div>

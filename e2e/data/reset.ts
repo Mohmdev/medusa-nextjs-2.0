@@ -1,4 +1,4 @@
-import { Client } from "pg"
+import { Client } from 'pg'
 
 async function getDatabaseClient() {
   testEnvChecks()
@@ -10,36 +10,36 @@ async function getDatabaseClient() {
 
 function getEnv() {
   return {
-    host: process.env.TEST_POSTGRES_HOST || "localhost",
+    host: process.env.TEST_POSTGRES_HOST || 'localhost',
     port: process.env.TEST_POSTGRES_HOST
       ? Number(process.env.TEST_POSTGRES_HOST)
       : 5432,
-    user: process.env.TEST_POSTGRES_USER || "test_medusa_user",
-    testDatabase: process.env.TEST_POSTGRES_DATABASE || "test_medusa_db",
+    user: process.env.TEST_POSTGRES_USER || 'test_medusa_user',
+    testDatabase: process.env.TEST_POSTGRES_DATABASE || 'test_medusa_db',
     testDatabaseTemplate:
-      process.env.TEST_POSTGRES_DATABASE_TEMPLATE || "test_medusa_db_template",
-    productionDatabase: process.env.PRODUCTION_POSTGRES_DATABASE || "medusa_db",
+      process.env.TEST_POSTGRES_DATABASE_TEMPLATE || 'test_medusa_db_template',
+    productionDatabase: process.env.PRODUCTION_POSTGRES_DATABASE || 'medusa_db',
     superuser: {
-      host: process.env.PGHOST || "localhost",
+      host: process.env.PGHOST || 'localhost',
       port: process.env.PGPORT ? Number(process.env.PGPORT) : 5432,
-      user: process.env.PGUSER || "postgres",
-      password: process.env.PGPASSWORD || "password",
-      database: process.env.PGDATABASE || "postgres",
+      user: process.env.PGUSER || 'postgres',
+      password: process.env.PGPASSWORD || 'password',
+      database: process.env.PGDATABASE || 'postgres',
     },
   }
 }
 
 async function testEnvChecks() {
   const env = getEnv()
-  if (!env.testDatabase.startsWith("test_")) {
+  if (!env.testDatabase.startsWith('test_')) {
     const msg =
-      "Please make sure your test environment database name starts with test_"
+      'Please make sure your test environment database name starts with test_'
     console.error(msg)
     throw new Error(msg)
   }
   if (env.testDatabase === env.productionDatabase) {
     const msg =
-      "Please make sure your test environment database and production environment database names are not equal"
+      'Please make sure your test environment database and production environment database names are not equal'
     console.error(msg)
     throw new Error(msg)
   }
@@ -62,7 +62,7 @@ async function createTemplateDatabase(client: Client) {
     `)
   } catch (e: any) {
     // duplicate database code
-    if (e.code === "42P04") {
+    if (e.code === '42P04') {
       return
     }
     throw e

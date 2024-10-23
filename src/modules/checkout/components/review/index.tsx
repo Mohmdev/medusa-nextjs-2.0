@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { Heading, Text, clx } from "@medusajs/ui"
+import { Heading, Text, clx } from '@medusajs/ui'
 
-import PaymentButton from "../payment-button"
-import { useSearchParams } from "next/navigation"
+import { useSearchParams } from 'next/navigation'
+import PaymentButton from '../payment-button'
 
 const Review = ({ cart }: { cart: any }) => {
   const searchParams = useSearchParams()
 
-  const isOpen = searchParams.get("step") === "review"
+  const isOpen = searchParams.get('step') === 'review'
 
   const paidByGiftcard =
     cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0
@@ -24,9 +24,9 @@ const Review = ({ cart }: { cart: any }) => {
         <Heading
           level="h2"
           className={clx(
-            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
+            'flex flex-row text-3xl-regular gap-x-2 items-baseline',
             {
-              "opacity-50 pointer-events-none select-none": !isOpen,
+              'opacity-50 pointer-events-none select-none': !isOpen,
             }
           )}
         >

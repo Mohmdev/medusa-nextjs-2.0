@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import { Button } from "@medusajs/ui"
+import { Button } from '@medusajs/ui'
 
-import OrderCard from "../order-card"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { HttpTypes } from "@medusajs/types"
+import { HttpTypes } from '@medusajs/types'
+import LocalizedClientLink from '@modules/common/components/localized-client-link'
+import OrderCard from '../order-card'
 
 const OrderOverview = ({ orders }: { orders: HttpTypes.StoreOrder[] }) => {
   if (orders?.length) {
@@ -29,7 +29,7 @@ const OrderOverview = ({ orders }: { orders: HttpTypes.StoreOrder[] }) => {
     >
       <h2 className="text-large-semi">Nothing to see here</h2>
       <p className="text-base-regular">
-        You don&apos;t have any orders yet, let us change that {":)"}
+        You don&apos;t have any orders yet, let us change that {':)'}
       </p>
       <div className="mt-4">
         <LocalizedClientLink href="/" passHref>

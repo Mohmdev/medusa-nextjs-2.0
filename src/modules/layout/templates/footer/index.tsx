@@ -1,9 +1,9 @@
-import { getCategoriesList } from "@lib/data/categories"
-import { getCollectionsList } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
+import { getCategoriesList } from '@lib/data/categories'
+import { getCollectionsList } from '@lib/data/collections'
+import { Text, clx } from '@medusajs/ui'
 
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
+import LocalizedClientLink from '@modules/common/components/localized-client-link'
+import MedusaCTA from '@modules/layout/components/medusa-cta'
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)
@@ -50,8 +50,8 @@ export default async function Footer() {
                       >
                         <LocalizedClientLink
                           className={clx(
-                            "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
+                            'hover:text-ui-fg-base',
+                            children && 'txt-small-plus'
                           )}
                           href={`/categories/${c.handle}`}
                           data-testid="category-link"
@@ -87,9 +87,9 @@ export default async function Footer() {
                 </span>
                 <ul
                   className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
+                    'grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small',
                     {
-                      "grid-cols-2": (collections?.length || 0) > 3,
+                      'grid-cols-2': (collections?.length || 0) > 3,
                     }
                   )}
                 >

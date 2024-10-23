@@ -1,14 +1,14 @@
-import { Dialog, Transition } from "@headlessui/react"
-import { clx } from "@medusajs/ui"
-import React, { Fragment } from "react"
+import { Dialog, Transition } from '@headlessui/react'
+import { clx } from '@medusajs/ui'
+import React, { Fragment } from 'react'
 
-import { ModalProvider, useModal } from "@lib/context/modal-context"
-import X from "@modules/common/icons/x"
+import { ModalProvider, useModal } from '@lib/context/modal-context'
+import X from '@modules/common/icons/x'
 
 type ModalProps = {
   isOpen: boolean
   close: () => void
-  size?: "small" | "medium" | "large"
+  size?: 'small' | 'medium' | 'large'
   search?: boolean
   children: React.ReactNode
   'data-testid'?: string
@@ -17,10 +17,10 @@ type ModalProps = {
 const Modal = ({
   isOpen,
   close,
-  size = "medium",
+  size = 'medium',
   search = false,
   children,
-  'data-testid': dataTestId
+  'data-testid': dataTestId,
 }: ModalProps) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -40,10 +40,10 @@ const Modal = ({
         <div className="fixed inset-0 overflow-y-hidden">
           <div
             className={clx(
-              "flex min-h-full h-full justify-center p-4 text-center",
+              'flex min-h-full h-full justify-center p-4 text-center',
               {
-                "items-center": !search,
-                "items-start": search,
+                'items-center': !search,
+                'items-start': search,
               }
             )}
           >
@@ -59,13 +59,13 @@ const Modal = ({
               <Dialog.Panel
                 data-testid={dataTestId}
                 className={clx(
-                  "flex flex-col justify-start w-full transform p-5 text-left align-middle transition-all max-h-[75vh] h-fit",
+                  'flex flex-col justify-start w-full transform p-5 text-left align-middle transition-all max-h-[75vh] h-fit',
                   {
-                    "max-w-md": size === "small",
-                    "max-w-xl": size === "medium",
-                    "max-w-3xl": size === "large",
-                    "bg-transparent shadow-none": search,
-                    "bg-white shadow-xl border rounded-rounded": !search,
+                    'max-w-md': size === 'small',
+                    'max-w-xl': size === 'medium',
+                    'max-w-3xl': size === 'large',
+                    'bg-transparent shadow-none': search,
+                    'bg-white shadow-xl border rounded-rounded': !search,
                   }
                 )}
               >

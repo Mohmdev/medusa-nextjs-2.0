@@ -1,5 +1,3 @@
-const c = require('ansi-colors')
-
 const requiredEnvs = [
   {
     key: 'NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY',
@@ -9,27 +7,32 @@ const requiredEnvs = [
   },
 ]
 
+// ANSI escape codes for colors and text styles
+const colors = {
+  reset: '\x1b[0m',
+  redBold: '\x1b[31;1m',
+  yellow: '\x1b[33m',
+  yellowBold: '\x1b[33;1m',
+  dim: '\x1b[2m',
+}
+
 function checkEnvVariables() {
-  const missingEnvs = requiredEnvs.filter(function (env) {
-    return !process.env[env.key]
-  })
+  const missingEnvs = requiredEnvs.filter((env) => !process.env[env.key])
 
   if (missingEnvs.length > 0) {
     console.error(
-      c.red.bold('\n🚫 Error: Missing required environment variables\n')
+      `${colors.redBold}\n🚫 Error: Missing required environment variables\n${colors.reset}`
     )
 
-    missingEnvs.forEach(function (env) {
-      console.error(c.yellow(`  ${c.bold(env.key)}`))
+    missingEnvs.forEach((env) => {
+      console.error(`${colors.yellowBold}  ${env.key}${colors.reset}`)
       if (env.description) {
-        console.error(c.dim(`    ${env.description}\n`))
+        console.error(`${colors.dim}    ${env.description}\n${colors.reset}`)
       }
     })
 
     console.error(
-      c.yellow(
-        '\nPlease set these variables in your .env file or environment before starting the application.\n'
-      )
+      `${colors.yellow}\nPlease set these variables in your .env file or environment before starting the application.\n${colors.reset}`
     )
 
     process.exit(1)

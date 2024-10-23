@@ -1,11 +1,11 @@
-import { Listbox, Transition } from "@headlessui/react"
-import { ChevronUpDown } from "@medusajs/icons"
-import { clx } from "@medusajs/ui"
-import { Fragment, useMemo } from "react"
+import { Listbox, Transition } from '@headlessui/react'
+import { ChevronUpDown } from '@medusajs/icons'
+import { clx } from '@medusajs/ui'
+import { Fragment, useMemo } from 'react'
 
-import Radio from "@modules/common/components/radio"
-import compareAddresses from "@lib/util/compare-addresses"
-import { HttpTypes } from "@medusajs/types"
+import compareAddresses from '@lib/util/compare-addresses'
+import { HttpTypes } from '@medusajs/types'
+import Radio from '@modules/common/components/radio'
 
 type AddressSelectProps = {
   addresses: HttpTypes.StoreCustomerAddress[]
@@ -44,11 +44,11 @@ const AddressSelect = ({
               <span className="block truncate">
                 {selectedAddress
                   ? selectedAddress.address_1
-                  : "Choose an address"}
+                  : 'Choose an address'}
               </span>
               <ChevronUpDown
-                className={clx("transition-rotate duration-200", {
-                  "transform rotate-180": open,
+                className={clx('transition-rotate duration-200', {
+                  'transform rotate-180': open,
                 })}
               />
             </>

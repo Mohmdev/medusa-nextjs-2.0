@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import React, { useEffect } from "react"
+import React, { useEffect } from 'react'
 
-import Input from "@modules/common/components/input"
+import Input from '@modules/common/components/input'
 
-import AccountInfo from "../account-info"
-import { useFormState } from "react-dom"
-import { HttpTypes } from "@medusajs/types"
+import { HttpTypes } from '@medusajs/types'
+import { useFormState } from 'react-dom'
+import AccountInfo from '../account-info'
 
 type MyInformationProps = {
   customer: HttpTypes.StoreCustomer

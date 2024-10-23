@@ -1,14 +1,14 @@
-import { Container, Text } from "@medusajs/ui"
-import { useHits, useSearchBox } from "react-instantsearch-hooks-web"
+import { Container, Text } from '@medusajs/ui'
+import { useHits, useSearchBox } from 'react-instantsearch-hooks-web'
 
-import InteractiveLink from "@modules/common/components/interactive-link"
+import InteractiveLink from '@modules/common/components/interactive-link'
 
 const ShowAll = () => {
   const { hits } = useHits()
   const { query } = useSearchBox()
-  const width = typeof window !== "undefined" ? window.innerWidth : 0
+  const width = typeof window !== 'undefined' ? window.innerWidth : 0
 
-  if (query === "") return null
+  if (query === '') return null
   if (hits.length > 0 && hits.length <= 6) return null
 
   if (hits.length === 0) {

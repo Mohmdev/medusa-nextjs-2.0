@@ -1,6 +1,6 @@
-import { HttpTypes } from "@medusajs/types"
-import { clx } from "@medusajs/ui"
-import React from "react"
+import { HttpTypes } from '@medusajs/types'
+import { clx } from '@medusajs/ui'
+import React from 'react'
 
 type OptionSelectProps = {
   option: HttpTypes.StoreProductOption
@@ -8,7 +8,7 @@ type OptionSelectProps = {
   updateOption: (title: string, value: string) => void
   title: string
   disabled: boolean
-  "data-testid"?: string
+  'data-testid'?: string
 }
 
 const OptionSelect: React.FC<OptionSelectProps> = ({
@@ -16,7 +16,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
   current,
   updateOption,
   title,
-  "data-testid": dataTestId,
+  'data-testid': dataTestId,
   disabled,
 }) => {
   const filteredOptions = (option.values ?? []).map((v) => v.value)
@@ -34,10 +34,10 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
               onClick={() => updateOption(option.id, v)}
               key={v}
               className={clx(
-                "border-ui-border-base bg-ui-bg-subtle border text-small-regular h-10 rounded-rounded p-2 flex-1 ",
+                'border-ui-border-base bg-ui-bg-subtle border text-small-regular h-10 rounded-rounded p-2 flex-1 ',
                 {
-                  "border-ui-border-interactive": v === current,
-                  "hover:shadow-elevation-card-rest transition-shadow ease-in-out duration-150":
+                  'border-ui-border-interactive': v === current,
+                  'hover:shadow-elevation-card-rest transition-shadow ease-in-out duration-150':
                     v !== current,
                 }
               )}

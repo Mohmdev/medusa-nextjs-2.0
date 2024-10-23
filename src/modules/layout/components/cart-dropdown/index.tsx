@@ -1,17 +1,17 @@
-"use client"
+'use client'
 
-import { Popover, Transition } from "@headlessui/react"
-import { Button } from "@medusajs/ui"
-import { usePathname } from "next/navigation"
-import { Fragment, useEffect, useRef, useState } from "react"
+import { Popover, Transition } from '@headlessui/react'
+import { Button } from '@medusajs/ui'
+import { usePathname } from 'next/navigation'
+import { Fragment, useEffect, useRef, useState } from 'react'
 
-import { convertToLocale } from "@lib/util/money"
-import { HttpTypes } from "@medusajs/types"
-import DeleteButton from "@modules/common/components/delete-button"
-import LineItemOptions from "@modules/common/components/line-item-options"
-import LineItemPrice from "@modules/common/components/line-item-price"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import Thumbnail from "@modules/products/components/thumbnail"
+import { convertToLocale } from '@lib/util/money'
+import { HttpTypes } from '@medusajs/types'
+import DeleteButton from '@modules/common/components/delete-button'
+import LineItemOptions from '@modules/common/components/line-item-options'
+import LineItemPrice from '@modules/common/components/line-item-price'
+import LocalizedClientLink from '@modules/common/components/localized-client-link'
+import Thumbnail from '@modules/products/components/thumbnail'
 
 const CartDropdown = ({
   cart: cartState,
@@ -63,7 +63,7 @@ const CartDropdown = ({
 
   // open cart dropdown when modifying the cart items, but only if we're not on the cart page
   useEffect(() => {
-    if (itemRef.current !== totalItems && !pathname.includes("/cart")) {
+    if (itemRef.current !== totalItems && !pathname.includes('/cart')) {
       timedOpen()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,7 +106,7 @@ const CartDropdown = ({
                 <div className="overflow-y-scroll max-h-[402px] px-4 grid grid-cols-1 gap-y-8 no-scrollbar p-px">
                   {cartState.items
                     .sort((a, b) => {
-                      return (a.created_at ?? "") > (b.created_at ?? "")
+                      return (a.created_at ?? '') > (b.created_at ?? '')
                         ? -1
                         : 1
                     })
@@ -169,7 +169,7 @@ const CartDropdown = ({
                 <div className="p-4 flex flex-col gap-y-4 text-small-regular">
                   <div className="flex items-center justify-between">
                     <span className="text-ui-fg-base font-semibold">
-                      Subtotal{" "}
+                      Subtotal{' '}
                       <span className="font-normal">(excl. taxes)</span>
                     </span>
                     <span

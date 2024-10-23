@@ -1,13 +1,13 @@
-"use client"
+'use client'
 
-import { Listbox, Transition } from "@headlessui/react"
-import { Fragment, useEffect, useMemo, useState } from "react"
-import ReactCountryFlag from "react-country-flag"
+import { Listbox, Transition } from '@headlessui/react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
+import ReactCountryFlag from 'react-country-flag'
 
-import { StateType } from "@lib/hooks/use-toggle-state"
-import { useParams, usePathname } from "next/navigation"
-import { updateRegion } from "@lib/data/cart"
-import { HttpTypes } from "@medusajs/types"
+import { updateRegion } from '@lib/data/cart'
+import { StateType } from '@lib/hooks/use-toggle-state'
+import { HttpTypes } from '@medusajs/types'
+import { useParams, usePathname } from 'next/navigation'
 
 type CountryOption = {
   country: string
@@ -41,7 +41,7 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
         }))
       })
       .flat()
-      .sort((a, b) => (a?.label ?? "").localeCompare(b?.label ?? ""))
+      .sort((a, b) => (a?.label ?? '').localeCompare(b?.label ?? ''))
   }, [regions])
 
   useEffect(() => {
@@ -75,10 +75,10 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
                 <ReactCountryFlag
                   svg
                   style={{
-                    width: "16px",
-                    height: "16px",
+                    width: '16px',
+                    height: '16px',
                   }}
-                  countryCode={current.country ?? ""}
+                  countryCode={current.country ?? ''}
                 />
                 {current.label}
               </span>
@@ -107,11 +107,11 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
                     <ReactCountryFlag
                       svg
                       style={{
-                        width: "16px",
-                        height: "16px",
+                        width: '16px',
+                        height: '16px',
                       }}
-                      countryCode={o?.country ?? ""}
-                    />{" "}
+                      countryCode={o?.country ?? ''}
+                    />{' '}
                     {o?.label}
                   </Listbox.Option>
                 )

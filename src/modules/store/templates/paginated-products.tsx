@@ -1,8 +1,8 @@
-import { getProductsListWithSort } from "@lib/data/products"
-import { getRegion } from "@lib/data/regions"
-import ProductPreview from "@modules/products/components/product-preview"
-import { Pagination } from "@modules/store/components/pagination"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { getProductsListWithSort } from '@lib/data/products'
+import { getRegion } from '@lib/data/regions'
+import ProductPreview from '@modules/products/components/product-preview'
+import { Pagination } from '@modules/store/components/pagination'
+import { SortOptions } from '@modules/store/components/refinement-list/sort-products'
 
 const PRODUCT_LIMIT = 12
 
@@ -34,19 +34,19 @@ export default async function PaginatedProducts({
   }
 
   if (collectionId) {
-    queryParams["collection_id"] = [collectionId]
+    queryParams['collection_id'] = [collectionId]
   }
 
   if (categoryId) {
-    queryParams["category_id"] = [categoryId]
+    queryParams['category_id'] = [categoryId]
   }
 
   if (productsIds) {
-    queryParams["id"] = productsIds
+    queryParams['id'] = productsIds
   }
 
-  if (sortBy === "created_at") {
-    queryParams["order"] = "created_at"
+  if (sortBy === 'created_at') {
+    queryParams['order'] = 'created_at'
   }
 
   const region = await getRegion(countryCode)

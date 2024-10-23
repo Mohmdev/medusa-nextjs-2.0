@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { InstantSearch } from "react-instantsearch-hooks-web"
-import { useRouter } from "next/navigation"
-import { MagnifyingGlassMini } from "@medusajs/icons"
+import { MagnifyingGlassMini } from '@medusajs/icons'
+import { useRouter } from 'next/navigation'
+import { InstantSearch } from 'react-instantsearch-hooks-web'
 
-import { SEARCH_INDEX_NAME, searchClient } from "@lib/search-client"
-import Hit from "@modules/search/components/hit"
-import Hits from "@modules/search/components/hits"
-import SearchBox from "@modules/search/components/search-box"
-import { useEffect, useRef } from "react"
+import { SEARCH_INDEX_NAME, searchClient } from '@lib/search-client'
+import Hit from '@modules/search/components/hit'
+import Hits from '@modules/search/components/hits'
+import SearchBox from '@modules/search/components/search-box'
+import { useEffect, useRef } from 'react'
 
 export default function SearchModal() {
   const router = useRouter()
@@ -22,34 +22,34 @@ export default function SearchModal() {
   }
 
   useEffect(() => {
-    window.addEventListener("click", handleOutsideClick)
+    window.addEventListener('click', handleOutsideClick)
     // cleanup
     return () => {
-      window.removeEventListener("click", handleOutsideClick)
+      window.removeEventListener('click', handleOutsideClick)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // disable scroll on body when modal is open
   useEffect(() => {
-    document.body.style.overflow = "hidden"
+    document.body.style.overflow = 'hidden'
     return () => {
-      document.body.style.overflow = "unset"
+      document.body.style.overflow = 'unset'
     }
   }, [])
 
   // on escape key press, close modal
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         router.back()
       }
     }
-    window.addEventListener("keydown", handleEsc)
+    window.addEventListener('keydown', handleEsc)
 
     // cleanup
     return () => {
-      window.removeEventListener("keydown", handleEsc)
+      window.removeEventListener('keydown', handleEsc)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

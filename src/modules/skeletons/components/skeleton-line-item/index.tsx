@@ -1,4 +1,4 @@
-import { Table } from "@medusajs/ui"
+import { Table } from '@medusajs/ui'
 
 const SkeletonLineItem = () => {
   return (

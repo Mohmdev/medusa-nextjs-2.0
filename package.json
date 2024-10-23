@@ -15,7 +15,7 @@
     "analyze": "ANALYZE=true next build",
     "test-e2e": "playwright test e2e",
     "update-deps": "npm cache verify && node scripts/clean.js && npm i",
-    "format": "prettier --write ."
+    "format": "prettier --write src"
   },
   "engines": {
     "node": ">=20.9.0"

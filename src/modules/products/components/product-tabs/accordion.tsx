@@ -1,6 +1,6 @@
-import { Text, clx } from "@medusajs/ui"
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import React from "react"
+import { Text, clx } from '@medusajs/ui'
+import * as AccordionPrimitive from '@radix-ui/react-accordion'
+import React from 'react'
 
 type AccordionItemProps = AccordionPrimitive.AccordionItemProps & {
   title: string
@@ -9,7 +9,7 @@ type AccordionItemProps = AccordionPrimitive.AccordionItemProps & {
   required?: boolean
   tooltip?: string
   forceMountContent?: true
-  headingSize?: "small" | "medium" | "large"
+  headingSize?: 'small' | 'medium' | 'large'
   customTrigger?: React.ReactNode
   complete?: boolean
   active?: boolean
@@ -37,7 +37,7 @@ const Item: React.FC<AccordionItemProps> = ({
   description,
   children,
   className,
-  headingSize = "large",
+  headingSize = 'large',
   customTrigger = undefined,
   forceMountContent = undefined,
   triggerable,
@@ -47,8 +47,8 @@ const Item: React.FC<AccordionItemProps> = ({
     <AccordionPrimitive.Item
       {...props}
       className={clx(
-        "border-grey-20 group border-t last:mb-0 last:border-b",
-        "py-3",
+        'border-grey-20 group border-t last:mb-0 last:border-b',
+        'py-3',
         className
       )}
     >
@@ -72,7 +72,7 @@ const Item: React.FC<AccordionItemProps> = ({
       <AccordionPrimitive.Content
         forceMount={forceMountContent}
         className={clx(
-          "radix-state-closed:animate-accordion-close radix-state-open:animate-accordion-open radix-state-closed:pointer-events-none px-1"
+          'radix-state-closed:animate-accordion-close radix-state-open:animate-accordion-open radix-state-closed:pointer-events-none px-1'
         )}
       >
         <div className="inter-base-regular group-radix-state-closed:animate-accordion-close">

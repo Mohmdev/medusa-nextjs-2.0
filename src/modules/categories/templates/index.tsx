@@ -1,13 +1,13 @@
-import { notFound } from "next/navigation"
-import { Suspense } from "react"
+import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
-import InteractiveLink from "@modules/common/components/interactive-link"
-import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
-import RefinementList from "@modules/store/components/refinement-list"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
-import PaginatedProducts from "@modules/store/templates/paginated-products"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { HttpTypes } from "@medusajs/types"
+import { HttpTypes } from '@medusajs/types'
+import InteractiveLink from '@modules/common/components/interactive-link'
+import LocalizedClientLink from '@modules/common/components/localized-client-link'
+import SkeletonProductGrid from '@modules/skeletons/templates/skeleton-product-grid'
+import RefinementList from '@modules/store/components/refinement-list'
+import { SortOptions } from '@modules/store/components/refinement-list/sort-products'
+import PaginatedProducts from '@modules/store/templates/paginated-products'
 
 export default function CategoryTemplate({
   categories,
@@ -21,7 +21,7 @@ export default function CategoryTemplate({
   countryCode: string
 }) {
   const pageNumber = page ? parseInt(page) : 1
-  const sort = sortBy || "created_at"
+  const sort = sortBy || 'created_at'
 
   const category = categories[categories.length - 1]
   const parents = categories.slice(0, categories.length - 1)

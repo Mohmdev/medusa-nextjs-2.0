@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test"
+import { Locator, Page } from '@playwright/test'
 
 export class BaseModal {
   page: Page
@@ -8,11 +8,11 @@ export class BaseModal {
   constructor(page: Page, container: Locator) {
     this.page = page
     this.container = container
-    this.closeButton = this.container.getByTestId("close-modal-button")
+    this.closeButton = this.container.getByTestId('close-modal-button')
   }
 
   async close() {
-    const button = this.container.getByTestId("close-modal-button")
+    const button = this.container.getByTestId('close-modal-button')
     await button.click()
   }
 
