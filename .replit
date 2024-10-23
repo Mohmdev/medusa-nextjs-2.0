@@ -10,3 +10,43 @@ run = ["sh", "-c", "pnpm run dev"]
 [[ports]]
 localPort = 8000
 externalPort = 8000
+
+[[ports]]
+localPort = 35795
+externalPort = 5173
+exposeLocalhost = true
+
+[[ports]]
+localPort = 36197
+externalPort = 3001
+exposeLocalhost = true
+
+[[ports]]
+localPort = 36807
+externalPort = 3002
+exposeLocalhost = true
+
+[[ports]]
+localPort = 37669
+externalPort = 3003
+exposeLocalhost = true
+
+[[ports]]
+localPort = 38683
+externalPort = 4200
+exposeLocalhost = true
+
+[[ports]]
+localPort = 40265
+externalPort = 5000
+exposeLocalhost = true
+
+[[ports]]
+localPort = 46489
+externalPort = 3000
+exposeLocalhost = true
+
+[[ports]]
+localPort = 46643
+externalPort = 80
+exposeLocalhost = true

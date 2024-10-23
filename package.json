@@ -67,7 +67,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
-    "@medusajs/client-types": "2.0.0",
     "@medusajs/types": "2.0.0",
     "@playwright/test": "^1.41.1",
     "@types/lodash": "^4.14.195",
