@@ -2,10 +2,10 @@
 
 import React, { useEffect, useMemo } from 'react'
 
-import Input from '@modules/common/components/input'
-import NativeSelect from '@modules/common/components/native-select'
+import Input from '@/modules/common/components/input'
+import NativeSelect from '@/modules/common/components/native-select'
 
-import { updateCustomerAddress } from '@lib/data/customer'
+import { updateCustomerAddress } from '@/lib/data/customer'
 import { HttpTypes } from '@medusajs/types'
 import { useFormState } from 'react-dom'
 import AccountInfo from '../account-info'

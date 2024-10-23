@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 
-import { enrichLineItems } from '@lib/data/cart'
-import { retrieveOrder } from '@lib/data/orders'
+import { enrichLineItems } from '@/lib/data/cart'
+import { retrieveOrder } from '@/lib/data/orders'
+import OrderCompletedTemplate from '@/modules/order/templates/order-completed-template'
 import { HttpTypes } from '@medusajs/types'
-import OrderCompletedTemplate from '@modules/order/templates/order-completed-template'
 import { notFound } from 'next/navigation'
 
 type Props = {

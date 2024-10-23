@@ -2,9 +2,9 @@ import { RadioGroup } from '@headlessui/react'
 import { Text, clx } from '@medusajs/ui'
 import React from 'react'
 
-import Radio from '@modules/common/components/radio'
+import Radio from '@/modules/common/components/radio'
 
-import { isManual } from '@lib/constants'
+import { isManual } from '@/lib/constants'
 import PaymentTest from '../payment-test'
 
 type PaymentContainerProps = {

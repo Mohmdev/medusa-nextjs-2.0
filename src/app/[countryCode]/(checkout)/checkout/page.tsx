@@ -1,12 +1,12 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { enrichLineItems, retrieveCart } from '@lib/data/cart'
-import { getCustomer } from '@lib/data/customer'
+import { enrichLineItems, retrieveCart } from '@/lib/data/cart'
+import { getCustomer } from '@/lib/data/customer'
+import Wrapper from '@/modules/checkout/components/payment-wrapper'
+import CheckoutForm from '@/modules/checkout/templates/checkout-form'
+import CheckoutSummary from '@/modules/checkout/templates/checkout-summary'
 import { HttpTypes } from '@medusajs/types'
-import Wrapper from '@modules/checkout/components/payment-wrapper'
-import CheckoutForm from '@modules/checkout/templates/checkout-form'
-import CheckoutSummary from '@modules/checkout/templates/checkout-summary'
 
 export const metadata: Metadata = {
   title: 'Checkout',

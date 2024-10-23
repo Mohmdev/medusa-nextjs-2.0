@@ -3,9 +3,9 @@ import { ChevronUpDown } from '@medusajs/icons'
 import { clx } from '@medusajs/ui'
 import { Fragment, useMemo } from 'react'
 
-import compareAddresses from '@lib/util/compare-addresses'
+import compareAddresses from '@/lib/util/compare-addresses'
+import Radio from '@/modules/common/components/radio'
 import { HttpTypes } from '@medusajs/types'
-import Radio from '@modules/common/components/radio'
 
 type AddressSelectProps = {
   addresses: HttpTypes.StoreCustomerAddress[]

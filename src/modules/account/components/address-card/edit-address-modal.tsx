@@ -7,14 +7,14 @@ import React, { useEffect, useState } from 'react'
 import {
   deleteCustomerAddress,
   updateCustomerAddress,
-} from '@lib/data/customer'
-import useToggleState from '@lib/hooks/use-toggle-state'
+} from '@/lib/data/customer'
+import useToggleState from '@/lib/hooks/use-toggle-state'
+import CountrySelect from '@/modules/checkout/components/country-select'
+import { SubmitButton } from '@/modules/checkout/components/submit-button'
+import Input from '@/modules/common/components/input'
+import Modal from '@/modules/common/components/modal'
+import Spinner from '@/modules/common/icons/spinner'
 import { HttpTypes } from '@medusajs/types'
-import CountrySelect from '@modules/checkout/components/country-select'
-import { SubmitButton } from '@modules/checkout/components/submit-button'
-import Input from '@modules/common/components/input'
-import Modal from '@modules/common/components/modal'
-import Spinner from '@modules/common/icons/spinner'
 import { useFormState } from 'react-dom'
 
 type EditAddressProps = {

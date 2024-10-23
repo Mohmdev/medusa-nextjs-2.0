@@ -136,7 +136,7 @@ To do this you will need to add `algoliasearch` to the project, by running
 yarn add algoliasearch
 ```
 
-After this you will need to switch the current MeiliSearch `SearchClient` out with a Alogolia client. To do this update `@lib/search-client`.
+After this you will need to switch the current MeiliSearch `SearchClient` out with a Alogolia client. To do this update `@/lib/search-client`.
 
 ```ts
 import algoliasearch from 'algoliasearch/lite'
@@ -156,7 +156,7 @@ Then, in `src/app/(main)/search/actions.ts`, remove the MeiliSearch code (line 1
 ```ts
 'use server'
 
-import { searchClient, SEARCH_INDEX_NAME } from '@lib/search-client'
+import { searchClient, SEARCH_INDEX_NAME } from '@/lib/search-client'
 
 /**
  * Uses MeiliSearch or Algolia to search for a query

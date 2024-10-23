@@ -1,9 +1,9 @@
 import { Heading, Text } from '@medusajs/ui'
 
-import LocalizedClientLink from '@modules/common/components/localized-client-link'
-import RefinementList from '@modules/store/components/refinement-list'
-import { SortOptions } from '@modules/store/components/refinement-list/sort-products'
-import PaginatedProducts from '@modules/store/templates/paginated-products'
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import RefinementList from '@/modules/store/components/refinement-list'
+import { SortOptions } from '@/modules/store/components/refinement-list/sort-products'
+import PaginatedProducts from '@/modules/store/templates/paginated-products'
 
 type SearchResultsTemplateProps = {
   query: string

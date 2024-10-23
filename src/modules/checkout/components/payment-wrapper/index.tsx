@@ -1,6 +1,6 @@
 'use client'
 
-import { isPaypal, isStripe } from '@lib/constants'
+import { isPaypal, isStripe } from '@/lib/constants'
 import { HttpTypes } from '@medusajs/types'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { loadStripe } from '@stripe/stripe-js'

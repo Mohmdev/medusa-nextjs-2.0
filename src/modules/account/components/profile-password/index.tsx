@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react'
 
-import Input from '@modules/common/components/input'
+import Input from '@/modules/common/components/input'
 
 import { HttpTypes } from '@medusajs/types'
 import { useFormState } from 'react-dom'

@@ -1,4 +1,4 @@
-import { sdk } from '@lib/config'
+import { sdk } from '@/lib/config'
 import { cache } from 'react'
 
 export const listCategories = cache(async function () {

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
-import { listOrders } from '@lib/data/orders'
-import OrderOverview from '@modules/account/components/order-overview'
+import { listOrders } from '@/lib/data/orders'
+import OrderOverview from '@/modules/account/components/order-overview'
 import { notFound } from 'next/navigation'
 
 export const metadata: Metadata = {

@@ -1,9 +1,9 @@
 import { Text } from '@medusajs/ui'
 
-import { getProductsById } from '@lib/data/products'
-import { getProductPrice } from '@lib/util/get-product-price'
+import { getProductsById } from '@/lib/data/products'
+import { getProductPrice } from '@/lib/util/get-product-price'
+import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import { HttpTypes } from '@medusajs/types'
-import LocalizedClientLink from '@modules/common/components/localized-client-link'
 import Thumbnail from '../thumbnail'
 import PreviewPrice from './price'
 

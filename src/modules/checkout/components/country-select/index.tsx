@@ -1,9 +1,9 @@
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react'
 
-import { HttpTypes } from '@medusajs/types'
 import NativeSelect, {
   NativeSelectProps,
-} from '@modules/common/components/native-select'
+} from '@/modules/common/components/native-select'
+import { HttpTypes } from '@medusajs/types'
 
 const CountrySelect = forwardRef<
   HTMLSelectElement,

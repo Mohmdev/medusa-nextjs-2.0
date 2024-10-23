@@ -1,8 +1,8 @@
-import CartTemplate from '@modules/cart/templates'
+import CartTemplate from '@/modules/cart/templates'
 import { Metadata } from 'next'
 
-import { enrichLineItems, retrieveCart } from '@lib/data/cart'
-import { getCustomer } from '@lib/data/customer'
+import { enrichLineItems, retrieveCart } from '@/lib/data/cart'
+import { getCustomer } from '@/lib/data/customer'
 import { HttpTypes } from '@medusajs/types'
 
 export const metadata: Metadata = {

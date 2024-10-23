@@ -1,9 +1,9 @@
 import { Container, Heading, Text } from '@medusajs/ui'
 
-import { isStripe, paymentInfoMap } from '@lib/constants'
-import { convertToLocale } from '@lib/util/money'
+import { isStripe, paymentInfoMap } from '@/lib/constants'
+import { convertToLocale } from '@/lib/util/money'
+import Divider from '@/modules/common/components/divider'
 import { HttpTypes } from '@medusajs/types'
-import Divider from '@modules/common/components/divider'
 
 type PaymentDetailsProps = {
   order: HttpTypes.StoreOrder

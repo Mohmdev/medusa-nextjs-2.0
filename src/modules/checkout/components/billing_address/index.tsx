@@ -1,5 +1,5 @@
+import Input from '@/modules/common/components/input'
 import { HttpTypes } from '@medusajs/types'
-import Input from '@modules/common/components/input'
 import React, { useEffect, useState } from 'react'
 import CountrySelect from '../country-select'
 

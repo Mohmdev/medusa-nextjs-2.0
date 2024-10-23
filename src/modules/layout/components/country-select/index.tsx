@@ -4,8 +4,8 @@ import { Listbox, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useMemo, useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
 
-import { updateRegion } from '@lib/data/cart'
-import { StateType } from '@lib/hooks/use-toggle-state'
+import { updateRegion } from '@/lib/data/cart'
+import { StateType } from '@/lib/hooks/use-toggle-state'
 import { HttpTypes } from '@medusajs/types'
 import { useParams, usePathname } from 'next/navigation'
 
