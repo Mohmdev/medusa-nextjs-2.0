@@ -1,10 +1,10 @@
-import repeat from '@/lib/util/repeat'
-import { HttpTypes } from '@medusajs/types'
-import { Table } from '@medusajs/ui'
+import repeat from "@lib/util/repeat"
+import { HttpTypes } from "@medusajs/types"
+import { Table } from "@medusajs/ui"
 
-import Divider from '@/modules/common/components/divider'
-import Item from '@/modules/order/components/item'
-import SkeletonLineItem from '@/modules/skeletons/components/skeleton-line-item'
+import Divider from "@modules/common/components/divider"
+import Item from "@modules/order/components/item"
+import SkeletonLineItem from "@modules/skeletons/components/skeleton-line-item"
 
 type ItemsProps = {
   items: HttpTypes.StoreCartLineItem[] | HttpTypes.StoreOrderLineItem[] | null
@@ -19,7 +19,7 @@ const Items = ({ items }: ItemsProps) => {
           {items?.length
             ? items
                 .sort((a, b) => {
-                  return (a.created_at ?? '') > (b.created_at ?? '') ? -1 : 1
+                  return (a.created_at ?? "") > (b.created_at ?? "") ? -1 : 1
                 })
                 .map((item) => {
                   return <Item key={item.id} item={item} />

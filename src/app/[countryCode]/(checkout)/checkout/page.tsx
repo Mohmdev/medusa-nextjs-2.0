@@ -1,15 +1,15 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
 
-import { enrichLineItems, retrieveCart } from '@/lib/data/cart'
-import { getCustomer } from '@/lib/data/customer'
-import Wrapper from '@/modules/checkout/components/payment-wrapper'
-import CheckoutForm from '@/modules/checkout/templates/checkout-form'
-import CheckoutSummary from '@/modules/checkout/templates/checkout-summary'
-import { HttpTypes } from '@medusajs/types'
+import Wrapper from "@modules/checkout/components/payment-wrapper"
+import CheckoutForm from "@modules/checkout/templates/checkout-form"
+import CheckoutSummary from "@modules/checkout/templates/checkout-summary"
+import { enrichLineItems, retrieveCart } from "@lib/data/cart"
+import { HttpTypes } from "@medusajs/types"
+import { getCustomer } from "@lib/data/customer"
 
 export const metadata: Metadata = {
-  title: 'Checkout',
+  title: "Checkout",
 }
 
 const fetchCart = async () => {
@@ -31,7 +31,7 @@ export default async function Checkout() {
   const customer = await getCustomer()
 
   return (
-    <div className="content-container grid grid-cols-1 gap-x-40 py-12 small:grid-cols-[1fr_416px]">
+    <div className="grid grid-cols-1 small:grid-cols-[1fr_416px] content-container gap-x-40 py-12">
       <Wrapper cart={cart}>
         <CheckoutForm cart={cart} customer={customer} />
       </Wrapper>

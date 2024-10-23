@@ -1,14 +1,14 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Button, clx } from '@medusajs/ui'
-import React, { Fragment, useMemo } from 'react'
+import { Dialog, Transition } from "@headlessui/react"
+import { Button, clx } from "@medusajs/ui"
+import React, { Fragment, useMemo } from "react"
 
-import useToggleState from '@/lib/hooks/use-toggle-state'
-import ChevronDown from '@/modules/common/icons/chevron-down'
-import X from '@/modules/common/icons/x'
+import useToggleState from "@lib/hooks/use-toggle-state"
+import ChevronDown from "@modules/common/icons/chevron-down"
+import X from "@modules/common/icons/x"
 
-import { getProductPrice } from '@/lib/util/get-product-price'
-import { HttpTypes } from '@medusajs/types'
-import OptionSelect from './option-select'
+import { getProductPrice } from "@lib/util/get-product-price"
+import OptionSelect from "./option-select"
+import { HttpTypes } from "@medusajs/types"
 
 type MobileActionsProps = {
   product: HttpTypes.StoreProduct
@@ -52,8 +52,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   return (
     <>
       <div
-        className={clx('fixed inset-x-0 bottom-0 lg:hidden', {
-          'pointer-events-none': !show,
+        className={clx("lg:hidden inset-x-0 bottom-0 fixed", {
+          "pointer-events-none": !show,
         })}
       >
         <Transition
@@ -67,7 +67,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
           leaveTo="opacity-0"
         >
           <div
-            className="text-large-regular flex h-full w-full flex-col items-center justify-center gap-y-3 border-t border-border bg-card p-4"
+            className="bg-white flex flex-col gap-y-3 justify-center items-center text-large-regular p-4 h-full w-full border-t border-gray-200"
             data-testid="mobile-actions"
           >
             <div className="flex items-center gap-x-2">
@@ -75,17 +75,17 @@ const MobileActions: React.FC<MobileActionsProps> = ({
               <span>—</span>
               {selectedPrice ? (
                 <div className="flex items-end gap-x-2 text-ui-fg-base">
-                  {selectedPrice.price_type === 'sale' && (
+                  {selectedPrice.price_type === "sale" && (
                     <p>
-                      <span className="text-small-regular line-through">
+                      <span className="line-through text-small-regular">
                         {selectedPrice.original_price}
                       </span>
                     </p>
                   )}
                   <span
                     className={clx({
-                      'text-ui-fg-interactive':
-                        selectedPrice.price_type === 'sale',
+                      "text-ui-fg-interactive":
+                        selectedPrice.price_type === "sale",
                     })}
                   >
                     {selectedPrice.calculated_price}
@@ -95,18 +95,18 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 <div></div>
               )}
             </div>
-            <div className="grid w-full grid-cols-2 gap-x-4">
+            <div className="grid grid-cols-2 w-full gap-x-4">
               <Button
                 onClick={open}
                 variant="secondary"
                 className="w-full"
                 data-testid="mobile-actions-button"
               >
-                <div className="flex w-full items-center justify-between">
+                <div className="flex items-center justify-between w-full">
                   <span>
                     {variant
-                      ? Object.values(options).join(' / ')
-                      : 'Select Options'}
+                      ? Object.values(options).join(" / ")
+                      : "Select Options"}
                   </span>
                   <ChevronDown />
                 </div>
@@ -119,10 +119,10 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 data-testid="mobile-cart-button"
               >
                 {!variant
-                  ? 'Select variant'
+                  ? "Select variant"
                   : !inStock
-                    ? 'Out of stock'
-                    : 'Add to cart'}
+                  ? "Out of stock"
+                  : "Add to cart"}
               </Button>
             </div>
           </div>
@@ -142,8 +142,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
             <div className="fixed inset-0 bg-gray-700 bg-opacity-75 backdrop-blur-sm" />
           </Transition.Child>
 
-          <div className="fixed inset-x-0 bottom-0">
-            <div className="flex h-full min-h-full items-center justify-center text-center">
+          <div className="fixed bottom-0 inset-x-0">
+            <div className="flex min-h-full h-full items-center justify-center text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -154,19 +154,19 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 leaveTo="opacity-0"
               >
                 <Dialog.Panel
-                  className="flex h-full w-full transform flex-col gap-y-3 overflow-hidden text-left"
+                  className="w-full h-full transform overflow-hidden text-left flex flex-col gap-y-3"
                   data-testid="mobile-actions-modal"
                 >
-                  <div className="flex w-full justify-end pr-6">
+                  <div className="w-full flex justify-end pr-6">
                     <button
                       onClick={close}
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-card text-ui-fg-base"
+                      className="bg-white w-12 h-12 rounded-full text-ui-fg-base flex justify-center items-center"
                       data-testid="close-modal-button"
                     >
                       <X />
                     </button>
                   </div>
-                  <div className="bg-card px-6 py-12">
+                  <div className="bg-white px-6 py-12">
                     {(product.variants?.length ?? 0) > 1 && (
                       <div className="flex flex-col gap-y-6">
                         {(product.options || []).map((option) => {
@@ -174,9 +174,9 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                             <div key={option.id}>
                               <OptionSelect
                                 option={option}
-                                current={options[option.title ?? '']}
+                                current={options[option.title ?? ""]}
                                 updateOption={updateOptions}
-                                title={option.title ?? ''}
+                                title={option.title ?? ""}
                                 disabled={optionsDisabled}
                               />
                             </div>

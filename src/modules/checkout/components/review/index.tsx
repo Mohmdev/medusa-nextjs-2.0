@@ -1,14 +1,14 @@
-'use client'
+"use client"
 
-import { Heading, Text, clx } from '@medusajs/ui'
+import { Heading, Text, clx } from "@medusajs/ui"
 
-import { useSearchParams } from 'next/navigation'
-import PaymentButton from '../payment-button'
+import PaymentButton from "../payment-button"
+import { useSearchParams } from "next/navigation"
 
 const Review = ({ cart }: { cart: any }) => {
   const searchParams = useSearchParams()
 
-  const isOpen = searchParams.get('step') === 'review'
+  const isOpen = searchParams.get("step") === "review"
 
   const paidByGiftcard =
     cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0
@@ -19,14 +19,14 @@ const Review = ({ cart }: { cart: any }) => {
     (cart.payment_collection || paidByGiftcard)
 
   return (
-    <div>
-      <div className="mb-6 flex flex-row items-center justify-between">
+    <div className="bg-white">
+      <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
           className={clx(
-            'text-3xl-regular flex flex-row items-baseline gap-x-2',
+            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
             {
-              'pointer-events-none select-none opacity-50': !isOpen,
+              "opacity-50 pointer-events-none select-none": !isOpen,
             }
           )}
         >
@@ -35,9 +35,9 @@ const Review = ({ cart }: { cart: any }) => {
       </div>
       {isOpen && previousStepsCompleted && (
         <>
-          <div className="mb-6 flex w-full items-start gap-x-1">
+          <div className="flex items-start gap-x-1 w-full mb-6">
             <div className="w-full">
-              <Text className="txt-medium-plus mb-1 text-ui-fg-base">
+              <Text className="txt-medium-plus text-ui-fg-base mb-1">
                 By clicking the Place Order button, you confirm that you have
                 read, understand and accept our Terms of Use, Terms of Sale and
                 Returns Policy and acknowledge that you have read Medusa

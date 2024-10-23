@@ -1,16 +1,16 @@
-'use client'
+"use client"
 
-import { ArrowRightOnRectangle } from '@medusajs/icons'
-import { clx } from '@medusajs/ui'
-import { useParams, usePathname } from 'next/navigation'
+import { clx } from "@medusajs/ui"
+import { ArrowRightOnRectangle } from "@medusajs/icons"
+import { useParams, usePathname } from "next/navigation"
 
-import { signout } from '@/lib/data/customer'
-import LocalizedClientLink from '@/modules/common/components/localized-client-link'
-import ChevronDown from '@/modules/common/icons/chevron-down'
-import MapPin from '@/modules/common/icons/map-pin'
-import Package from '@/modules/common/icons/package'
-import User from '@/modules/common/icons/user'
-import { HttpTypes } from '@medusajs/types'
+import ChevronDown from "@modules/common/icons/chevron-down"
+import User from "@modules/common/icons/user"
+import MapPin from "@modules/common/icons/map-pin"
+import Package from "@modules/common/icons/package"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { HttpTypes } from "@medusajs/types"
+import { signout } from "@lib/data/customer"
 
 const AccountNav = ({
   customer,
@@ -30,11 +30,11 @@ const AccountNav = ({
         {route !== `/${countryCode}/account` ? (
           <LocalizedClientLink
             href="/account"
-            className="text-small-regular flex items-center gap-x-2 py-2"
+            className="flex items-center gap-x-2 text-small-regular py-2"
             data-testid="account-main-link"
           >
             <>
-              <ChevronDown className="rotate-90 transform" />
+              <ChevronDown className="transform rotate-90" />
               <span>Account</span>
             </>
           </LocalizedClientLink>
@@ -48,7 +48,7 @@ const AccountNav = ({
                 <li>
                   <LocalizedClientLink
                     href="/account/profile"
-                    className="flex items-center justify-between border-b border-border px-8 py-4"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
                     data-testid="profile-link"
                   >
                     <>
@@ -56,14 +56,14 @@ const AccountNav = ({
                         <User size={20} />
                         <span>Profile</span>
                       </div>
-                      <ChevronDown className="-rotate-90 transform" />
+                      <ChevronDown className="transform -rotate-90" />
                     </>
                   </LocalizedClientLink>
                 </li>
                 <li>
                   <LocalizedClientLink
                     href="/account/addresses"
-                    className="flex items-center justify-between border-b border-border px-8 py-4"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
                     data-testid="addresses-link"
                   >
                     <>
@@ -71,27 +71,27 @@ const AccountNav = ({
                         <MapPin size={20} />
                         <span>Addresses</span>
                       </div>
-                      <ChevronDown className="-rotate-90 transform" />
+                      <ChevronDown className="transform -rotate-90" />
                     </>
                   </LocalizedClientLink>
                 </li>
                 <li>
                   <LocalizedClientLink
                     href="/account/orders"
-                    className="flex items-center justify-between border-b border-border px-8 py-4"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
                     data-testid="orders-link"
                   >
                     <div className="flex items-center gap-x-2">
                       <Package size={20} />
                       <span>Orders</span>
                     </div>
-                    <ChevronDown className="-rotate-90 transform" />
+                    <ChevronDown className="transform -rotate-90" />
                   </LocalizedClientLink>
                 </li>
                 <li>
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between border-b border-border px-8 py-4"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8 w-full"
                     onClick={handleLogout}
                     data-testid="logout-button"
                   >
@@ -99,7 +99,7 @@ const AccountNav = ({
                       <ArrowRightOnRectangle />
                       <span>Log out</span>
                     </div>
-                    <ChevronDown className="-rotate-90 transform" />
+                    <ChevronDown className="transform -rotate-90" />
                   </button>
                 </li>
               </ul>
@@ -113,7 +113,7 @@ const AccountNav = ({
             <h3 className="text-base-semi">Account</h3>
           </div>
           <div className="text-base-regular">
-            <ul className="mb-0 flex flex-col items-start justify-start gap-y-4">
+            <ul className="flex mb-0 justify-start items-start flex-col gap-y-4">
               <li>
                 <AccountNavLink
                   href="/account"
@@ -171,14 +171,14 @@ type AccountNavLinkProps = {
   href: string
   route: string
   children: React.ReactNode
-  'data-testid'?: string
+  "data-testid"?: string
 }
 
 const AccountNavLink = ({
   href,
   route,
   children,
-  'data-testid': dataTestId,
+  "data-testid": dataTestId,
 }: AccountNavLinkProps) => {
   const { countryCode }: { countryCode: string } = useParams()
 
@@ -186,8 +186,8 @@ const AccountNavLink = ({
   return (
     <LocalizedClientLink
       href={href}
-      className={clx('text-ui-fg-subtle hover:text-ui-fg-base', {
-        'font-semibold text-ui-fg-base': active,
+      className={clx("text-ui-fg-subtle hover:text-ui-fg-base", {
+        "text-ui-fg-base font-semibold": active,
       })}
       data-testid={dataTestId}
     >

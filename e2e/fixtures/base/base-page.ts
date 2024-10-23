@@ -1,7 +1,7 @@
-import { Locator, Page } from '@playwright/test'
-import { CartDropdown } from './cart-dropdown'
-import { NavMenu } from './nav-menu'
-import { SearchModal } from './search-modal'
+import { CartDropdown } from "./cart-dropdown"
+import { NavMenu } from "./nav-menu"
+import { Page, Locator } from "@playwright/test"
+import { SearchModal } from "./search-modal"
 
 export class BasePage {
   page: Page
@@ -19,15 +19,15 @@ export class BasePage {
     this.navMenu = new NavMenu(page)
     this.cartDropdown = new CartDropdown(page)
     this.searchModal = new SearchModal(page)
-    this.accountLink = page.getByTestId('nav-account-link')
-    this.cartLink = page.getByTestId('nav-cart-link')
-    this.storeLink = page.getByTestId('nav-store-link')
-    this.searchLink = page.getByTestId('nav-search-link')
-    this.categoriesList = page.getByTestId('footer-categories')
+    this.accountLink = page.getByTestId("nav-account-link")
+    this.cartLink = page.getByTestId("nav-cart-link")
+    this.storeLink = page.getByTestId("nav-store-link")
+    this.searchLink = page.getByTestId("nav-search-link")
+    this.categoriesList = page.getByTestId("footer-categories")
   }
 
   async clickCategoryLink(category: string) {
-    const link = this.categoriesList.getByTestId('category-link')
+    const link = this.categoriesList.getByTestId("category-link")
     await link.click()
   }
 }

@@ -1,7 +1,7 @@
-import { deleteLineItem } from '@/lib/data/cart'
-import { Spinner, Trash } from '@medusajs/icons'
-import { clx } from '@medusajs/ui'
-import { useState } from 'react'
+import { deleteLineItem } from "@lib/data/cart"
+import { Spinner, Trash } from "@medusajs/icons"
+import { clx } from "@medusajs/ui"
+import { useState } from "react"
 
 const DeleteButton = ({
   id,
@@ -24,12 +24,12 @@ const DeleteButton = ({
   return (
     <div
       className={clx(
-        'text-small-regular flex items-center justify-between',
+        "flex items-center justify-between text-small-regular",
         className
       )}
     >
       <button
-        className="flex cursor-pointer gap-x-1 text-ui-fg-subtle hover:text-ui-fg-base"
+        className="flex gap-x-1 text-ui-fg-subtle hover:text-ui-fg-base cursor-pointer"
         onClick={() => handleDelete(id)}
       >
         {isDeleting ? <Spinner className="animate-spin" /> : <Trash />}

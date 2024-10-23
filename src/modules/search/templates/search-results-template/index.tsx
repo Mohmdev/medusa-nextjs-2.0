@@ -1,9 +1,10 @@
-import { Heading, Text } from '@medusajs/ui'
+import { Heading, Text } from "@medusajs/ui"
+import Link from "next/link"
 
-import LocalizedClientLink from '@/modules/common/components/localized-client-link'
-import RefinementList from '@/modules/store/components/refinement-list'
-import { SortOptions } from '@/modules/store/components/refinement-list/sort-products'
-import PaginatedProducts from '@/modules/store/templates/paginated-products'
+import RefinementList from "@modules/store/components/refinement-list"
+import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import PaginatedProducts from "@modules/store/templates/paginated-products"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type SearchResultsTemplateProps = {
   query: string
@@ -41,7 +42,7 @@ const SearchResultsTemplate = ({
       <div className="flex flex-col small:flex-row small:items-start p-6">
         {ids.length > 0 ? (
           <>
-            <RefinementList sortBy={sortBy || 'created_at'} search />
+            <RefinementList sortBy={sortBy || "created_at"} search />
             <div className="content-container">
               <PaginatedProducts
                 productsIds={ids}

@@ -1,15 +1,15 @@
-import React, { Suspense } from 'react'
+import React, { Suspense } from "react"
 
-import ImageGallery from '@/modules/products/components/image-gallery'
-import ProductActions from '@/modules/products/components/product-actions'
-import ProductOnboardingCta from '@/modules/products/components/product-onboarding-cta'
-import ProductTabs from '@/modules/products/components/product-tabs'
-import RelatedProducts from '@/modules/products/components/related-products'
-import ProductInfo from '@/modules/products/templates/product-info'
-import SkeletonRelatedProducts from '@/modules/skeletons/templates/skeleton-related-products'
-import { HttpTypes } from '@medusajs/types'
-import { notFound } from 'next/navigation'
-import ProductActionsWrapper from './product-actions-wrapper'
+import ImageGallery from "@modules/products/components/image-gallery"
+import ProductActions from "@modules/products/components/product-actions"
+import ProductOnboardingCta from "@modules/products/components/product-onboarding-cta"
+import ProductTabs from "@modules/products/components/product-tabs"
+import RelatedProducts from "@modules/products/components/related-products"
+import ProductInfo from "@modules/products/templates/product-info"
+import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
+import { notFound } from "next/navigation"
+import ProductActionsWrapper from "./product-actions-wrapper"
+import { HttpTypes } from "@medusajs/types"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -29,17 +29,17 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   return (
     <>
       <div
-        className="content-container relative flex flex-col py-6 small:flex-row small:items-start"
+        className="content-container flex flex-col small:flex-row small:items-start py-6 relative"
         data-testid="product-container"
       >
-        <div className="flex w-full flex-col gap-y-6 py-8 small:sticky small:top-48 small:max-w-[300px] small:py-0">
+        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-6">
           <ProductInfo product={product} />
           <ProductTabs product={product} />
         </div>
-        <div className="relative block w-full">
+        <div className="block w-full relative">
           <ImageGallery images={product?.images || []} />
         </div>
-        <div className="flex w-full flex-col gap-y-12 py-8 small:sticky small:top-48 small:max-w-[300px] small:py-0">
+        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-12">
           <ProductOnboardingCta />
           <Suspense
             fallback={

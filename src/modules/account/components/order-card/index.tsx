@@ -1,10 +1,10 @@
-import { Button } from '@medusajs/ui'
-import { useMemo } from 'react'
+import { Button } from "@medusajs/ui"
+import { useMemo } from "react"
 
-import { convertToLocale } from '@/lib/util/money'
-import LocalizedClientLink from '@/modules/common/components/localized-client-link'
-import Thumbnail from '@/modules/products/components/thumbnail'
-import { HttpTypes } from '@medusajs/types'
+import Thumbnail from "@modules/products/components/thumbnail"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { convertToLocale } from "@lib/util/money"
+import { HttpTypes } from "@medusajs/types"
 
 type OrderCardProps = {
   order: HttpTypes.StoreOrder
@@ -24,11 +24,11 @@ const OrderCard = ({ order }: OrderCardProps) => {
   }, [order])
 
   return (
-    <div className="flex flex-col bg-card" data-testid="order-card">
-      <div className="text-large-semi mb-1 uppercase">
+    <div className="bg-white flex flex-col" data-testid="order-card">
+      <div className="uppercase text-large-semi mb-1">
         #<span data-testid="order-display-id">{order.display_id}</span>
       </div>
-      <div className="text-small-regular flex items-center divide-x divide-gray-200 text-ui-fg-base">
+      <div className="flex items-center divide-x divide-gray-200 text-small-regular text-ui-fg-base">
         <span className="pr-2" data-testid="order-created-at">
           {new Date(order.created_at).toDateString()}
         </span>
@@ -38,9 +38,11 @@ const OrderCard = ({ order }: OrderCardProps) => {
             currency_code: order.currency_code,
           })}
         </span>
-        <span className="pl-2">{`${numberOfLines} ${numberOfLines > 1 ? 'items' : 'item'}`}</span>
+        <span className="pl-2">{`${numberOfLines} ${
+          numberOfLines > 1 ? "items" : "item"
+        }`}</span>
       </div>
-      <div className="my-4 grid grid-cols-2 gap-4 small:grid-cols-4">
+      <div className="grid grid-cols-2 small:grid-cols-4 gap-4 my-4">
         {order.items?.slice(0, 3).map((i) => {
           return (
             <div
@@ -49,9 +51,9 @@ const OrderCard = ({ order }: OrderCardProps) => {
               data-testid="order-item"
             >
               <Thumbnail thumbnail={i.thumbnail} images={[]} size="full" />
-              <div className="text-small-regular flex items-center text-ui-fg-base">
+              <div className="flex items-center text-small-regular text-ui-fg-base">
                 <span
-                  className="font-semibold text-ui-fg-base"
+                  className="text-ui-fg-base font-semibold"
                   data-testid="item-title"
                 >
                   {i.title}
@@ -63,7 +65,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
           )
         })}
         {numberOfProducts > 4 && (
-          <div className="flex h-full w-full flex-col items-center justify-center">
+          <div className="w-full h-full flex flex-col items-center justify-center">
             <span className="text-small-regular text-ui-fg-base">
               + {numberOfLines - 4}
             </span>

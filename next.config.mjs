@@ -1,4 +1,3 @@
-import chalk from 'chalk'
 import checkEnvVariables from './scripts/check-env-variables.js'
 
 checkEnvVariables()
@@ -58,7 +57,6 @@ const nextConfig = {
     'Store Name': process.env.NEXT_PUBLIC_STORE_NAME,
     'Storefront URL': process.env.NEXT_PUBLIC_BASE_URL,
     'Admin Dashboard': `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/dashboard`,
-    'Search Enabled': process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED,
   },
 }
 
@@ -66,6 +64,6 @@ export default nextConfig
 
 console.log(
   Object.entries(nextConfig.env)
-    .map(([key, value]) => `  - ${chalk.green(key)}: ${value}`)
+    .map(([key, value]) => `  - \x1b[34m${key}\x1b[0m: \x1b[96m${value}\x1b[0m`)
     .join('\n')
 )

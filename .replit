@@ -1,0 +1,12 @@
+modules = ["nodejs-22", "web"]
+run = "pnpm run dev"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "pnpm run dev"]
+
+[[ports]]
+localPort = 8000
+externalPort = 8000

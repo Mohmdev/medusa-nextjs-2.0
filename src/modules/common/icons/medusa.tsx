@@ -1,21 +1,19 @@
-import React from 'react'
+import React from "react"
 
-import { IconProps } from 'types/icon'
+import { IconProps } from "types/icon"
 
 const Medusa: React.FC<IconProps> = ({
-  size = '20',
-  color = '#9CA3AF',
-  className,
+  size = "20",
+  color = "#9CA3AF",
   ...attributes
 }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
+      width="18"
+      height="18"
       viewBox="0 0 18 18"
       fill="none"
-      className={className}
       {...attributes}
     >
       <path

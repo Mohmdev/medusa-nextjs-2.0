@@ -1,24 +1,24 @@
-'use client'
+"use client"
 
-import { isManual, isPaypal, isStripe } from '@/lib/constants'
-import { placeOrder } from '@/lib/data/cart'
-import Spinner from '@/modules/common/icons/spinner'
-import { HttpTypes } from '@medusajs/types'
-import { Button } from '@medusajs/ui'
-import { OnApproveActions, OnApproveData } from '@paypal/paypal-js'
-import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
-import { useElements, useStripe } from '@stripe/react-stripe-js'
-import React, { useState } from 'react'
-import ErrorMessage from '../error-message'
+import { Button } from "@medusajs/ui"
+import { OnApproveActions, OnApproveData } from "@paypal/paypal-js"
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js"
+import { useElements, useStripe } from "@stripe/react-stripe-js"
+import React, { useState } from "react"
+import ErrorMessage from "../error-message"
+import Spinner from "@modules/common/icons/spinner"
+import { placeOrder } from "@lib/data/cart"
+import { HttpTypes } from "@medusajs/types"
+import { isManual, isPaypal, isStripe } from "@lib/constants"
 
 type PaymentButtonProps = {
   cart: HttpTypes.StoreCart
-  'data-testid': string
+  "data-testid": string
 }
 
 const PaymentButton: React.FC<PaymentButtonProps> = ({
   cart,
-  'data-testid': dataTestId,
+  "data-testid": dataTestId,
 }) => {
   const notReady =
     !cart ||
@@ -85,11 +85,11 @@ const GiftCardPaymentButton = () => {
 const StripePaymentButton = ({
   cart,
   notReady,
-  'data-testid': dataTestId,
+  "data-testid": dataTestId,
 }: {
   cart: HttpTypes.StoreCart
   notReady: boolean
-  'data-testid'?: string
+  "data-testid"?: string
 }) => {
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -106,10 +106,10 @@ const StripePaymentButton = ({
 
   const stripe = useStripe()
   const elements = useElements()
-  const card = elements?.getElement('card')
+  const card = elements?.getElement("card")
 
   const session = cart.payment_collection?.payment_sessions?.find(
-    (s) => s.status === 'pending'
+    (s) => s.status === "pending"
   )
 
   const disabled = !stripe || !elements ? true : false
@@ -129,7 +129,7 @@ const StripePaymentButton = ({
           billing_details: {
             name:
               cart.billing_address?.first_name +
-              ' ' +
+              " " +
               cart.billing_address?.last_name,
             address: {
               city: cart.billing_address?.city ?? undefined,
@@ -149,8 +149,8 @@ const StripePaymentButton = ({
           const pi = error.payment_intent
 
           if (
-            (pi && pi.status === 'requires_capture') ||
-            (pi && pi.status === 'succeeded')
+            (pi && pi.status === "requires_capture") ||
+            (pi && pi.status === "succeeded")
           ) {
             onPaymentCompleted()
           }
@@ -160,8 +160,8 @@ const StripePaymentButton = ({
         }
 
         if (
-          (paymentIntent && paymentIntent.status === 'requires_capture') ||
-          paymentIntent.status === 'succeeded'
+          (paymentIntent && paymentIntent.status === "requires_capture") ||
+          paymentIntent.status === "succeeded"
         ) {
           return onPaymentCompleted()
         }
@@ -192,11 +192,11 @@ const StripePaymentButton = ({
 const PayPalPaymentButton = ({
   cart,
   notReady,
-  'data-testid': dataTestId,
+  "data-testid": dataTestId,
 }: {
   cart: HttpTypes.StoreCart
   notReady: boolean
-  'data-testid'?: string
+  "data-testid"?: string
 }) => {
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -212,7 +212,7 @@ const PayPalPaymentButton = ({
   }
 
   const session = cart.payment_collection?.payment_sessions?.find(
-    (s) => s.status === 'pending'
+    (s) => s.status === "pending"
   )
 
   const handlePayment = async (
@@ -222,7 +222,7 @@ const PayPalPaymentButton = ({
     actions?.order
       ?.authorize()
       .then((authorization) => {
-        if (authorization.status !== 'COMPLETED') {
+        if (authorization.status !== "COMPLETED") {
           setErrorMessage(`An error occurred, status: ${authorization.status}`)
           return
         }
@@ -244,7 +244,7 @@ const PayPalPaymentButton = ({
     return (
       <>
         <PayPalButtons
-          style={{ layout: 'horizontal' }}
+          style={{ layout: "horizontal" }}
           createOrder={async () => session?.data.id as string}
           onApprove={handlePayment}
           disabled={notReady || submitting || isPending}

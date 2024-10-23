@@ -1,9 +1,9 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
 
-import { getProductByHandle, getProductsList } from '@/lib/data/products'
-import { getRegion, listRegions } from '@/lib/data/regions'
-import ProductTemplate from '@/modules/products/templates'
+import ProductTemplate from "@modules/products/templates"
+import { getRegion, listRegions } from "@lib/data/regions"
+import { getProductByHandle, getProductsList } from "@lib/data/products"
 
 type Props = {
   params: { countryCode: string; handle: string }
