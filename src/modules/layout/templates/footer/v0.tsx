@@ -1,9 +1,8 @@
 import { getCategoriesList } from '@/lib/data/categories'
 import { getCollectionsList } from '@/lib/data/collections'
-import { Text, clx } from '@medusajs/ui'
-
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
-import MedusaCTA from '@/modules/layout/components/medusa-cta'
+import MedusaCTA from '@/ui/medusa-cta'
+import { Text, clx } from '@medusajs/ui'
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)

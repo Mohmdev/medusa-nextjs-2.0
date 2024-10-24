@@ -7,11 +7,11 @@ const Layout: React.FC<{
   children: React.ReactNode
 }> = ({ children }) => {
   return (
-    <div>
+    <>
       <Header />
       <main className="relative">{children}</main>
       <Footer />
-    </div>
+    </>
   )
 }
 

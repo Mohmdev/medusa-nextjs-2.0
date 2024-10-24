@@ -2,10 +2,10 @@ import { cn } from '@/lib/util/cn'
 import Medusa from '@/modules/common/icons/medusa'
 import SiteLogo from '@/ui/site-logo'
 import NavAccount from '../../components/nav-account/svg'
-import NavCart from '../../components/nav-cart'
+import NavCart from '../../components/nav-cart-old'
 import NavDropdown from '../../components/nav-dropdown'
 import NavSearch from '../../components/nav-search/svg'
-import SideMenu from '../component-templates/sidemenu-framer-motion'
+import SideMenu from '../side-menu/framer-motion'
 // import { StoreRegion } from '@medusajs/types'
 
 export default async function Header({ className }: { className?: string }) {

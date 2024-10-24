@@ -28,7 +28,8 @@ export const getCollectionByHandle = cache(async function (
 
 export const getCollectionsWithProducts = cache(
   async (countryCode: string): Promise<HttpTypes.StoreCollection[] | null> => {
-    const { collections } = await getCollectionsList(0, 3)
+    // TODO: Make the limit and offset dynamic
+    const { collections } = await getCollectionsList(0, 10)
 
     if (!collections) {
       return null

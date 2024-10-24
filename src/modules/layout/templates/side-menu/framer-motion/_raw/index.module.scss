@@ -1,0 +1,95 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  box-sizing: border-box;
+
+  .navElement {
+    position: static;
+    display: flex;
+    // top: 0;
+    // left: 0;
+    // bottom: 0;
+    // width: 300px;
+    // width: fit-content;
+    border: solid 3px green;
+    box-sizing: content-box;
+    // margin-inline: auto;
+    // width: 2.5rem;
+    // height: 2.5rem;
+    // height: 2rem;
+    // margin-block: 0;
+    // transform: translateY(-100%);
+    // height: auto;
+  }
+}
+.menuWrapper {
+  position: absolute;
+  // top: 100px;
+  width: max-content;
+  margin: 0;
+  padding: 25px;
+  // border: solid 4px blue;
+  box-sizing: content-box;
+  border-radius: 0.75rem;
+
+  .menuItems {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+    width: max-content;
+
+    .menuItem {
+      list-style: none;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+
+      .iconPlaceholder {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        flex: 40px 0;
+        margin-right: 20px;
+      }
+
+      .textPlaceholder {
+        border-radius: 5px;
+        width: 200px;
+        height: 20px;
+        flex: 1;
+      }
+    }
+  }
+}
+
+.toggleButton {
+  outline: none;
+  border: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  width: 50px;
+  height: 50px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: transparent;
+
+  background: rgba(255, 0, 85, 0.479);
+  border: solid 2px pink;
+  color: red !important;
+  fill: red !important;
+  z-index: 1000;
+}

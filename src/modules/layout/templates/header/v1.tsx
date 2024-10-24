@@ -1,3 +1,4 @@
+// import { enrichLineItems, retrieveCart } from '@/lib/data/cart'
 import { listRegions } from '@/lib/data/regions'
 import { cn } from '@/lib/util/cn'
 import Medusa from '@/modules/common/icons/medusa'
@@ -8,9 +9,14 @@ import NavCart from '../../components/nav-cart'
 import NavSearch from '../../components/nav-search/textual'
 import SideMenu from '../side-menu/headless-ui/v1'
 
-export default async function Header({ className }: { className?: string }) {
+const Header = async ({ className }: { className?: string }) => {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
   const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Medusa Store'
+
+  // const cart = await retrieveCart()
+  // if (cart?.items?.length) {
+  //   cart.items = await enrichLineItems(cart.items, cart.region_id!)
+  // }
 
   return (
     <header
@@ -39,9 +45,23 @@ export default async function Header({ className }: { className?: string }) {
             <NavSearch />
             <NavAccount />
           </div>
+          {/* <Suspense
+            fallback={
+              <LocalizedClientLink
+                href="/cart"
+                data-testid="nav-cart-link"
+                className={cn('flex gap-2 hover:text-ui-fg-base ', className)}
+              >
+                Cart (0)
+              </LocalizedClientLink>
+            }
+          >
+          </Suspense> */}
           <NavCart />
         </div>
       </nav>
     </header>
   )
 }
+
+export default Header
