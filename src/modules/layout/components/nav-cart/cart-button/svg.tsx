@@ -21,4 +21,4 @@ const SvgCartButton = ({ itemsCount }: { itemsCount: number }) => {
   )
 }
 
-export default SvgCartButton
+export { SvgCartButton }

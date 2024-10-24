@@ -13,11 +13,6 @@ const Header = async ({ className }: { className?: string }) => {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
   const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Medusa Store'
 
-  // const cart = await retrieveCart()
-  // if (cart?.items?.length) {
-  //   cart.items = await enrichLineItems(cart.items, cart.region_id!)
-  // }
-
   return (
     <header
       className={cn(
@@ -45,18 +40,6 @@ const Header = async ({ className }: { className?: string }) => {
             <NavSearch />
             <NavAccount />
           </div>
-          {/* <Suspense
-            fallback={
-              <LocalizedClientLink
-                href="/cart"
-                data-testid="nav-cart-link"
-                className={cn('flex gap-2 hover:text-ui-fg-base ', className)}
-              >
-                Cart (0)
-              </LocalizedClientLink>
-            }
-          >
-          </Suspense> */}
           <NavCart />
         </div>
       </nav>

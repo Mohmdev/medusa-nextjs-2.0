@@ -12,4 +12,4 @@ const TextualCartButton = ({ itemsCount }: { itemsCount: number }) => {
   )
 }
 
-export default TextualCartButton
+export { TextualCartButton }

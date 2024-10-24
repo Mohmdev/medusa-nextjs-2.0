@@ -2,7 +2,7 @@ import { listRegions } from '@/lib/data/regions'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import SideMenu from '@/modules/layout/templates/side-menu/headless-ui/v0'
 import { StoreRegion } from '@medusajs/types'
-import NavCart from '../../components/nav-cart-old'
+import NavCart from '../../components/nav-cart'
 
 export default async function Header() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)

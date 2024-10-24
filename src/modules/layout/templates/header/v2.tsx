@@ -2,10 +2,9 @@ import { cn } from '@/lib/util/cn'
 import Medusa from '@/modules/common/icons/medusa'
 import SiteLogo from '@/ui/site-logo'
 import NavAccount from '../../components/nav-account/textual'
-import NavCart from '../../components/nav-cart-old'
+import NavCart from '../../components/nav-cart'
 import NavSearch from '../../components/nav-search/textual'
 import SideMenu from '../side-menu/framer-motion'
-import { cartItems } from './data'
 // import { StoreRegion } from '@medusajs/types'
 // import { listRegions } from '@/lib/data/regions'
 
@@ -44,7 +43,7 @@ export default async function Header({ className }: { className?: string }) {
 
           <NavAccount />
 
-          <NavCart cart={cartItems} buttonVariant="textual" />
+          <NavCart buttonVariant="svg" />
         </div>
       </nav>
     </header>

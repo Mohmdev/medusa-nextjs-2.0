@@ -12,8 +12,7 @@ import LineItemPrice from '@/modules/common/components/line-item-price'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
 import Thumbnail from '@/modules/products/components/thumbnail'
 import { HttpTypes } from '@medusajs/types'
-import SvgCartButton from '../cart-button/svg'
-import TextualCartButton from '../cart-button/textual'
+import CartButton from '../cart-button'
 
 const CartDropdown = ({
   cart: cartState,
@@ -81,12 +80,7 @@ const CartDropdown = ({
     >
       <Popover className="relative h-full">
         <Popover.Button className="h-full">
-          {/* <CartButton itemsCount={totalItems} /> */}
-          {buttonVariant === 'textual' ? (
-            <TextualCartButton itemsCount={totalItems} />
-          ) : (
-            <SvgCartButton itemsCount={totalItems} />
-          )}
+          <CartButton cart={cartState} buttonVariant={buttonVariant} />
         </Popover.Button>
         <Transition
           show={cartDropdownOpen}

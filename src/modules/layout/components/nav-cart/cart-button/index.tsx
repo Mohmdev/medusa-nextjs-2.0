@@ -1,23 +1,30 @@
-import { enrichLineItems, retrieveCart } from '@/lib/data/cart'
-import CartDropdown from '../cart-dropdown/v0'
+// This index file is meant to be used to export the cart button component and make the
+// usage of the cart button more flexible while simplifying it by implementing the
+// variants logic here.
 
-const fetchCart = async () => {
-  const cart = await retrieveCart()
+import type { HttpTypes } from '@medusajs/types'
+import { SvgCartButton } from './svg'
+import { TextualCartButton } from './textual'
 
-  if (!cart) {
-    return null
-  }
+const CartButton = ({
+  cart: cartState,
+  buttonVariant = 'textual',
+}: {
+  cart?: HttpTypes.StoreCart | null
+  buttonVariant?: 'textual' | 'svg'
+}) => {
+  const totalItems =
+    cartState?.items?.reduce((acc, item) => acc + item.quantity, 0) || 0
 
-  if (cart?.items?.length) {
-    const enrichedItems = await enrichLineItems(cart.items, cart.region_id!)
-    cart.items = enrichedItems
-  }
-
-  return cart
+  return (
+    <>
+      {buttonVariant === 'textual' ? (
+        <TextualCartButton itemsCount={totalItems} />
+      ) : (
+        <SvgCartButton itemsCount={totalItems} />
+      )}
+    </>
+  )
 }
 
-export default async function CartButton() {
-  const cart = await fetchCart()
-
-  return <CartDropdown cart={cart} />
-}
+export default CartButton
