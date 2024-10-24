@@ -1,12 +1,10 @@
-import { Suspense } from 'react'
-
 import { listRegions } from '@/lib/data/regions'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
-import CartButton from '@/modules/layout/components/cart-button'
-import SideMenu from '@/modules/layout/components/side-menu'
+import SideMenu from '@/modules/layout/templates/side-menu/headless-ui/v0'
 import { StoreRegion } from '@medusajs/types'
+import NavCart from '../../components/nav-cart'
 
-export default async function Nav() {
+export default async function Header() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
 
   return (
@@ -49,19 +47,9 @@ export default async function Nav() {
                 Account
               </LocalizedClientLink>
             </div>
-            <Suspense
-              fallback={
-                <LocalizedClientLink
-                  className="hover:text-ui-fg-base flex gap-2"
-                  href="/cart"
-                  data-testid="nav-cart-link"
-                >
-                  Cart (0)
-                </LocalizedClientLink>
-              }
-            >
-              <CartButton />
-            </Suspense>
+
+            {/* @ts-expect-error */}
+            <NavCart />
           </div>
         </nav>
       </header>
