@@ -1,16 +1,18 @@
+import { listRegions } from '@/lib/data/regions'
 import { cn } from '@/lib/util/cn'
 import Medusa from '@/modules/common/icons/medusa'
 import SiteLogo from '@/ui/site-logo'
+import type { HttpTypes } from '@medusajs/types'
 import NavAccount from '../../components/nav-account/textual'
 import NavCart from '../../components/nav-cart'
 import NavSearch from '../../components/nav-search/textual'
 import SideMenu from '../side-menu/framer-motion'
-// import { StoreRegion } from '@medusajs/types'
-// import { listRegions } from '@/lib/data/regions'
 
 export default async function Header({ className }: { className?: string }) {
-  // const regions = await listRegions().then((regions: StoreRegion[]) => regions)
   const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Medusa Store'
+  const regions: HttpTypes.StoreRegion[] | null = await listRegions().then(
+    (regions) => regions
+  )
 
   return (
     <header
@@ -26,7 +28,7 @@ export default async function Header({ className }: { className?: string }) {
           data-testid="nav-menu"
           className="flex h-full flex-1 basis-0 items-center"
         >
-          <SideMenu />
+          <SideMenu regions={regions} />
         </div>
 
         <SiteLogo

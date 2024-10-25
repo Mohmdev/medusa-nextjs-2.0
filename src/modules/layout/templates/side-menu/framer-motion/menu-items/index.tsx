@@ -1,7 +1,8 @@
 import { cn } from '@/lib/util/cn'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
-import CountrySelect from '@/modules/layout/components/country-select/v3-dropdown'
+import CountrySelect from '@/modules/layout/components/country-select/dropdown-checkbox'
 import ModeToggle from '@/ui/mode-toggle/toggle'
+import type { HttpTypes } from '@medusajs/types'
 import { m } from 'framer-motion'
 import { footerLinks, links } from '../data'
 
@@ -58,7 +59,11 @@ const slideIn = {
   },
 }
 
-const MenuItems = () => {
+const MenuItems = ({
+  regions,
+}: {
+  regions: HttpTypes.StoreRegion[] | null
+}) => {
   return (
     <div className="flex h-full w-full flex-col items-start justify-between">
       {/* Body */}
@@ -122,7 +127,10 @@ const MenuItems = () => {
             )
           })}
         </div>
-        <CountrySelect width="12rem" />
+        <CountrySelect
+          regions={regions}
+          // width="12rem"
+        />
       </m.div>
     </div>
   )

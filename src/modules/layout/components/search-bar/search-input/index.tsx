@@ -44,7 +44,7 @@ const ControlledSearchInput = ({
     <div {...props} className="w-full">
       <form action="" noValidate onSubmit={handleSubmit} onReset={handleReset}>
         <div className="relative ml-auto flex flex-1 items-center">
-          <Search className="absolute left-[0.75rem] top-[0.75rem] h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-[0.75rem] top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             ref={inputRef}
             data-testid="search-input"
@@ -56,7 +56,7 @@ const ControlledSearchInput = ({
             type="search"
             value={value}
             onChange={onChange}
-            className="h-min w-full rounded-lg bg-background pl-9 pr-8"
+            className="h-min w-full rounded-md bg-background pl-9 pr-8 py-1.5"
           />
 
           {value && (

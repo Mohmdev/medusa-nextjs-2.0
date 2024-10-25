@@ -5,7 +5,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTrigger,
@@ -13,19 +12,24 @@ import {
 import SiteLogo from '@/ui/site-logo'
 import { PanelLeftIcon, X } from 'lucide-react'
 
-import CountrySelect from '@/modules/layout/components/country-select/v3-dropdown'
+import CountrySelect from '@/modules/layout/components/country-select/dropdown-radio'
 import NavCollapsible from '@/modules/layout/components/nav-collapsible'
-import NavSocialLinks from '@/modules/layout/components/nav-social-links'
 import SearchBar from '@/modules/layout/components/search-bar'
 import ModeToggle from '@/ui/mode-toggle/toggle'
 import { ScrollArea } from '@/ui/shadcn/scroll-area'
+import type { HttpTypes } from '@medusajs/types'
 
 type NavDrawerProps = {
+  regions: HttpTypes.StoreRegion[] | null
   className?: string
   direction?: 'left' | 'right' | 'top' | 'bottom'
 }
 
-const NavDrawer = async ({ className, direction = 'left' }: NavDrawerProps) => {
+const NavDrawer = async ({
+  regions,
+  className,
+  direction = 'left',
+}: NavDrawerProps) => {
   return (
     <div className={cn('', className)}>
       <Drawer direction={direction}>
@@ -37,52 +41,49 @@ const NavDrawer = async ({ className, direction = 'left' }: NavDrawerProps) => {
         <DrawerContent
           className={cn(
             // "grid  grid-rows-[1fr_1fr_max-content_1fr_1fr_1fr]",
-            'flex flex-col items-start justify-between',
+            // 'bg-[linear-gradient(45deg,_#0000006e,_transparent)]',
             'max-h-[100dvh] overflow-hidden',
-            'bg-[linear-gradient(45deg,_#0000006e,_transparent)]'
+            'bg-white dark:bg-black',
+            'max-w-screen sm:max-w-96'
           )}
         >
-          <ScrollArea className="w-full overflow-auto p-0 pl-1">
-            <div className="relative flex h-[100dvh] flex-col items-start justify-between">
+          <ScrollArea className="w-full h-full overflow-auto p-2 pl-3">
+            <div className="relative flex flex-1 h-full m-0 max-h-[100dvh] flex-col items-start justify-between">
               <DrawerClose asChild>
                 <Button
                   variant="transparent"
-                  className="absolute right-3 top-3 z-[1000] h-6 w-6 rounded-full p-1 transition-all duration-200 ease-linear hover:text-green-400"
+                  className={cn(
+                    'absolute right-3 top-3 z-[1000]',
+                    'h-10 w-10 rounded-full p-1.5',
+                    'transition-all duration-200 ease-linear hover:text-green-400 hover:bg-transparent'
+                  )}
                 >
                   <X className="h-4 w-4" />
                 </Button>
               </DrawerClose>
               {/* Header */}
-              <DrawerHeader className="row-span-2 mb-0 gap-0 text-left">
-                <div className="mt-2 flex flex-col items-start gap-3 p-4">
-                  <SiteLogo className="-ml-2" />
-                  <DrawerDescription className="text-[0.825rem] font-normal text-secondary-foreground/70">
+              <DrawerHeader className="row-span-2 w-full mb-0 gap-0 text-left">
+                <div className="mt-2 flex flex-col items-start gap-3">
+                  <SiteLogo className="" />
+                  {/* <DrawerDescription className="text-[0.825rem] font-normal text-secondary-foreground/70">
                     Where Fashion Meets Art
-                  </DrawerDescription>
-                  <div className="flex w-full flex-row items-center justify-between">
-                    <NavSocialLinks className="-mb-1 text-secondary-foreground/70" />
-                    {/* <BasicModeToggle size={20} /> */}
-                  </div>
+                  </DrawerDescription> */}
                   <SearchBar className="mt-3" />
                 </div>
-                {/* <Separator className="bg-[var(--border-primary)]" /> */}
               </DrawerHeader>
 
               {/* Content */}
-              <nav className="row-span-3 mb-auto mt-0 flex w-full flex-col justify-start gap-2 p-6">
-                {/* <ul className="flex flex-col gap-4"> */}
+              <nav className="row-span-3 mb-auto mt-[10%] flex w-full flex-col justify-start gap-2 p-6">
                 <NavCollapsible />
               </nav>
 
               {/* Footer */}
               <DrawerFooter className="row-span-1 flex w-full flex-col gap-3 p-4 pb-6">
-                {/* <InteractiveLink href="/discounts">
-                  Seasonal Discounts
-                </InteractiveLink> */}
-
-                <ModeToggle size={22} className="ml-auto mr-1" />
-
-                <CountrySelect width="100%" />
+                {/* <InteractiveLink href="/discounts">Seasonal Discounts</InteractiveLink> */}
+                <div className="flex flex-row gap-6 items-center justify-between">
+                  <CountrySelect regions={regions} />
+                  <ModeToggle size={22} className="ml-auto mr-1" />
+                </div>
               </DrawerFooter>
             </div>
           </ScrollArea>

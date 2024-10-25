@@ -7,11 +7,18 @@ import {
   useCycle,
 } from 'framer-motion'
 
+import type { HttpTypes } from '@medusajs/types'
 import MenuItems from './menu-items'
 import MenuWrapper from './menu-wrapper'
 import ToggleButton from './toggle-button'
 
-const SideMenu = ({ className }: { className?: string }) => {
+const SideMenu = ({
+  regions,
+  className,
+}: {
+  regions: HttpTypes.StoreRegion[] | null
+  className?: string
+}) => {
   const [menuState, toggleMenuState] = useCycle(false, true)
 
   return (
@@ -34,7 +41,9 @@ const SideMenu = ({ className }: { className?: string }) => {
             animate={menuState ? 'open' : 'closed'}
             variant="slideUpFull"
           >
-            <AnimatePresence>{menuState && <MenuItems />}</AnimatePresence>
+            <AnimatePresence>
+              {menuState && <MenuItems regions={regions} />}
+            </AnimatePresence>
           </MenuWrapper>
           <ToggleButton
             variant="svg"
