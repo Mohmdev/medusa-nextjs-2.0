@@ -6,8 +6,8 @@ import {
   getCollectionsList,
 } from '@/lib/data/collections'
 import { listRegions } from '@/lib/data/regions'
-import CollectionTemplate from '@/modules/collections/templates'
-import { SortOptions } from '@/modules/store/components/refinement-list/sort-products'
+import CollectionTemplate from '@/modules/collections/templates/collection-template'
+import type { SortOptions } from '@/modules/store/components/refinement-list/sort-products'
 import { StoreCollection, StoreRegion } from '@medusajs/types'
 
 type Props = {
@@ -17,8 +17,6 @@ type Props = {
     sortBy?: SortOptions
   }
 }
-
-export const PRODUCT_LIMIT = 12
 
 export async function generateStaticParams() {
   const { collections } = await getCollectionsList()

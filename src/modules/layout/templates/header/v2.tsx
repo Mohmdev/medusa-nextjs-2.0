@@ -8,10 +8,10 @@ import NavCart from '../../components/nav-cart'
 import NavSearch from '../../components/nav-search/textual'
 import SideMenu from '../side-menu/framer-motion'
 
-export default async function Header({ className }: { className?: string }) {
+const Header = async ({ className }: { className?: string }) => {
   const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Medusa Store'
-  const regions: HttpTypes.StoreRegion[] | null = await listRegions().then(
-    (regions) => regions
+  const regions = await listRegions().then(
+    (regions: HttpTypes.StoreRegion[]) => regions
   )
 
   return (
@@ -51,3 +51,5 @@ export default async function Header({ className }: { className?: string }) {
     </header>
   )
 }
+
+export default Header

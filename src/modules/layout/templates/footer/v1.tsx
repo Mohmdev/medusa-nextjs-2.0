@@ -2,15 +2,12 @@ import { getCategoriesList } from '@/lib/data/categories'
 import { getCollectionsList } from '@/lib/data/collections'
 import { cn } from '@/lib/util/cn'
 import LocalizedClientLink from '@/modules/common/components/localized-client-link'
+import MedusaCTA from '@/ui/medusa-cta'
 import ModeToggleDropdown from '@/ui/mode-toggle/dropdown'
-import MedusaCTA from '../component-templates/~sub-components/medusa-cta'
-// import MedusaCTA from '../../components-shared/medusa-cta'
 
-const { collections } = await getCollectionsList(0, 6)
-const { product_categories } = await getCategoriesList(0, 6)
 const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Medusa Store'
 
-export default async function Footer({ className }: { className?: string }) {
+const Footer = ({ className }: { className?: string }) => {
   return (
     <footer
       className={cn(
@@ -38,6 +35,8 @@ export default async function Footer({ className }: { className?: string }) {
   )
 }
 
+export default Footer
+
 const FooterLinks = async ({ className }: { className?: string }) => {
   return (
     // Link groups grid
@@ -60,6 +59,7 @@ const FooterLinks = async ({ className }: { className?: string }) => {
 }
 
 const FooterCategoriesLinks = async ({ className }: { className?: string }) => {
+  const { product_categories } = await getCategoriesList(0, 6)
   return (
     <>
       {product_categories && product_categories?.length > 0 && (
@@ -129,6 +129,8 @@ const FooterCollectionsLinks = async ({
 }: {
   className?: string
 }) => {
+  const { collections } = await getCollectionsList(0, 6)
+
   return (
     <>
       {collections && collections.length > 0 && (
