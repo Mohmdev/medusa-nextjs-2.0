@@ -1,0 +1,22 @@
+{
+  "arrowParens": "always",
+  "printWidth": 80,
+  "singleQuote": false,
+  "endOfLine": "auto",
+  "jsxSingleQuote": false,
+  "jsxBracketSameLine": false,
+  "semi": false,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "importOrder": [
+    "^react",
+    "^next",
+    "<THIRD_PARTY_MODULES>",
+    "^@/(.*)$",
+    "^[./]"
+  ],
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "@ianvs/prettier-plugin-sort-imports"
+  ]
+}

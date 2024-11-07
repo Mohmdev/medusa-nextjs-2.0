@@ -1,6 +1,6 @@
+import React from "react"
 import { HttpTypes } from "@medusajs/types"
 import { clx } from "@medusajs/ui"
-import React from "react"
 
 type OptionSelectProps = {
   option: HttpTypes.StoreProductOption

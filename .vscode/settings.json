@@ -7,11 +7,12 @@
   },
 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.rulers": [100],
+  // "editor.rulers": [100],
   "editor.tabSize": 2,
   "editor.quickSuggestions": {
     "strings": true
@@ -20,18 +21,15 @@
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    "astro",
     "typescript",
     "typescriptreact"
   ],
-  "eslint.workingDirectories": ["cli", "upgrade", "www"],
 
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "typescript.tsdk": "node_modules/typescript/lib",
   "prettier.documentSelectors": [
     "**/*.{cjs,mjs,ts,tsx,astro,md,mdx,json,yaml,yml}"
   ],
-  "mdx.experimentalLanguageServer": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

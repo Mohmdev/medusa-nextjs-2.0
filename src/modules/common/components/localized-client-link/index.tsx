@@ -1,8 +1,8 @@
 "use client"
 
+import React from "react"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import React from "react"
 
 /**
  * Use this component to create a Next.js `<Link />` that persists the current country code in the url,

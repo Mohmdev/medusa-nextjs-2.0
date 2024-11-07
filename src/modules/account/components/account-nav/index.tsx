@@ -1,16 +1,16 @@
 "use client"
 
-import { clx } from "@medusajs/ui"
-import { ArrowRightOnRectangle } from "@medusajs/icons"
+import type React from "react"
 import { useParams, usePathname } from "next/navigation"
-
+import { signout } from "@lib/data/customer"
+import { ArrowRightOnRectangle } from "@medusajs/icons"
+import { HttpTypes } from "@medusajs/types"
+import { clx } from "@medusajs/ui"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ChevronDown from "@modules/common/icons/chevron-down"
-import User from "@modules/common/icons/user"
 import MapPin from "@modules/common/icons/map-pin"
 import Package from "@modules/common/icons/package"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { HttpTypes } from "@medusajs/types"
-import { signout } from "@lib/data/customer"
+import User from "@modules/common/icons/user"
 
 const AccountNav = ({
   customer,
@@ -30,7 +30,7 @@ const AccountNav = ({
         {route !== `/${countryCode}/account` ? (
           <LocalizedClientLink
             href="/account"
-            className="flex items-center gap-x-2 text-small-regular py-2"
+            className="flex items-center py-2 gap-x-2 text-small-regular"
             data-testid="account-main-link"
           >
             <>
@@ -40,7 +40,7 @@ const AccountNav = ({
           </LocalizedClientLink>
         ) : (
           <>
-            <div className="text-xl-semi mb-4 px-8">
+            <div className="px-8 mb-4 text-xl-semi">
               Hello {customer?.first_name}
             </div>
             <div className="text-base-regular">
@@ -48,7 +48,7 @@ const AccountNav = ({
                 <li>
                   <LocalizedClientLink
                     href="/account/profile"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between px-8 py-4 border-b border-gray-200"
                     data-testid="profile-link"
                   >
                     <>
@@ -63,7 +63,7 @@ const AccountNav = ({
                 <li>
                   <LocalizedClientLink
                     href="/account/addresses"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between px-8 py-4 border-b border-gray-200"
                     data-testid="addresses-link"
                   >
                     <>
@@ -78,7 +78,7 @@ const AccountNav = ({
                 <li>
                   <LocalizedClientLink
                     href="/account/orders"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between px-8 py-4 border-b border-gray-200"
                     data-testid="orders-link"
                   >
                     <div className="flex items-center gap-x-2">
@@ -91,7 +91,7 @@ const AccountNav = ({
                 <li>
                   <button
                     type="button"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8 w-full"
+                    className="flex items-center justify-between w-full px-8 py-4 border-b border-gray-200"
                     onClick={handleLogout}
                     data-testid="logout-button"
                   >
@@ -113,7 +113,7 @@ const AccountNav = ({
             <h3 className="text-base-semi">Account</h3>
           </div>
           <div className="text-base-regular">
-            <ul className="flex mb-0 justify-start items-start flex-col gap-y-4">
+            <ul className="flex flex-col items-start justify-start mb-0 gap-y-4">
               <li>
                 <AccountNavLink
                   href="/account"

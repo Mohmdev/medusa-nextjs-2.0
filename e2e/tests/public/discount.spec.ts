@@ -1,5 +1,5 @@
 import { seedDiscount, seedUser } from "../../data/seed"
-import { test, expect } from "../../index"
+import { expect, test } from "../../index"
 
 test.describe("Discount tests", async () => {
   let discount = {

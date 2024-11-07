@@ -1,5 +1,5 @@
-import { defineConfig, devices } from "@playwright/test"
 import path from "path"
+import { defineConfig, devices } from "@playwright/test"
 import "dotenv/config.js"
 
 export const STORAGE_STATE = path.join(__dirname, "playwright/.auth/user.json")
@@ -70,8 +70,8 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-     command: 'yarn start',
-     url: process.env.NEXT_PUBLIC_BASE_URL,
-  //   reuseExistingServer: !process.env.CI,
+    command: "yarn start",
+    url: process.env.NEXT_PUBLIC_BASE_URL,
+    //   reuseExistingServer: !process.env.CI,
   },
 })

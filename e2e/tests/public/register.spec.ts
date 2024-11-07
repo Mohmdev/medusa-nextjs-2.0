@@ -1,4 +1,4 @@
-import { test, expect } from "../../index"
+import { expect, test } from "../../index"
 
 test.describe("User registration functionality", async () => {
   test("registration with existing user shows error message", async ({

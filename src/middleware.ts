@@ -1,6 +1,6 @@
-import { HttpTypes } from "@medusajs/types"
 import { notFound } from "next/navigation"
 import { NextRequest, NextResponse } from "next/server"
+import type { HttpTypes } from "@medusajs/types"
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
 const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
@@ -135,7 +135,9 @@ export async function middleware(request: NextRequest) {
 
   // Set a cookie to indicate that we're onboarding. This is used to show the onboarding flow.
   if (isOnboarding) {
-    response.cookies.set("_medusa_onboarding", "true", { maxAge: 60 * 60 * 24 })
+    response.cookies.set("_medusa_onboarding", "true", {
+      maxAge: 60 * 60 * 24,
+    })
   }
 
   return response

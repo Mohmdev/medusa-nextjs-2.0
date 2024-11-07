@@ -1,6 +1,6 @@
 import { first } from "lodash"
 import { seedGiftcard, seedUser } from "../../data/seed"
-import { test, expect } from "../../index"
+import { expect, test } from "../../index"
 
 test.describe("Gift card tests", async () => {
   let giftcard = {

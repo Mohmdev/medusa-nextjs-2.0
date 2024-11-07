@@ -1,12 +1,9 @@
+import React, { JSX } from "react"
 import { RadioGroup } from "@headlessui/react"
-import { InformationCircleSolid } from "@medusajs/icons"
-import { Text, Tooltip, clx } from "@medusajs/ui"
-import React from "react"
-
-import Radio from "@modules/common/components/radio"
-
-import PaymentTest from "../payment-test"
 import { isManual } from "@lib/constants"
+import { clx, Text } from "@medusajs/ui"
+import Radio from "@modules/common/components/radio"
+import PaymentTest from "../payment-test"
 
 type PaymentContainerProps = {
   paymentProviderId: string

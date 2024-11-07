@@ -19,7 +19,7 @@
 
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-xsmall-regular;
+    @apply text-xsmall-regular -translate-y-2;
   }
 
   input:focus ~ label {
@@ -51,62 +51,62 @@
 
 @layer components {
   .content-container {
-    @apply max-w-[1440px] w-full mx-auto px-6;
+    @apply mx-auto w-full max-w-[1440px] px-6;
   }
 
   .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+    @apply rounded-full border border-black px-4 py-2 transition-colors duration-200 ease-in hover:bg-black hover:text-white;
   }
 
   .text-xsmall-regular {
-    @apply text-[10px] leading-4 font-normal;
+    @apply text-[10px] font-normal leading-4;
   }
 
   .text-small-regular {
-    @apply text-xs leading-5 font-normal;
+    @apply text-xs font-normal leading-5;
   }
 
   .text-small-semi {
-    @apply text-xs leading-5 font-semibold;
+    @apply text-xs font-semibold leading-5;
   }
 
   .text-base-regular {
-    @apply text-sm leading-6 font-normal;
+    @apply text-sm font-normal leading-6;
   }
 
   .text-base-semi {
-    @apply text-sm leading-6 font-semibold;
+    @apply text-sm font-semibold leading-6;
   }
 
   .text-large-regular {
-    @apply text-base leading-6 font-normal;
+    @apply text-base font-normal leading-6;
   }
 
   .text-large-semi {
-    @apply text-base leading-6 font-semibold;
+    @apply text-base font-semibold leading-6;
   }
 
   .text-xl-regular {
-    @apply text-2xl leading-[36px] font-normal;
+    @apply text-2xl font-normal leading-[36px];
   }
 
   .text-xl-semi {
-    @apply text-2xl leading-[36px] font-semibold;
+    @apply text-2xl font-semibold leading-[36px];
   }
 
   .text-2xl-regular {
-    @apply text-[30px] leading-[48px] font-normal;
+    @apply text-[30px] font-normal leading-[48px];
   }
 
   .text-2xl-semi {
-    @apply text-[30px] leading-[48px] font-semibold;
+    @apply text-[30px] font-semibold leading-[48px];
   }
 
   .text-3xl-regular {
-    @apply text-[32px] leading-[44px] font-normal;
+    @apply text-[32px] font-normal leading-[44px];
   }
 
   .text-3xl-semi {
-    @apply text-[32px] leading-[44px] font-semibold;
+    @apply text-[32px] font-semibold leading-[44px];
   }
 }

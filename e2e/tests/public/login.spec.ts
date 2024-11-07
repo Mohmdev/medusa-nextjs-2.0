@@ -1,4 +1,4 @@
-import { test, expect } from "../../index"
+import { expect, test } from "../../index"
 
 test.describe("Login Page functionality", async () => {
   test("access login page from nav menu and submit (partially) empty form", async ({

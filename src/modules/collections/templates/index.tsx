@@ -1,10 +1,9 @@
 import { Suspense } from "react"
-
+import { HttpTypes } from "@medusajs/types"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
-import { HttpTypes } from "@medusajs/types"
 
 export default function CollectionTemplate({
   sortBy,

@@ -1,4 +1,4 @@
-import { test, expect } from "../../index"
+import { expect, test } from "../../index"
 
 test.describe("Search tests", async () => {
   test("Searching for a specific product returns the correct product page", async ({

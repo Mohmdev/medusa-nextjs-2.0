@@ -1,6 +1,6 @@
+import { Locator, Page } from "@playwright/test"
 import { CartDropdown } from "./cart-dropdown"
 import { NavMenu } from "./nav-menu"
-import { Page, Locator } from "@playwright/test"
 import { SearchModal } from "./search-modal"
 
 export class BasePage {

@@ -1,6 +1,5 @@
-import { Container, Text } from "@medusajs/ui"
 import { useHits, useSearchBox } from "react-instantsearch-hooks-web"
-
+import { Container, Text } from "@medusajs/ui"
 import InteractiveLink from "@modules/common/components/interactive-link"
 
 const ShowAll = () => {

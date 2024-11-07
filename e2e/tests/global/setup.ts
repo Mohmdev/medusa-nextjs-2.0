@@ -1,8 +1,8 @@
 import { test as setup } from "@playwright/test"
-import { seedData } from "../../data/seed"
-import { OverviewPage as AccountOverviewPage } from "../../fixtures/account/overview-page"
-import { LoginPage } from "../../fixtures/account/login-page"
 import { STORAGE_STATE } from "../../../playwright.config"
+import { seedData } from "../../data/seed"
+import { LoginPage } from "../../fixtures/account/login-page"
+import { OverviewPage as AccountOverviewPage } from "../../fixtures/account/overview-page"
 
 setup(
   "Seed data and create session for authenticated user",

@@ -1,7 +1,6 @@
-import { Container, clx } from "@medusajs/ui"
-import Image from "next/image"
 import React from "react"
-
+import Image from "next/image"
+import { clx, Container } from "@medusajs/ui"
 import PlaceholderImage from "@modules/common/icons/placeholder-image"
 
 type ThumbnailProps = {

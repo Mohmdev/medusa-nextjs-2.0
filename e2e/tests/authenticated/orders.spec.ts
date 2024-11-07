@@ -1,4 +1,4 @@
-import { test, expect } from "../../index"
+import { expect, test } from "../../index"
 
 test.describe("Account orders page tests", async () => {
   test.beforeEach(async ({ accountAddressesPage }) => {

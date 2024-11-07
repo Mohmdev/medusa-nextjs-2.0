@@ -1,5 +1,5 @@
-import { sdk } from "@lib/config"
 import { cache } from "react"
+import { sdk } from "@lib/config"
 
 // Shipping actions
 export const listCartPaymentMethods = cache(async function (regionId: string) {

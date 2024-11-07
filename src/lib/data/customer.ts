@@ -1,11 +1,11 @@
 "use server"
 
-import { sdk } from "@lib/config"
-import medusaError from "@lib/util/medusa-error"
-import { HttpTypes } from "@medusajs/types"
+import { cache } from "react"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
-import { cache } from "react"
+import { sdk } from "@lib/config"
+import medusaError from "@lib/util/medusa-error"
+import type { HttpTypes } from "@medusajs/types"
 import { getAuthHeaders, removeAuthToken, setAuthToken } from "./cookies"
 
 export const getCustomer = cache(async function () {
@@ -15,9 +15,11 @@ export const getCustomer = cache(async function () {
     .catch(() => null)
 })
 
-export const updateCustomer = cache(async function (
-  body: HttpTypes.StoreUpdateCustomer
-) {
+type UpdateCustomerInput = HttpTypes.StoreUpdateCustomer & {
+  email?: string
+}
+
+export const updateCustomer = cache(async function (body: UpdateCustomerInput) {
   const updateRes = await sdk.store.customer
     .update(body, {}, getAuthHeaders())
     .then(({ customer }) => customer)

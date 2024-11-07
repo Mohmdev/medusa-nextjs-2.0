@@ -1,6 +1,5 @@
-import { Label } from "@medusajs/ui"
 import React, { useEffect, useImperativeHandle, useState } from "react"
-
+import { Label } from "@medusajs/ui"
 import Eye from "@modules/common/icons/eye"
 import EyeOff from "@modules/common/icons/eye-off"
 

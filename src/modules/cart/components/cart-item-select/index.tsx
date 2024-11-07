@@ -1,15 +1,14 @@
 "use client"
 
-import { IconBadge, clx } from "@medusajs/ui"
 import {
-  SelectHTMLAttributes,
   forwardRef,
+  SelectHTMLAttributes,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from "react"
-
+import { clx, IconBadge } from "@medusajs/ui"
 import ChevronDown from "@modules/common/icons/chevron-down"
 
 type NativeSelectProps = {

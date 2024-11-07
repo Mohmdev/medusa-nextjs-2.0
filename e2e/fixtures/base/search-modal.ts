@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test"
+import { Locator, Page } from "@playwright/test"
 import { BaseModal } from "./base-modal"
 import { NavMenu } from "./nav-menu"
 

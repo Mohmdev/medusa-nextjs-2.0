@@ -2,12 +2,10 @@
 
 import React, { useEffect } from "react"
 import { useFormState } from "react-dom"
-
-import Input from "@modules/common/components/input"
-
-import AccountInfo from "../account-info"
+import { updateCustomer } from "@lib/data/customer"
 import { HttpTypes } from "@medusajs/types"
-// import { updateCustomer } from "@lib/data/customer"
+import Input from "@modules/common/components/input"
+import AccountInfo from "../account-info"
 
 type MyInformationProps = {
   customer: HttpTypes.StoreCustomer
@@ -17,16 +15,16 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
   const [successState, setSuccessState] = React.useState(false)
 
   // TODO: It seems we don't support updating emails now?
-  const updateCustomerEmail = (
+  const updateCustomerEmail = async (
     _currentState: Record<string, unknown>,
     formData: FormData
   ) => {
-    const customer = {
+    const customerUpdate = {
       email: formData.get("email") as string,
     }
 
     try {
-      // await updateCustomer(customer)
+      await updateCustomer(customerUpdate)
       return { success: true, error: null }
     } catch (error: any) {
       return { success: false, error: error.toString() }

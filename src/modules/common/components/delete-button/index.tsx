@@ -1,7 +1,7 @@
+import React, { useState } from "react"
 import { deleteLineItem } from "@lib/data/cart"
 import { Spinner, Trash } from "@medusajs/icons"
 import { clx } from "@medusajs/ui"
-import { useState } from "react"
 
 const DeleteButton = ({
   id,
@@ -29,7 +29,7 @@ const DeleteButton = ({
       )}
     >
       <button
-        className="flex gap-x-1 text-ui-fg-subtle hover:text-ui-fg-base cursor-pointer"
+        className="flex cursor-pointer gap-x-1 text-ui-fg-subtle hover:text-ui-fg-base"
         onClick={() => handleDelete(id)}
       >
         {isDeleting ? <Spinner className="animate-spin" /> : <Trash />}

@@ -1,8 +1,9 @@
 "use client"
 
-import { Stripe, StripeElementsOptions } from "@stripe/stripe-js"
-import { Elements } from "@stripe/react-stripe-js"
+import type React from "react"
 import { HttpTypes } from "@medusajs/types"
+import { Elements } from "@stripe/react-stripe-js"
+import { Stripe, StripeElementsOptions } from "@stripe/stripe-js"
 
 type StripeWrapperProps = {
   paymentSession: HttpTypes.StorePaymentSession

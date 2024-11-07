@@ -1,13 +1,13 @@
-import { ChevronUpDown } from "@medusajs/icons"
-import { clx } from "@medusajs/ui"
 import {
-  SelectHTMLAttributes,
   forwardRef,
+  SelectHTMLAttributes,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from "react"
+import { ChevronUpDown } from "@medusajs/icons"
+import { clx } from "@medusajs/ui"
 
 export type NativeSelectProps = {
   placeholder?: string

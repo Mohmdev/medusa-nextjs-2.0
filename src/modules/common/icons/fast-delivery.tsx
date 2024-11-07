@@ -1,5 +1,4 @@
 import React from "react"
-
 import { IconProps } from "types/icon"
 
 const FastDelivery: React.FC<IconProps> = ({

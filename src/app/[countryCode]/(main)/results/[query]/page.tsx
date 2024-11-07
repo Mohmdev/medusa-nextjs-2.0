@@ -1,8 +1,6 @@
 import { Metadata } from "next"
-
-import SearchResultsTemplate from "@modules/search/templates/search-results-template"
-
 import { search } from "@modules/search/actions"
+import SearchResultsTemplate from "@modules/search/templates/search-results-template"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 
 export const metadata: Metadata = {

@@ -1,10 +1,9 @@
 import { Metadata } from "next"
-
-import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 import { notFound } from "next/navigation"
 import { enrichLineItems } from "@lib/data/cart"
 import { retrieveOrder } from "@lib/data/orders"
-import { HttpTypes } from "@medusajs/types"
+import type { HttpTypes } from "@medusajs/types"
+import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 
 type Props = {
   params: { id: string }

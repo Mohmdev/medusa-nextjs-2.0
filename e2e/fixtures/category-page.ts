@@ -38,11 +38,14 @@ export class CategoryPage extends BasePage {
     })
     await link.click()
     // wait for page change
-    await this.page.waitForFunction((linkElement) => {
-      if (!linkElement) {
-        return true
-      }
-      return linkElement.dataset.active === "true"
-    }, await link.elementHandle())
+    await this.page.waitForFunction(
+      (linkElement) => {
+        if (!linkElement) {
+          return true
+        }
+        return linkElement.dataset.active === "true"
+      },
+      await link.elementHandle()
+    )
   }
 }

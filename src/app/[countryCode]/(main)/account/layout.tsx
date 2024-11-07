@@ -1,3 +1,4 @@
+import React from "react"
 import { getCustomer } from "@lib/data/customer"
 import AccountLayout from "@modules/account/templates/account-layout"
 

@@ -1,9 +1,9 @@
-import { sdk } from "@lib/config"
-import { HttpTypes } from "@medusajs/types"
 import { cache } from "react"
-import { getRegion } from "./regions"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { sdk } from "@lib/config"
 import { sortProducts } from "@lib/util/sort-products"
+import type { HttpTypes } from "@medusajs/types"
+import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { getRegion } from "./regions"
 
 export const getProductsById = cache(async function ({
   ids,

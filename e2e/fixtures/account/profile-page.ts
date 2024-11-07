@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test"
-import { AccountPage } from "./account-page"
 import { camelCase } from "lodash"
+import { AccountPage } from "./account-page"
 
 export class ProfilePage extends AccountPage {
   profileWrapper: Locator

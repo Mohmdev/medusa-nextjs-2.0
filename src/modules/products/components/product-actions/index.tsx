@@ -1,18 +1,16 @@
 "use client"
 
-import { Button } from "@medusajs/ui"
-import { isEqual } from "lodash"
-import { useParams } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
-
+import { useParams } from "next/navigation"
+import { addToCart } from "@lib/data/cart"
 import { useIntersection } from "@lib/hooks/use-in-view"
+import { HttpTypes } from "@medusajs/types"
+import { Button } from "@medusajs/ui"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
-
-import MobileActions from "./mobile-actions"
+import { isEqual } from "lodash"
 import ProductPrice from "../product-price"
-import { addToCart } from "@lib/data/cart"
-import { HttpTypes } from "@medusajs/types"
+import MobileActions from "./mobile-actions"
 
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
@@ -20,7 +18,9 @@ type ProductActionsProps = {
   disabled?: boolean
 }
 
-const optionsAsKeymap = (variantOptions: HttpTypes.StoreProductVariant["options"]) => {
+const optionsAsKeymap = (
+  variantOptions: HttpTypes.StoreProductVariant["options"]
+) => {
   return variantOptions?.reduce((acc: Record<string, string>, varopt: any) => {
     acc[varopt.option_id] = varopt.value
     return acc
@@ -144,8 +144,8 @@ export default function ProductActions({
           {!selectedVariant
             ? "Select variant"
             : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
+              ? "Out of stock"
+              : "Add to cart"}
         </Button>
         <MobileActions
           product={product}

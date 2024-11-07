@@ -1,4 +1,4 @@
-import { test, expect } from "../../index"
+import { expect, test } from "../../index"
 import { compareFloats, getFloatValue } from "../../utils"
 
 test.describe("Checkout flow tests", async () => {

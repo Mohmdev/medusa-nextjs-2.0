@@ -2,7 +2,7 @@
 Test List
 - login from the sign in page redirects you page to the cart
 */
-import { test, expect } from "../../index"
+import { expect, test } from "../../index"
 import { compareFloats, getFloatValue } from "../../utils"
 
 test.describe("Cart tests", async () => {

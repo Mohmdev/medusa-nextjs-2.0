@@ -1,9 +1,8 @@
-import { Disclosure } from "@headlessui/react"
-import { Badge, Button, clx } from "@medusajs/ui"
-import { useEffect } from "react"
-
-import useToggleState from "@lib/hooks/use-toggle-state"
+import React, { useEffect } from "react"
 import { useFormStatus } from "react-dom"
+import { Disclosure } from "@headlessui/react"
+import useToggleState from "@lib/hooks/use-toggle-state"
+import { Badge, Button, clx } from "@medusajs/ui"
 
 type AccountInfoProps = {
   label: string
@@ -13,7 +12,7 @@ type AccountInfoProps = {
   errorMessage?: string
   clearState: () => void
   children?: React.ReactNode
-  'data-testid'?: string
+  "data-testid"?: string
 }
 
 const AccountInfo = ({
@@ -24,7 +23,7 @@ const AccountInfo = ({
   clearState,
   errorMessage = "An error occurred, please try again",
   children,
-  'data-testid': dataTestid
+  "data-testid": dataTestid,
 }: AccountInfoProps) => {
   const { state, close, toggle } = useToggleState()
 
@@ -46,9 +45,11 @@ const AccountInfo = ({
       <div className="flex items-end justify-between">
         <div className="flex flex-col">
           <span className="uppercase text-ui-fg-base">{label}</span>
-          <div className="flex items-center flex-1 basis-0 justify-end gap-x-4">
+          <div className="flex items-center justify-end flex-1 basis-0 gap-x-4">
             {typeof currentInfo === "string" ? (
-              <span className="font-semibold" data-testid="current-info">{currentInfo}</span>
+              <span className="font-semibold" data-testid="current-info">
+                {currentInfo}
+              </span>
             ) : (
               currentInfo
             )}
@@ -117,7 +118,7 @@ const AccountInfo = ({
             }
           )}
         >
-          <div className="flex flex-col gap-y-2 py-4">
+          <div className="flex flex-col py-4 gap-y-2">
             <div>{children}</div>
             <div className="flex items-center justify-end mt-2">
               <Button

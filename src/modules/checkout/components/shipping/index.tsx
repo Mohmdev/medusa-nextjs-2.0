@@ -1,17 +1,16 @@
 "use client"
 
+import React, { useEffect, useState } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { RadioGroup } from "@headlessui/react"
-import { CheckCircleSolid } from "@medusajs/icons"
-import { Button, Heading, Text, clx } from "@medusajs/ui"
-
-import Divider from "@modules/common/components/divider"
-import Radio from "@modules/common/components/radio"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import { useRouter, useSearchParams, usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
 import { setShippingMethod } from "@lib/data/cart"
 import { convertToLocale } from "@lib/util/money"
+import { CheckCircleSolid } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
+import { Button, clx, Heading, Text } from "@medusajs/ui"
+import ErrorMessage from "@modules/checkout/components/error-message"
+import Divider from "@modules/common/components/divider"
+import Radio from "@modules/common/components/radio"
 
 type ShippingProps = {
   cart: HttpTypes.StoreCart
@@ -149,7 +148,7 @@ const Shipping: React.FC<ShippingProps> = ({
           <div className="text-small-regular">
             {cart && (cart.shipping_methods?.length ?? 0) > 0 && (
               <div className="flex flex-col w-1/3">
-                <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                <Text className="mb-1 txt-medium-plus text-ui-fg-base">
                   Method
                 </Text>
                 <Text className="txt-medium text-ui-fg-subtle">

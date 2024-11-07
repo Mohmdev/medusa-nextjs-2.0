@@ -14,7 +14,7 @@ type PaginatedProductsParams = {
   order?: string
 }
 
-export default async function PaginatedProducts({
+const PaginatedProducts = async ({
   sortBy,
   page,
   collectionId,
@@ -28,7 +28,7 @@ export default async function PaginatedProducts({
   categoryId?: string
   productsIds?: string[]
   countryCode: string
-}) {
+}) => {
   const queryParams: PaginatedProductsParams = {
     limit: 12,
   }
@@ -69,7 +69,7 @@ export default async function PaginatedProducts({
   return (
     <>
       <ul
-        className="grid grid-cols-2 w-full small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8"
+        className="grid w-full grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8"
         data-testid="products-list"
       >
         {products.map((p) => {
@@ -90,3 +90,5 @@ export default async function PaginatedProducts({
     </>
   )
 }
+
+export default PaginatedProducts

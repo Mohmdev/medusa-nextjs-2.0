@@ -1,6 +1,6 @@
-import { Text, clx } from "@medusajs/ui"
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import React from "react"
+import { clx, Text } from "@medusajs/ui"
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
 
 type AccordionItemProps = AccordionPrimitive.AccordionItemProps & {
   title: string
