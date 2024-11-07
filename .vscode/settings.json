@@ -1,7 +1,0 @@
-{
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "prettier.prettierPath": "./node_modules/prettier",
-  "vs-code-prettier-eslint.prettierLast": true,
-  "eslint.nodePath": "./node_modules/eslint",
-  "eslint.run": "onSave"
-}
