@@ -1,4 +1,4 @@
-import { cookies } from "next/headers"
+import { cookies, type UnsafeUnwrappedCookies } from "next/headers"
 import { HttpTypes } from "@medusajs/types"
 import { Heading } from "@medusajs/ui"
 import CartTotals from "@modules/common/components/cart-totals"
@@ -16,7 +16,9 @@ type OrderCompletedTemplateProps = {
 export default function OrderCompletedTemplate({
   order,
 }: OrderCompletedTemplateProps) {
-  const isOnboarding = cookies().get("_medusa_onboarding")?.value === "true"
+  const isOnboarding =
+    (cookies() as unknown as UnsafeUnwrappedCookies).get("_medusa_onboarding")
+      ?.value === "true"
 
   return (
     <div className="py-6 min-h-[calc(100vh-64px)]">

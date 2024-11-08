@@ -36,7 +36,7 @@ const SearchBoxWrapper = ({
 }: SearchBoxProps) => {
   const { query, refine } = useSearchBox(rest)
   const [value, setValue] = useState(query)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null!)
 
   const router = useRouter()
 

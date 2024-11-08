@@ -6,7 +6,7 @@ import type { HttpTypes } from "@medusajs/types"
 import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 
 type Props = {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 async function getOrder(id: string) {
@@ -29,7 +29,8 @@ export const metadata: Metadata = {
   description: "You purchase was successful",
 }
 
-export default async function OrderConfirmedPage({ params }: Props) {
+export default async function OrderConfirmedPage(props: Props) {
+  const params = await props.params
   const order = await getOrder(params.id)
   if (!order) {
     return notFound()
