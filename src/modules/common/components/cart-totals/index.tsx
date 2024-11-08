@@ -1,9 +1,7 @@
 "use client"
 
 import React from "react"
-import { InformationCircleSolid } from "@medusajs/icons"
-import { Tooltip } from "@medusajs/ui"
-import { convertToLocale } from "@/lib/util/money"
+import { convertToLocale } from "@/lib/utils/money"
 
 type CartTotalsProps = {
   totals: {

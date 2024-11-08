@@ -3,7 +3,7 @@ import { Listbox, Transition } from "@headlessui/react"
 import { ChevronUpDown } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
 import { clx } from "@medusajs/ui"
-import compareAddresses from "@/lib/util/compare-addresses"
+import compareAddresses from "@/lib/utils/compare-addresses"
 import Radio from "@/modules/common/components/radio"
 
 type AddressSelectProps = {

@@ -2,7 +2,7 @@
 
 import { HttpTypes } from "@medusajs/types"
 import { clx, Table } from "@medusajs/ui"
-import repeat from "@/lib/util/repeat"
+import repeat from "@/lib/utils/repeat"
 import Item from "@/modules/cart/components/item"
 import SkeletonLineItem from "@/modules/skeletons/components/skeleton-line-item"
 

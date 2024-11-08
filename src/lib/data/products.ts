@@ -1,7 +1,7 @@
 import { cache } from "react"
 import type { HttpTypes } from "@medusajs/types"
 import { sdk } from "@/lib/config"
-import { sortProducts } from "@/lib/util/sort-products"
+import { sortProducts } from "@/lib/utils/sort-products"
 import { SortOptions } from "@/modules/store/components/refinement-list/sort-products"
 import { getRegion } from "./regions"
 

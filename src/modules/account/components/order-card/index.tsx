@@ -1,7 +1,7 @@
 import { useMemo } from "react"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
-import { convertToLocale } from "@/lib/util/money"
+import { convertToLocale } from "@/lib/utils/money"
 import LocalizedClientLink from "@/modules/common/components/localized-client-link"
 import Thumbnail from "@/modules/products/components/thumbnail"
 

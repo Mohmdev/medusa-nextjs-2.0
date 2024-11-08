@@ -2,7 +2,7 @@
 
 import { cache } from "react"
 import { sdk } from "@/lib/config"
-import medusaError from "@/lib/util/medusa-error"
+import medusaError from "@/lib/utils/medusa-error"
 import { getAuthHeaders } from "./cookies"
 
 export const retrieveOrder = cache(async function (id: string) {
