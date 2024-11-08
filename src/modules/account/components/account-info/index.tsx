@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
 import { useFormStatus } from "react-dom"
 import { Disclosure, DisclosurePanel } from "@headlessui/react"
-import useToggleState from "@lib/hooks/use-toggle-state"
 import { Badge, Button, clx } from "@medusajs/ui"
+import useToggleState from "@/lib/hooks/use-toggle-state"
 
 type AccountInfoProps = {
   label: string

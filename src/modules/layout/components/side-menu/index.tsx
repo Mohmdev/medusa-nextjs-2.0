@@ -5,7 +5,7 @@ import { Popover, Transition } from "@headlessui/react"
 import { ArrowRightMini, XMark } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
 import { clx, Text, useToggleState } from "@medusajs/ui"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import LocalizedClientLink from "@/modules/common/components/localized-client-link"
 import CountrySelect from "../country-select"
 
 const SideMenuItems = {

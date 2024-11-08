@@ -1,9 +1,9 @@
 import { useMemo } from "react"
-import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import Thumbnail from "@modules/products/components/thumbnail"
+import { convertToLocale } from "@/lib/util/money"
+import LocalizedClientLink from "@/modules/common/components/localized-client-link"
+import Thumbnail from "@/modules/products/components/thumbnail"
 
 type OrderCardProps = {
   order: HttpTypes.StoreOrder

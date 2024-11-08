@@ -10,9 +10,9 @@ import {
   ListboxOptions,
   Transition,
 } from "@headlessui/react"
-import { updateRegion } from "@lib/data/cart"
-import { StateType } from "@lib/hooks/use-toggle-state"
 import { HttpTypes } from "@medusajs/types"
+import { updateRegion } from "@/lib/data/cart"
+import { StateType } from "@/lib/hooks/use-toggle-state"
 
 type CountryOption = {
   country: string

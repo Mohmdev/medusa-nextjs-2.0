@@ -3,14 +3,14 @@
 import React, { useEffect, useState } from "react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { RadioGroup } from "@headlessui/react"
-import { setShippingMethod } from "@lib/data/cart"
-import { convertToLocale } from "@lib/util/money"
 import { CheckCircleSolid } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
 import { Button, clx, Heading, Text } from "@medusajs/ui"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import Divider from "@modules/common/components/divider"
-import Radio from "@modules/common/components/radio"
+import { setShippingMethod } from "@/lib/data/cart"
+import { convertToLocale } from "@/lib/util/money"
+import ErrorMessage from "@/modules/checkout/components/error-message"
+import Divider from "@/modules/common/components/divider"
+import Radio from "@/modules/common/components/radio"
 
 type ShippingProps = {
   cart: HttpTypes.StoreCart

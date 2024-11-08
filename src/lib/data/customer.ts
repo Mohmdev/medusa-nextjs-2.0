@@ -3,9 +3,9 @@
 import { cache } from "react"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
-import { sdk } from "@lib/config"
-import medusaError from "@lib/util/medusa-error"
 import type { HttpTypes } from "@medusajs/types"
+import { sdk } from "@/lib/config"
+import medusaError from "@/lib/util/medusa-error"
 import { getAuthHeaders, removeAuthToken, setAuthToken } from "./cookies"
 
 export const getCustomer = cache(async function () {

@@ -1,6 +1,6 @@
 import { cache } from "react"
-import { sdk } from "@lib/config"
 import type { HttpTypes } from "@medusajs/types"
+import { sdk } from "@/lib/config"
 import { getProductsList } from "./products"
 
 export const retrieveCollection = cache(async function (id: string) {

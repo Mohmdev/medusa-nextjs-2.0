@@ -1,8 +1,8 @@
 import React, { Fragment } from "react"
 import { Dialog, Transition } from "@headlessui/react"
-import { ModalProvider, useModal } from "@lib/context/modal-context"
 import { clx } from "@medusajs/ui"
-import X from "@modules/common/icons/x"
+import { ModalProvider, useModal } from "@/lib/context/modal-context"
+import X from "@/modules/common/icons/x"
 
 type ModalProps = {
   isOpen: boolean

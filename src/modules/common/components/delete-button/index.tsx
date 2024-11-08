@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { deleteLineItem } from "@lib/data/cart"
 import { Spinner, Trash } from "@medusajs/icons"
 import { clx } from "@medusajs/ui"
+import { deleteLineItem } from "@/lib/data/cart"
 
 const DeleteButton = ({
   id,

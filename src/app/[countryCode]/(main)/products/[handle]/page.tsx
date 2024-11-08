@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { sdk } from "@lib/config"
-import { getProductByHandle } from "@lib/data/products"
-import { getRegion, listRegions } from "@lib/data/regions"
-import ProductTemplate from "@modules/products/templates"
+import { sdk } from "@/lib/config"
+import { getProductByHandle } from "@/lib/data/products"
+import { getRegion, listRegions } from "@/lib/data/regions"
+import ProductTemplate from "@/modules/products/templates"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>

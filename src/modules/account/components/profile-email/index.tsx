@@ -2,9 +2,9 @@
 
 import React, { useEffect } from "react"
 import { useFormState } from "react-dom"
-import { updateCustomer } from "@lib/data/customer"
 import { HttpTypes } from "@medusajs/types"
-import Input from "@modules/common/components/input"
+import { updateCustomer } from "@/lib/data/customer"
+import Input from "@/modules/common/components/input"
 import AccountInfo from "../account-info"
 
 type MyInformationProps = {

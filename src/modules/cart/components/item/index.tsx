@@ -1,18 +1,18 @@
 "use client"
 
 import { useState } from "react"
-import { updateLineItem } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import { clx, Table, Text } from "@medusajs/ui"
-import CartItemSelect from "@modules/cart/components/cart-item-select"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import DeleteButton from "@modules/common/components/delete-button"
-import LineItemOptions from "@modules/common/components/line-item-options"
-import LineItemPrice from "@modules/common/components/line-item-price"
-import LineItemUnitPrice from "@modules/common/components/line-item-unit-price"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import Spinner from "@modules/common/icons/spinner"
-import Thumbnail from "@modules/products/components/thumbnail"
+import { updateLineItem } from "@/lib/data/cart"
+import CartItemSelect from "@/modules/cart/components/cart-item-select"
+import ErrorMessage from "@/modules/checkout/components/error-message"
+import DeleteButton from "@/modules/common/components/delete-button"
+import LineItemOptions from "@/modules/common/components/line-item-options"
+import LineItemPrice from "@/modules/common/components/line-item-price"
+import LineItemUnitPrice from "@/modules/common/components/line-item-unit-price"
+import LocalizedClientLink from "@/modules/common/components/localized-client-link"
+import Spinner from "@/modules/common/icons/spinner"
+import Thumbnail from "@/modules/products/components/thumbnail"
 
 type ItemProps = {
   item: HttpTypes.StoreCartLineItem

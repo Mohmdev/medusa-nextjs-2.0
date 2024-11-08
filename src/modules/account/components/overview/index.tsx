@@ -1,8 +1,8 @@
-import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
 import { Container } from "@medusajs/ui"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import ChevronDown from "@modules/common/icons/chevron-down"
+import { convertToLocale } from "@/lib/util/money"
+import LocalizedClientLink from "@/modules/common/components/localized-client-link"
+import ChevronDown from "@/modules/common/icons/chevron-down"
 
 type OverviewProps = {
   customer: HttpTypes.StoreCustomer | null

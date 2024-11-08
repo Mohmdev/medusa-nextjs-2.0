@@ -2,10 +2,10 @@
 
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
-import { sdk } from "@lib/config"
-import medusaError from "@lib/util/medusa-error"
 import type { HttpTypes } from "@medusajs/types"
 import { omit } from "lodash"
+import { sdk } from "@/lib/config"
+import medusaError from "@/lib/util/medusa-error"
 import { getAuthHeaders, getCartId, removeCartId, setCartId } from "./cookies"
 import { getProductsById } from "./products"
 import { getRegion } from "./regions"

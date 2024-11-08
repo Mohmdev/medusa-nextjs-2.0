@@ -2,15 +2,15 @@
 
 import type React from "react"
 import { useParams, usePathname } from "next/navigation"
-import { signout } from "@lib/data/customer"
 import { ArrowRightOnRectangle } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
 import { clx } from "@medusajs/ui"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import ChevronDown from "@modules/common/icons/chevron-down"
-import MapPin from "@modules/common/icons/map-pin"
-import Package from "@modules/common/icons/package"
-import User from "@modules/common/icons/user"
+import { signout } from "@/lib/data/customer"
+import LocalizedClientLink from "@/modules/common/components/localized-client-link"
+import ChevronDown from "@/modules/common/icons/chevron-down"
+import MapPin from "@/modules/common/icons/map-pin"
+import Package from "@/modules/common/icons/package"
+import User from "@/modules/common/icons/user"
 
 const AccountNav = ({
   customer,

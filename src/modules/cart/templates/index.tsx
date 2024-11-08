@@ -1,5 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
-import Divider from "@modules/common/components/divider"
+import Divider from "@/modules/common/components/divider"
 import EmptyCartMessage from "../components/empty-cart-message"
 import SignInPrompt from "../components/sign-in-prompt"
 import ItemsTemplate from "./items"

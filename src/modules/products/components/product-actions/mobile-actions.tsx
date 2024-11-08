@@ -1,11 +1,11 @@
 import React, { Fragment, useMemo } from "react"
 import { Dialog, Transition } from "@headlessui/react"
-import useToggleState from "@lib/hooks/use-toggle-state"
-import { getProductPrice } from "@lib/util/get-product-price"
 import { HttpTypes } from "@medusajs/types"
 import { Button, clx } from "@medusajs/ui"
-import ChevronDown from "@modules/common/icons/chevron-down"
-import X from "@modules/common/icons/x"
+import useToggleState from "@/lib/hooks/use-toggle-state"
+import { getProductPrice } from "@/lib/util/get-product-price"
+import ChevronDown from "@/modules/common/icons/chevron-down"
+import X from "@/modules/common/icons/x"
 import OptionSelect from "./option-select"
 
 type MobileActionsProps = {

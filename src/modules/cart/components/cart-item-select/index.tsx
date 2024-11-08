@@ -9,7 +9,7 @@ import {
   useState,
 } from "react"
 import { clx, IconBadge } from "@medusajs/ui"
-import ChevronDown from "@modules/common/icons/chevron-down"
+import ChevronDown from "@/modules/common/icons/chevron-down"
 
 type NativeSelectProps = {
   placeholder?: string
