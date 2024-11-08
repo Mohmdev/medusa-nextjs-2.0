@@ -11,14 +11,18 @@ import { getProductsById } from "./products"
 import { getRegion } from "./regions"
 
 export async function retrieveCart() {
-  const cartId = getCartId()
+  const cartId = await getCartId()
 
   if (!cartId) {
     return null
   }
 
   return await sdk.store.cart
-    .retrieve(cartId, {}, { next: { tags: ["cart"] }, ...getAuthHeaders() })
+    .retrieve(
+      cartId,
+      {},
+      { next: { tags: ["cart"] }, ...(await getAuthHeaders()) }
+    )
     .then(({ cart }) => cart)
     .catch(() => {
       return null
@@ -45,7 +49,7 @@ export async function getOrSetCart(countryCode: string) {
       cart.id,
       { region_id: region.id },
       {},
-      getAuthHeaders()
+      await getAuthHeaders()
     )
     revalidateTag("cart")
   }
@@ -54,13 +58,13 @@ export async function getOrSetCart(countryCode: string) {
 }
 
 export async function updateCart(data: HttpTypes.StoreUpdateCart) {
-  const cartId = getCartId()
+  const cartId = await getCartId()
   if (!cartId) {
     throw new Error("No existing cart found, please create one before updating")
   }
 
   return sdk.store.cart
-    .update(cartId, data, {}, getAuthHeaders())
+    .update(cartId, data, {}, await getAuthHeaders())
     .then(({ cart }) => {
       revalidateTag("cart")
       return cart
@@ -94,7 +98,7 @@ export async function addToCart({
         quantity,
       },
       {},
-      getAuthHeaders()
+      await getAuthHeaders()
     )
     .then(() => {
       revalidateTag("cart")
@@ -113,13 +117,13 @@ export async function updateLineItem({
     throw new Error("Missing lineItem ID when updating line item")
   }
 
-  const cartId = getCartId()
+  const cartId = await getCartId()
   if (!cartId) {
     throw new Error("Missing cart ID when updating line item")
   }
 
   await sdk.store.cart
-    .updateLineItem(cartId, lineId, { quantity }, {}, getAuthHeaders())
+    .updateLineItem(cartId, lineId, { quantity }, {}, await getAuthHeaders())
     .then(() => {
       revalidateTag("cart")
     })
@@ -131,13 +135,13 @@ export async function deleteLineItem(lineId: string) {
     throw new Error("Missing lineItem ID when deleting line item")
   }
 
-  const cartId = getCartId()
+  const cartId = await getCartId()
   if (!cartId) {
     throw new Error("Missing cart ID when deleting line item")
   }
 
   await sdk.store.cart
-    .deleteLineItem(cartId, lineId, getAuthHeaders())
+    .deleteLineItem(cartId, lineId, await getAuthHeaders())
     .then(() => {
       revalidateTag("cart")
     })
@@ -204,7 +208,7 @@ export async function setShippingMethod({
       cartId,
       { option_id: shippingMethodId },
       {},
-      getAuthHeaders()
+      await getAuthHeaders()
     )
     .then(() => {
       revalidateTag("cart")
@@ -220,7 +224,7 @@ export async function initiatePaymentSession(
   }
 ) {
   return sdk.store.payment
-    .initiatePaymentSession(cart, data, {}, getAuthHeaders())
+    .initiatePaymentSession(cart, data, {}, await getAuthHeaders())
     .then((resp) => {
       revalidateTag("cart")
       return resp
@@ -229,7 +233,7 @@ export async function initiatePaymentSession(
 }
 
 export async function applyPromotions(codes: string[]) {
-  const cartId = getCartId()
+  const cartId = await getCartId()
   if (!cartId) {
     throw new Error("No existing cart found")
   }
@@ -350,13 +354,13 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
 }
 
 export async function placeOrder() {
-  const cartId = getCartId()
+  const cartId = await getCartId()
   if (!cartId) {
     throw new Error("No existing cart found when placing an order")
   }
 
   const cartRes = await sdk.store.cart
-    .complete(cartId, {}, getAuthHeaders())
+    .complete(cartId, {}, await getAuthHeaders())
     .then((cartRes) => {
       revalidateTag("cart")
       return cartRes
@@ -379,7 +383,7 @@ export async function placeOrder() {
  * @param countryCode
  */
 export async function updateRegion(countryCode: string, currentPath: string) {
-  const cartId = getCartId()
+  const cartId = await getCartId()
   const region = await getRegion(countryCode)
 
   if (!region) {
