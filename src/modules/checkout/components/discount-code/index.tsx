@@ -1,7 +1,6 @@
 "use client"
 
-import React from "react"
-import { useFormState } from "react-dom"
+import React, { useActionState } from "react"
 import { HttpTypes } from "@medusajs/types"
 import { Badge, Heading, Input, Label, Text } from "@medusajs/ui"
 import { applyPromotions, submitPromotionForm } from "@/lib/data/cart"
@@ -48,13 +47,13 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     }
   }
 
-  const [message, formAction] = useFormState(submitPromotionForm, null)
+  const [message, formAction] = useActionState(submitPromotionForm, null)
 
   return (
-    <div className="w-full bg-white flex flex-col">
+    <div className="flex flex-col w-full bg-white">
       <div className="txt-medium">
         <form action={(a) => addPromotionCode(a)} className="w-full mb-5">
-          <Label className="flex gap-x-1 my-2 items-center">
+          <Label className="flex items-center my-2 gap-x-1">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
@@ -97,9 +96,9 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
         </form>
 
         {promotions.length > 0 && (
-          <div className="w-full flex items-center">
+          <div className="flex items-center w-full">
             <div className="flex flex-col w-full">
-              <Heading className="txt-medium mb-2">
+              <Heading className="mb-2 txt-medium">
                 Promotion(s) applied:
               </Heading>
 
@@ -110,7 +109,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                     className="flex items-center justify-between w-full max-w-full mb-2"
                     data-testid="discount-row"
                   >
-                    <Text className="flex gap-x-1 items-baseline txt-small-plus w-4/5 pr-1">
+                    <Text className="flex items-baseline w-4/5 pr-1 gap-x-1 txt-small-plus">
                       <span className="truncate" data-testid="discount-code">
                         <Badge
                           color={promotion.is_automatic ? "green" : "grey"}

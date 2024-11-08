@@ -1,6 +1,6 @@
 "use client"
 
-import { useFormState } from "react-dom"
+import { useActionState } from "react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { CheckCircleSolid } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
@@ -37,14 +37,14 @@ const Addresses = ({
     router.push(pathname + "?step=address")
   }
 
-  const [message, formAction] = useFormState(setAddresses, null)
+  const [message, formAction] = useActionState(setAddresses, null)
 
   return (
     <div className="bg-white">
       <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
-          className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
+          className="flex flex-row items-baseline text-3xl-regular gap-x-2"
         >
           Shipping Address
           {!isOpen && <CheckCircleSolid />}
@@ -75,7 +75,7 @@ const Addresses = ({
               <div>
                 <Heading
                   level="h2"
-                  className="text-3xl-regular gap-x-4 pb-6 pt-8"
+                  className="pt-8 pb-6 text-3xl-regular gap-x-4"
                 >
                   Billing address
                 </Heading>
@@ -94,12 +94,12 @@ const Addresses = ({
           <div className="text-small-regular">
             {cart && cart.shipping_address ? (
               <div className="flex items-start gap-x-8">
-                <div className="flex items-start gap-x-1 w-full">
+                <div className="flex items-start w-full gap-x-1">
                   <div
                     className="flex flex-col w-1/3"
                     data-testid="shipping-address-summary"
                   >
-                    <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                    <Text className="mb-1 txt-medium-plus text-ui-fg-base">
                       Shipping Address
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
@@ -123,7 +123,7 @@ const Addresses = ({
                     className="flex flex-col w-1/3 "
                     data-testid="shipping-contact-summary"
                   >
-                    <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                    <Text className="mb-1 txt-medium-plus text-ui-fg-base">
                       Contact
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
@@ -138,7 +138,7 @@ const Addresses = ({
                     className="flex flex-col w-1/3"
                     data-testid="billing-address-summary"
                   >
-                    <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                    <Text className="mb-1 txt-medium-plus text-ui-fg-base">
                       Billing Address
                     </Text>
 

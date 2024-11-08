@@ -2,23 +2,25 @@
 
 import React, { createContext, useContext } from "react"
 
-interface IModalContext {
+interface ModalContextInterface {
   close: () => void
 }
 
-const ModalContext = createContext<IModalContext | null>(null)
+const ModalContext = createContext<ModalContextInterface | null>(null)
 
 interface ModalProviderProps {
   children?: React.ReactNode
-  close: () => void
-  onClose?: () => void
+  closeAction: () => void
 }
 
-export const ModalProvider = ({ children, close }: ModalProviderProps) => {
+export const ModalProvider = ({
+  children,
+  closeAction,
+}: ModalProviderProps) => {
   return (
     <ModalContext.Provider
       value={{
-        close,
+        close: closeAction,
       }}
     >
       {children}

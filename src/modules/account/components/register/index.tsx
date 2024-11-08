@@ -1,6 +1,6 @@
 "use client"
 
-import { useFormState } from "react-dom"
+import { useActionState } from "react"
 import { signup } from "@/lib/data/customer"
 import { LOGIN_VIEW } from "@/modules/account/templates/login-template"
 import ErrorMessage from "@/modules/checkout/components/error-message"
@@ -13,21 +13,21 @@ type Props = {
 }
 
 const Register = ({ setCurrentView }: Props) => {
-  const [message, formAction] = useFormState(signup, null)
+  const [message, formAction] = useActionState(signup, null)
 
   return (
     <div
-      className="max-w-sm flex flex-col items-center"
+      className="flex flex-col items-center max-w-sm"
       data-testid="register-page"
     >
-      <h1 className="text-large-semi uppercase mb-6">
+      <h1 className="mb-6 uppercase text-large-semi">
         Become a Medusa Store Member
       </h1>
-      <p className="text-center text-base-regular text-ui-fg-base mb-4">
+      <p className="mb-4 text-center text-base-regular text-ui-fg-base">
         Create your Medusa Store Member profile, and get access to an enhanced
         shopping experience.
       </p>
-      <form className="w-full flex flex-col" action={formAction}>
+      <form className="flex flex-col w-full" action={formAction}>
         <div className="flex flex-col w-full gap-y-2">
           <Input
             label="First name"
@@ -68,7 +68,7 @@ const Register = ({ setCurrentView }: Props) => {
           />
         </div>
         <ErrorMessage error={message} data-testid="register-error" />
-        <span className="text-center text-ui-fg-base text-small-regular mt-6">
+        <span className="mt-6 text-center text-ui-fg-base text-small-regular">
           By creating an account, you agree to Medusa Store&apos;s{" "}
           <LocalizedClientLink
             href="/content/privacy-policy"
@@ -89,7 +89,7 @@ const Register = ({ setCurrentView }: Props) => {
           Join
         </SubmitButton>
       </form>
-      <span className="text-center text-ui-fg-base text-small-regular mt-6">
+      <span className="mt-6 text-center text-ui-fg-base text-small-regular">
         Already a member?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}

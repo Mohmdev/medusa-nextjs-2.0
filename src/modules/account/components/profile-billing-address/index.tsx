@@ -1,7 +1,6 @@
 "use client"
 
-import React, { useEffect, useMemo } from "react"
-import { useFormState } from "react-dom"
+import React, { useActionState, useEffect, useMemo } from "react"
 import { HttpTypes } from "@medusajs/types"
 import { updateCustomerAddress } from "@/lib/data/customer"
 import Input from "@/modules/common/components/input"
@@ -32,7 +31,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
 
   const [successState, setSuccessState] = React.useState(false)
 
-  const [state, formAction] = useFormState(updateCustomerAddress, {
+  const [state, formAction] = useActionState(updateCustomerAddress, {
     error: false,
     success: false,
   })
