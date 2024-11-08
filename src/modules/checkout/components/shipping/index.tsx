@@ -1,17 +1,16 @@
-'use client'
+"use client"
 
-import { RadioGroup } from '@headlessui/react'
-import { CheckCircleSolid } from '@medusajs/icons'
-import { Button, Heading, Text, clx } from '@medusajs/ui'
-
-import { setShippingMethod } from '@/lib/data/cart'
-import { convertToLocale } from '@/lib/util/money'
-import ErrorMessage from '@/modules/checkout/components/error-message'
-import Divider from '@/modules/common/components/divider'
-import Radio from '@/modules/common/components/radio'
-import { HttpTypes } from '@medusajs/types'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { RadioGroup } from "@headlessui/react"
+import { setShippingMethod } from "@lib/data/cart"
+import { convertToLocale } from "@lib/util/money"
+import { CheckCircleSolid } from "@medusajs/icons"
+import { HttpTypes } from "@medusajs/types"
+import { Button, clx, Heading, Text } from "@medusajs/ui"
+import ErrorMessage from "@modules/checkout/components/error-message"
+import Divider from "@modules/common/components/divider"
+import Radio from "@modules/common/components/radio"
 
 type ShippingProps = {
   cart: HttpTypes.StoreCart
@@ -29,7 +28,7 @@ const Shipping: React.FC<ShippingProps> = ({
   const router = useRouter()
   const pathname = usePathname()
 
-  const isOpen = searchParams.get('step') === 'delivery'
+  const isOpen = searchParams.get("step") === "delivery"
 
   const selectedShippingMethod = availableShippingMethods?.find(
     // To do: remove the previously selected shipping method instead of using the last one
@@ -37,11 +36,11 @@ const Shipping: React.FC<ShippingProps> = ({
   )
 
   const handleEdit = () => {
-    router.push(pathname + '?step=delivery', { scroll: false })
+    router.push(pathname + "?step=delivery", { scroll: false })
   }
 
   const handleSubmit = () => {
-    router.push(pathname + '?step=payment', { scroll: false })
+    router.push(pathname + "?step=payment", { scroll: false })
   }
 
   const set = async (id: string) => {
@@ -60,14 +59,14 @@ const Shipping: React.FC<ShippingProps> = ({
   }, [isOpen])
 
   return (
-    <div>
-      <div className="mb-6 flex flex-row items-center justify-between">
+    <div className="bg-white">
+      <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
           className={clx(
-            'text-3xl-regular flex flex-row items-baseline gap-x-2',
+            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
             {
-              'pointer-events-none select-none opacity-50':
+              "opacity-50 pointer-events-none select-none":
                 !isOpen && cart.shipping_methods?.length === 0,
             }
           )}
@@ -103,9 +102,9 @@ const Shipping: React.FC<ShippingProps> = ({
                     value={option.id}
                     data-testid="delivery-option-radio"
                     className={clx(
-                      'text-small-regular mb-2 flex cursor-pointer items-center justify-between rounded-rounded border px-8 py-4 hover:shadow-borders-interactive-with-active',
+                      "flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-rounded px-8 mb-2 hover:shadow-borders-interactive-with-active",
                       {
-                        'border-ui-border-interactive':
+                        "border-ui-border-interactive":
                           option.id === selectedShippingMethod?.id,
                       }
                     )}
@@ -148,12 +147,12 @@ const Shipping: React.FC<ShippingProps> = ({
         <div>
           <div className="text-small-regular">
             {cart && (cart.shipping_methods?.length ?? 0) > 0 && (
-              <div className="flex w-1/3 flex-col">
-                <Text className="txt-medium-plus mb-1 text-ui-fg-base">
+              <div className="flex flex-col w-1/3">
+                <Text className="mb-1 txt-medium-plus text-ui-fg-base">
                   Method
                 </Text>
                 <Text className="txt-medium text-ui-fg-subtle">
-                  {selectedShippingMethod?.name}{' '}
+                  {selectedShippingMethod?.name}{" "}
                   {convertToLocale({
                     amount: selectedShippingMethod?.amount!,
                     currency_code: cart?.currency_code,

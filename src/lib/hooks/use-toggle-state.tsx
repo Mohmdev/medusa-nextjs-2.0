@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react"
 
 export type StateType = [boolean, () => void, () => void, () => void] & {
   state: boolean

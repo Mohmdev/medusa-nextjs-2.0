@@ -1,11 +1,10 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-
-import { getCategoryByHandle, listCategories } from '@/lib/data/categories'
-import { listRegions } from '@/lib/data/regions'
-import CategoryTemplate from '@/modules/categories/templates/category-template'
-import { SortOptions } from '@/modules/store/components/refinement-list/sort-products'
-import { StoreProductCategory, StoreRegion } from '@medusajs/types'
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { getCategoryByHandle, listCategories } from "@lib/data/categories"
+import { listRegions } from "@lib/data/regions"
+import type { StoreProductCategory, StoreRegion } from "@medusajs/types"
+import CategoryTemplate from "@modules/categories/templates"
+import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 
 type Props = {
   params: { category: string[]; countryCode: string }
@@ -48,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const title = product_categories
       .map((category: StoreProductCategory) => category.name)
-      .join(' | ')
+      .join(" | ")
 
     const description =
       product_categories[product_categories.length - 1].description ??
@@ -58,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${title} | Medusa Store`,
       description,
       alternates: {
-        canonical: `${params.category.join('/')}`,
+        canonical: `${params.category.join("/")}`,
       },
     }
   } catch (error) {

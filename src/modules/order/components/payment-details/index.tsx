@@ -1,9 +1,8 @@
-import { Container, Heading, Text } from '@medusajs/ui'
-
-import { isStripe, paymentInfoMap } from '@/lib/constants'
-import { convertToLocale } from '@/lib/util/money'
-import Divider from '@/modules/common/components/divider'
-import { HttpTypes } from '@medusajs/types'
+import { isStripe, paymentInfoMap } from "@lib/constants"
+import { convertToLocale } from "@lib/util/money"
+import { HttpTypes } from "@medusajs/types"
+import { Container, Heading, Text } from "@medusajs/ui"
+import Divider from "@modules/common/components/divider"
 
 type PaymentDetailsProps = {
   order: HttpTypes.StoreOrder
@@ -14,14 +13,14 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
 
   return (
     <div>
-      <Heading level="h2" className="text-3xl-regular my-6 flex flex-row">
+      <Heading level="h2" className="flex flex-row text-3xl-regular my-6">
         Payment
       </Heading>
       <div>
         {payment && (
-          <div className="flex w-full items-start gap-x-1">
-            <div className="flex w-1/3 flex-col">
-              <Text className="txt-medium-plus mb-1 text-ui-fg-base">
+          <div className="flex items-start gap-x-1 w-full">
+            <div className="flex flex-col w-1/3">
+              <Text className="txt-medium-plus text-ui-fg-base mb-1">
                 Payment method
               </Text>
               <Text
@@ -31,12 +30,12 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                 {paymentInfoMap[payment.provider_id].title}
               </Text>
             </div>
-            <div className="flex w-2/3 flex-col">
-              <Text className="txt-medium-plus mb-1 text-ui-fg-base">
+            <div className="flex flex-col w-2/3">
+              <Text className="txt-medium-plus text-ui-fg-base mb-1">
                 Payment details
               </Text>
-              <div className="txt-medium flex items-center gap-2 text-ui-fg-subtle">
-                <Container className="flex h-7 w-fit items-center bg-ui-button-neutral-hover p-2">
+              <div className="flex gap-2 txt-medium text-ui-fg-subtle items-center">
+                <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
                   {paymentInfoMap[payment.provider_id].icon}
                 </Container>
                 <Text data-testid="payment-amount">
@@ -45,7 +44,9 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                     : `${convertToLocale({
                         amount: payment.amount,
                         currency_code: order.currency_code,
-                      })} paid at ${new Date(payment.created_at ?? '').toLocaleString()}`}
+                      })} paid at ${new Date(
+                        payment.created_at ?? ""
+                      ).toLocaleString()}`}
                 </Text>
               </div>
             </div>

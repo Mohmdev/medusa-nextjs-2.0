@@ -1,13 +1,11 @@
-'use client'
+"use client"
 
-import React, { useEffect } from 'react'
-import { useFormState } from 'react-dom'
-
-import Input from '@/modules/common/components/input'
-
-import { updateCustomer } from '@/lib/data/customer'
-import { HttpTypes } from '@medusajs/types'
-import AccountInfo from '../account-info'
+import React, { useEffect } from "react"
+import { useFormState } from "react-dom"
+import { updateCustomer } from "@lib/data/customer"
+import { HttpTypes } from "@medusajs/types"
+import Input from "@modules/common/components/input"
+import AccountInfo from "../account-info"
 
 type MyInformationProps = {
   customer: HttpTypes.StoreCustomer
@@ -21,8 +19,8 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
     formData: FormData
   ) => {
     const customer = {
-      first_name: formData.get('first_name') as string,
-      last_name: formData.get('last_name') as string,
+      first_name: formData.get("first_name") as string,
+      last_name: formData.get("last_name") as string,
     }
 
     try {
@@ -61,14 +59,14 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
             label="First name"
             name="first_name"
             required
-            defaultValue={customer.first_name ?? ''}
+            defaultValue={customer.first_name ?? ""}
             data-testid="first-name-input"
           />
           <Input
             label="Last name"
             name="last_name"
             required
-            defaultValue={customer.last_name ?? ''}
+            defaultValue={customer.last_name ?? ""}
             data-testid="last-name-input"
           />
         </div>

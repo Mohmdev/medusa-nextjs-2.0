@@ -6,6 +6,6 @@ export const isEmpty = (input: any) => {
     input === undefined ||
     (isObject(input) && Object.keys(input).length === 0) ||
     (isArray(input) && (input as any[]).length === 0) ||
-    (typeof input === 'string' && input.trim().length === 0)
+    (typeof input === "string" && input.trim().length === 0)
   )
 }

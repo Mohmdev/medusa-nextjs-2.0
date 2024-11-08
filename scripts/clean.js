@@ -1,10 +1,10 @@
-const fs = require('fs')
-const path = require('path')
+const fs = require("fs")
+const path = require("path")
 
 const animateDots = (message, interval = 500) => {
   let count = 0
   const animation = setInterval(() => {
-    process.stdout.write(`\r${message}${'.'.repeat(count % 4)}`)
+    process.stdout.write(`\r${message}${".".repeat(count % 4)}`)
     count++
   }, interval)
   return animation
@@ -48,19 +48,25 @@ const deleteFile = (filePath, fileName) => {
 }
 
 // Define the root directory
-const rootDir = path.resolve(__dirname, '..')
+const rootDir = path.resolve(__dirname, "..")
 
 // Welcome message
-console.log('Preparing workspace to update dependencies...')
+console.log("Preparing workspace to update dependencies...")
 
 // Remove node_modules directory
-deleteFolderRecursive(path.join(rootDir, 'node_modules'), 'node_modules')
+deleteFolderRecursive(path.join(rootDir, "node_modules"), "node_modules")
 
 // Remove .next directory
-deleteFolderRecursive(path.join(rootDir, '.next'), '.next')
+deleteFolderRecursive(path.join(rootDir, ".next"), ".next")
 
 // Remove package-lock.json file
-deleteFile(path.join(rootDir, 'package-lock.json'), 'package-lock.json')
+deleteFile(path.join(rootDir, "package-lock.json"), "package-lock.json")
+
+// Remove pnpm-lock.yaml file
+deleteFile(path.join(rootDir, "pnpm-lock.yaml"), "pnpm-lock.yaml")
+
+// Remove yarn.lock file
+deleteFile(path.join(rootDir, "yarn.lock"), "yarn.lock")
 
 // Final result message
-console.log('Workspace is ready for fresh packages.')
+console.log("Workspace is ready for fresh packages.")

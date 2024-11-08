@@ -1,10 +1,9 @@
-import { Metadata } from 'next'
-
-import { enrichLineItems } from '@/lib/data/cart'
-import { retrieveOrder } from '@/lib/data/orders'
-import OrderCompletedTemplate from '@/modules/order/templates/order-completed-template'
-import { HttpTypes } from '@medusajs/types'
-import { notFound } from 'next/navigation'
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { enrichLineItems } from "@lib/data/cart"
+import { retrieveOrder } from "@lib/data/orders"
+import type { HttpTypes } from "@medusajs/types"
+import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 
 type Props = {
   params: { id: string }
@@ -26,8 +25,8 @@ async function getOrder(id: string) {
 }
 
 export const metadata: Metadata = {
-  title: 'Order Confirmed',
-  description: 'You purchase was successful',
+  title: "Order Confirmed",
+  description: "You purchase was successful",
 }
 
 export default async function OrderConfirmedPage({ params }: Props) {

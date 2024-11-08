@@ -1,19 +1,18 @@
-'use client'
+"use client"
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useCallback } from 'react'
-
-import SortProducts, { SortOptions } from './sort-products'
+import { useCallback } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import SortProducts, { SortOptions } from "./sort-products"
 
 type RefinementListProps = {
   sortBy: SortOptions
   search?: boolean
-  'data-testid'?: string
+  "data-testid"?: string
 }
 
 const RefinementList = ({
   sortBy,
-  'data-testid': dataTestId,
+  "data-testid": dataTestId,
 }: RefinementListProps) => {
   const router = useRouter()
   const pathname = usePathname()

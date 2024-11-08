@@ -1,24 +1,24 @@
-import { ArrowUpRightMini } from '@medusajs/icons'
-import { Text } from '@medusajs/ui'
-import { Metadata } from 'next'
-import Link from 'next/link'
+import { Metadata } from "next"
+import Link from "next/link"
+import { ArrowUpRightMini } from "@medusajs/icons"
+import { Text } from "@medusajs/ui"
 
 export const metadata: Metadata = {
-  title: '404',
-  description: 'Something went wrong',
+  title: "404",
+  description: "Something went wrong",
 }
 
 export default function NotFound() {
   return (
-    <div className="row-span-full flex flex-col items-center justify-center gap-4">
+    <div className="flex flex-col gap-4 items-center justify-center min-h-[calc(100vh-64px)]">
       <h1 className="text-2xl-semi text-ui-fg-base">Page not found</h1>
       <p className="text-small-regular text-ui-fg-base">
         The page you tried to access does not exist.
       </p>
-      <Link className="group flex items-center gap-x-1" href="/">
+      <Link className="flex gap-x-1 items-center group" href="/">
         <Text className="text-ui-fg-interactive">Go to frontpage</Text>
         <ArrowUpRightMini
-          className="duration-150 ease-in-out group-hover:rotate-45"
+          className="group-hover:rotate-45 ease-in-out duration-150"
           color="var(--fg-interactive)"
         />
       </Link>

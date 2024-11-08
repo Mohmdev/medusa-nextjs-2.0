@@ -1,12 +1,11 @@
-import { Label } from '@medusajs/ui'
-import React, { useEffect, useImperativeHandle, useState } from 'react'
-
-import Eye from '@/modules/common/icons/eye'
-import EyeOff from '@/modules/common/icons/eye-off'
+import React, { useEffect, useImperativeHandle, useState } from "react"
+import { Label } from "@medusajs/ui"
+import Eye from "@modules/common/icons/eye"
+import EyeOff from "@modules/common/icons/eye-off"
 
 type InputProps = Omit<
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
-  'placeholder'
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+  "placeholder"
 > & {
   label: string
   errors?: Record<string, unknown>
@@ -22,45 +21,45 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const [inputType, setInputType] = useState(type)
 
     useEffect(() => {
-      if (type === 'password' && showPassword) {
-        setInputType('text')
+      if (type === "password" && showPassword) {
+        setInputType("text")
       }
 
-      if (type === 'password' && !showPassword) {
-        setInputType('password')
+      if (type === "password" && !showPassword) {
+        setInputType("password")
       }
     }, [type, showPassword])
 
     useImperativeHandle(ref, () => inputRef.current!)
 
     return (
-      <div className="flex w-full flex-col">
+      <div className="flex flex-col w-full">
         {topLabel && (
-          <Label className="txt-compact-medium-plus mb-2">{topLabel}</Label>
+          <Label className="mb-2 txt-compact-medium-plus">{topLabel}</Label>
         )}
-        <div className="txt-compact-medium relative z-0 flex w-full">
+        <div className="flex relative z-0 w-full txt-compact-medium">
           <input
             type={inputType}
             name={name}
             placeholder=" "
             required={required}
-            className="mt-0 block h-11 w-full appearance-none rounded-md border border-ui-border-base bg-ui-bg-field px-4 pb-1 pt-4 hover:bg-ui-bg-field-hover focus:shadow-borders-interactive-with-active focus:outline-none focus:ring-0"
+            className="pt-4 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover"
             {...props}
             ref={inputRef}
           />
           <label
             htmlFor={name}
             onClick={() => inputRef.current?.focus()}
-            className="-z-1 origin-0 absolute top-3 mx-3 flex items-center justify-center px-1 text-ui-fg-subtle transition-all duration-300"
+            className="flex items-center justify-center mx-3 px-1 transition-all absolute duration-300 top-3 -z-1 origin-0 text-ui-fg-subtle"
           >
             {label}
             {required && <span className="text-rose-500">*</span>}
           </label>
-          {type === 'password' && (
+          {type === "password" && (
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-0 top-3 px-4 text-ui-fg-subtle outline-none transition-all duration-150 focus:text-ui-fg-base focus:outline-none"
+              className="text-ui-fg-subtle px-4 focus:outline-none transition-all duration-150 outline-none focus:text-ui-fg-base absolute right-0 top-3"
             >
               {showPassword ? <Eye /> : <EyeOff />}
             </button>
@@ -71,6 +70,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 )
 
-Input.displayName = 'Input'
+Input.displayName = "Input"
 
 export default Input

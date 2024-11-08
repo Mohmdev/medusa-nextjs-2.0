@@ -1,13 +1,11 @@
-'use client'
+"use client"
 
-import React, { useEffect } from 'react'
-import { useFormState } from 'react-dom'
-
-import Input from '@/modules/common/components/input'
-
-import { updateCustomer } from '@/lib/data/customer'
-import { HttpTypes } from '@medusajs/types'
-import AccountInfo from '../account-info'
+import React, { useEffect } from "react"
+import { useFormState } from "react-dom"
+import { updateCustomer } from "@lib/data/customer"
+import { HttpTypes } from "@medusajs/types"
+import Input from "@modules/common/components/input"
+import AccountInfo from "../account-info"
 
 type MyInformationProps = {
   customer: HttpTypes.StoreCustomer
@@ -21,7 +19,7 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
     formData: FormData
   ) => {
     const customer = {
-      phone: formData.get('phone') as string,
+      phone: formData.get("phone") as string,
     }
 
     try {
@@ -63,7 +61,7 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
             type="phone"
             autoComplete="phone"
             required
-            defaultValue={customer.phone ?? ''}
+            defaultValue={customer.phone ?? ""}
             data-testid="phone-input"
           />
         </div>

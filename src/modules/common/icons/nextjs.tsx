@@ -1,10 +1,9 @@
-import React from 'react'
-
-import { IconProps } from 'types/icon'
+import React from "react"
+import { IconProps } from "types/icon"
 
 const NextJs: React.FC<IconProps> = ({
-  size = '20',
-  color = '#9CA3AF',
+  size = "20",
+  color = "#9CA3AF",
   ...attributes
 }) => {
   return (

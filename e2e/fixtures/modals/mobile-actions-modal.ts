@@ -1,12 +1,12 @@
-import { Locator, Page } from '@playwright/test'
-import { BaseModal } from '../base/base-modal'
+import { Locator, Page } from "@playwright/test"
+import { BaseModal } from "../base/base-modal"
 
 export class MobileActionsModal extends BaseModal {
   optionButton: Locator
 
   constructor(page: Page) {
-    super(page, page.getByTestId('mobile-actions-modal'))
-    this.optionButton = this.container.getByTestId('option-button')
+    super(page, page.getByTestId("mobile-actions-modal"))
+    this.optionButton = this.container.getByTestId("option-button")
   }
 
   getOption(option: string) {

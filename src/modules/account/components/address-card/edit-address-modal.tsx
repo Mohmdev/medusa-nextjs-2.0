@@ -1,21 +1,20 @@
-'use client'
+"use client"
 
-import { PencilSquare as Edit, Trash } from '@medusajs/icons'
-import { Button, Heading, Text, clx } from '@medusajs/ui'
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState } from "react"
+import { useFormState } from "react-dom"
 import {
   deleteCustomerAddress,
   updateCustomerAddress,
-} from '@/lib/data/customer'
-import useToggleState from '@/lib/hooks/use-toggle-state'
-import CountrySelect from '@/modules/checkout/components/country-select'
-import { SubmitButton } from '@/modules/checkout/components/submit-button'
-import Input from '@/modules/common/components/input'
-import Modal from '@/modules/common/components/modal'
-import Spinner from '@/modules/common/icons/spinner'
-import { HttpTypes } from '@medusajs/types'
-import { useFormState } from 'react-dom'
+} from "@lib/data/customer"
+import useToggleState from "@lib/hooks/use-toggle-state"
+import { PencilSquare as Edit, Trash } from "@medusajs/icons"
+import { HttpTypes } from "@medusajs/types"
+import { Button, clx, Heading, Text } from "@medusajs/ui"
+import CountrySelect from "@modules/checkout/components/country-select"
+import { SubmitButton } from "@modules/checkout/components/submit-button"
+import Input from "@modules/common/components/input"
+import Modal from "@modules/common/components/modal"
+import Spinner from "@modules/common/icons/spinner"
 
 type EditAddressProps = {
   region: HttpTypes.StoreRegion
@@ -66,16 +65,16 @@ const EditAddress: React.FC<EditAddressProps> = ({
     <>
       <div
         className={clx(
-          'flex h-full min-h-[220px] w-full flex-col justify-between rounded-rounded border p-5 transition-colors',
+          "border rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between transition-colors",
           {
-            'border-gray-900': isActive,
+            "border-gray-900": isActive,
           }
         )}
         data-testid="address-container"
       >
         <div className="flex flex-col">
           <Heading
-            className="text-base-semi text-left"
+            className="text-left text-base-semi"
             data-testid="address-name"
           >
             {address.first_name} {address.last_name}
@@ -88,7 +87,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
               {address.company}
             </Text>
           )}
-          <Text className="text-base-regular mt-2 flex flex-col text-left">
+          <Text className="flex flex-col text-left text-base-regular mt-2">
             <span data-testid="address-address">
               {address.address_1}
               {address.address_2 && <span>, {address.address_2}</span>}
@@ -104,7 +103,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
         </div>
         <div className="flex items-center gap-x-4">
           <button
-            className="text-small-regular flex items-center gap-x-2 text-ui-fg-base"
+            className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
             onClick={open}
             data-testid="address-edit-button"
           >
@@ -112,7 +111,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
             Edit
           </button>
           <button
-            className="text-small-regular flex items-center gap-x-2 text-ui-fg-base"
+            className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
             onClick={removeAddress}
             data-testid="address-delete-button"
           >
@@ -211,13 +210,13 @@ const EditAddress: React.FC<EditAddressProps> = ({
               />
             </div>
             {formState.error && (
-              <div className="text-small-regular py-2 text-rose-500">
+              <div className="text-rose-500 text-small-regular py-2">
                 {formState.error}
               </div>
             )}
           </Modal.Body>
           <Modal.Footer>
-            <div className="mt-6 flex gap-3">
+            <div className="flex gap-3 mt-6">
               <Button
                 type="reset"
                 variant="secondary"

@@ -1,17 +1,16 @@
-'use client'
+"use client"
 
-import { Plus } from '@medusajs/icons'
-import { Button, Heading } from '@medusajs/ui'
-import { useEffect, useState } from 'react'
-import { useFormState } from 'react-dom'
-
-import { addCustomerAddress } from '@/lib/data/customer'
-import useToggleState from '@/lib/hooks/use-toggle-state'
-import CountrySelect from '@/modules/checkout/components/country-select'
-import { SubmitButton } from '@/modules/checkout/components/submit-button'
-import Input from '@/modules/common/components/input'
-import Modal from '@/modules/common/components/modal'
-import { HttpTypes } from '@medusajs/types'
+import { useEffect, useState } from "react"
+import { useFormState } from "react-dom"
+import { addCustomerAddress } from "@lib/data/customer"
+import useToggleState from "@lib/hooks/use-toggle-state"
+import { Plus } from "@medusajs/icons"
+import { HttpTypes } from "@medusajs/types"
+import { Button, Heading } from "@medusajs/ui"
+import CountrySelect from "@modules/checkout/components/country-select"
+import { SubmitButton } from "@modules/checkout/components/submit-button"
+import Input from "@modules/common/components/input"
+import Modal from "@modules/common/components/modal"
 
 const AddAddress = ({ region }: { region: HttpTypes.StoreRegion }) => {
   const [successState, setSuccessState] = useState(false)
@@ -43,7 +42,7 @@ const AddAddress = ({ region }: { region: HttpTypes.StoreRegion }) => {
   return (
     <>
       <button
-        className="flex h-full min-h-[220px] w-full flex-col justify-between rounded-rounded border border-ui-border-base p-5"
+        className="border border-ui-border-base rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between"
         onClick={open}
         data-testid="add-address-button"
       >
@@ -131,7 +130,7 @@ const AddAddress = ({ region }: { region: HttpTypes.StoreRegion }) => {
             </div>
             {formState.error && (
               <div
-                className="text-small-regular py-2 text-rose-500"
+                className="text-rose-500 text-small-regular py-2"
                 data-testid="address-error"
               >
                 {formState.error}
@@ -139,7 +138,7 @@ const AddAddress = ({ region }: { region: HttpTypes.StoreRegion }) => {
             )}
           </Modal.Body>
           <Modal.Footer>
-            <div className="mt-6 flex gap-3">
+            <div className="flex gap-3 mt-6">
               <Button
                 type="reset"
                 variant="secondary"

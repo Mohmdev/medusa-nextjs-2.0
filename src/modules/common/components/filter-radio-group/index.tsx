@@ -1,5 +1,5 @@
-import { EllipseMiniSolid } from '@medusajs/icons'
-import { Label, RadioGroup, Text, clx } from '@medusajs/ui'
+import { EllipseMiniSolid } from "@medusajs/icons"
+import { clx, Label, RadioGroup, Text } from "@medusajs/ui"
 
 type FilterRadioGroupProps = {
   title: string
@@ -9,7 +9,7 @@ type FilterRadioGroupProps = {
   }[]
   value: any
   handleChange: (...args: any[]) => void
-  'data-testid'?: string
+  "data-testid"?: string
 }
 
 const FilterRadioGroup = ({
@@ -17,7 +17,7 @@ const FilterRadioGroup = ({
   items,
   value,
   handleChange,
-  'data-testid': dataTestId,
+  "data-testid": dataTestId,
 }: FilterRadioGroupProps) => {
   return (
     <div className="flex gap-x-3 flex-col gap-y-3">
@@ -26,8 +26,8 @@ const FilterRadioGroup = ({
         {items?.map((i) => (
           <div
             key={i.value}
-            className={clx('flex gap-x-2 items-center', {
-              'ml-[-23px]': i.value === value,
+            className={clx("flex gap-x-2 items-center", {
+              "ml-[-23px]": i.value === value,
             })}
           >
             {i.value === value && <EllipseMiniSolid />}
@@ -40,9 +40,9 @@ const FilterRadioGroup = ({
             <Label
               htmlFor={i.value}
               className={clx(
-                '!txt-compact-small !transform-none text-ui-fg-subtle hover:cursor-pointer',
+                "!txt-compact-small !transform-none text-ui-fg-subtle hover:cursor-pointer",
                 {
-                  'text-ui-fg-base': i.value === value,
+                  "text-ui-fg-base": i.value === value,
                 }
               )}
               data-testid="radio-label"

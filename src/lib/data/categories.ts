@@ -1,9 +1,9 @@
-import { sdk } from '@/lib/config'
-import { cache } from 'react'
+import { cache } from "react"
+import { sdk } from "@lib/config"
 
 export const listCategories = cache(async function () {
   return sdk.store.category
-    .list({ fields: '+category_children' }, { next: { tags: ['categories'] } })
+    .list({ fields: "+category_children" }, { next: { tags: ["categories"] } })
     .then(({ product_categories }) => product_categories)
 })
 
@@ -13,9 +13,9 @@ export const getCategoriesList = cache(async function (
 ) {
   return sdk.store.category.list(
     // TODO: Look into fixing the type
-    // @ts-expect-error
+    // @ts-ignore
     { limit, offset },
-    { next: { tags: ['categories'] } }
+    { next: { tags: ["categories"] } }
   )
 })
 
@@ -24,8 +24,8 @@ export const getCategoryByHandle = cache(async function (
 ) {
   return sdk.store.category.list(
     // TODO: Look into fixing the type
-    // @ts-expect-error
+    // @ts-ignore
     { handle: categoryHandle },
-    { next: { tags: ['categories'] } }
+    { next: { tags: ["categories"] } }
   )
 })
