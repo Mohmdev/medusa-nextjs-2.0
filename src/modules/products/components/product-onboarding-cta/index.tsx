@@ -1,8 +1,10 @@
-import { cookies } from "next/headers"
+import { cookies, type UnsafeUnwrappedCookies } from "next/headers"
 import { Button, Container, Text } from "@medusajs/ui"
 
 const ProductOnboardingCta = () => {
-  const isOnboarding = cookies().get("_medusa_onboarding")?.value === "true"
+  const isOnboarding =
+    (cookies() as unknown as UnsafeUnwrappedCookies).get("_medusa_onboarding")
+      ?.value === "true"
 
   if (!isOnboarding) {
     return null
