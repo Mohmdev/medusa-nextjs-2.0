@@ -8,17 +8,8 @@ checkEnvVariables()
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    turbo: {
-      rules: {
-        "*.scss": {
-          loaders: ["sass-loader"],
-        },
-      },
-    },
+    reactCompiler: true,
     scrollRestoration: true,
-  },
-  sassOptions: {
-    silenceDeprecations: ["legacy-js-api"],
   },
   images: {
     unoptimized: false,
