@@ -1,7 +1,8 @@
 "use client"
 
 import { HttpTypes } from "@medusajs/types"
-import { clx, Table } from "@medusajs/ui"
+import { Table } from "@medusajs/ui"
+import { cn } from "@/lib/utils/cn"
 import repeat from "@/lib/utils/repeat"
 import Item from "@/modules/cart/components/item"
 import SkeletonLineItem from "@/modules/skeletons/components/skeleton-line-item"
@@ -15,7 +16,7 @@ const ItemsPreviewTemplate = ({ items }: ItemsTemplateProps) => {
 
   return (
     <div
-      className={clx({
+      className={cn({
         "pl-[1px] overflow-y-scroll overflow-x-hidden no-scrollbar max-h-[420px]":
           hasOverflow,
       })}

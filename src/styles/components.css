@@ -6,7 +6,7 @@
   }
 
   .contrast-btn {
-    @apply px-4 py-2 transition-colors duration-200 ease-in border border-black rounded-full hover:bg-black hover:text-white;
+    @apply rounded-full border border-black px-4 py-2 transition-colors duration-200 ease-in hover:bg-black hover:text-white;
   }
 
   .text-xsmall-regular {

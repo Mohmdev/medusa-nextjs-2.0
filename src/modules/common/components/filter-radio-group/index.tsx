@@ -1,5 +1,6 @@
 import { EllipseMiniSolid } from "@medusajs/icons"
-import { clx, Label, RadioGroup, Text } from "@medusajs/ui"
+import { Label, RadioGroup, Text } from "@medusajs/ui"
+import { cn } from "@/lib/utils/cn"
 
 type FilterRadioGroupProps = {
   title: string
@@ -26,7 +27,7 @@ const FilterRadioGroup = ({
         {items?.map((i) => (
           <div
             key={i.value}
-            className={clx("flex gap-x-2 items-center", {
+            className={cn("flex gap-x-2 items-center", {
               "ml-[-23px]": i.value === value,
             })}
           >
@@ -39,7 +40,7 @@ const FilterRadioGroup = ({
             />
             <Label
               htmlFor={i.value}
-              className={clx(
+              className={cn(
                 "!txt-compact-small !transform-none text-ui-fg-subtle hover:cursor-pointer",
                 {
                   "text-ui-fg-base": i.value === value,

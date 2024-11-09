@@ -1,10 +1,10 @@
 "use client"
 
 import { Fragment, useEffect, useRef, useState } from "react"
-import { usePathname } from "next/navigation"
 import { Popover, Transition } from "@headlessui/react"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
+import { usePathname } from "next/navigation"
 import { convertToLocale } from "@/lib/utils/money"
 import DeleteButton from "@/modules/common/components/delete-button"
 import LineItemOptions from "@/modules/common/components/line-item-options"

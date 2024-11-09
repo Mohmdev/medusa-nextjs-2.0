@@ -3,12 +3,13 @@
 import React, { useActionState, useEffect, useState } from "react"
 import { PencilSquare as Edit, Trash } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
-import { Button, clx, Heading, Text } from "@medusajs/ui"
+import { Button, Heading, Text } from "@medusajs/ui"
 import {
   deleteCustomerAddress,
   updateCustomerAddress,
 } from "@/lib/data/customer"
 import useToggleState from "@/lib/hooks/use-toggle-state"
+import { cn } from "@/lib/utils/cn"
 import CountrySelect from "@/modules/checkout/components/country-select"
 import { SubmitButton } from "@/modules/checkout/components/submit-button"
 import Input from "@/modules/common/components/input"
@@ -63,7 +64,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
   return (
     <>
       <div
-        className={clx(
+        className={cn(
           "border rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between transition-colors",
           {
             "border-gray-900": isActive,

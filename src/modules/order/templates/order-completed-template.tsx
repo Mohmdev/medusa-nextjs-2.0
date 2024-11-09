@@ -1,6 +1,6 @@
-import { cookies, type UnsafeUnwrappedCookies } from "next/headers"
 import { HttpTypes } from "@medusajs/types"
 import { Heading } from "@medusajs/ui"
+import { cookies, type UnsafeUnwrappedCookies } from "next/headers"
 import CartTotals from "@/modules/common/components/cart-totals"
 import Help from "@/modules/order/components/help"
 import Items from "@/modules/order/components/items"

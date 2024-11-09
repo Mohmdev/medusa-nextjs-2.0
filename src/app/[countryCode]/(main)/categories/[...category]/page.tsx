@@ -1,6 +1,6 @@
 import { Metadata } from "next"
-import { notFound } from "next/navigation"
 import type { StoreProductCategory, StoreRegion } from "@medusajs/types"
+import { notFound } from "next/navigation"
 import { getCategoryByHandle, listCategories } from "@/lib/data/categories"
 import { listRegions } from "@/lib/data/regions"
 import CategoryTemplate from "@/modules/categories/templates"

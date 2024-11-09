@@ -1,11 +1,11 @@
 "use client"
 
 import type React from "react"
-import { useParams, usePathname } from "next/navigation"
 import { ArrowRightOnRectangle } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
-import { clx } from "@medusajs/ui"
+import { useParams, usePathname } from "next/navigation"
 import { signout } from "@/lib/data/customer"
+import { cn } from "@/lib/utils/cn"
 import LocalizedClientLink from "@/modules/common/components/localized-client-link"
 import ChevronDown from "@/modules/common/icons/chevron-down"
 import MapPin from "@/modules/common/icons/map-pin"
@@ -186,7 +186,7 @@ const AccountNavLink = ({
   return (
     <LocalizedClientLink
       href={href}
-      className={clx("text-ui-fg-subtle hover:text-ui-fg-base", {
+      className={cn("text-ui-fg-subtle hover:text-ui-fg-base", {
         "text-ui-fg-base font-semibold": active,
       })}
       data-testid={dataTestId}

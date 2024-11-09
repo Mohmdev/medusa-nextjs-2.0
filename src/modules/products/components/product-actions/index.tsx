@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { useParams } from "next/navigation"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
 import { isEqual } from "lodash"
+import { useParams } from "next/navigation"
 import { addToCart } from "@/lib/data/cart"
 import { useIntersection } from "@/lib/hooks/use-in-view"
 import Divider from "@/modules/common/components/divider"

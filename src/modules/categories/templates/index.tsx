@@ -1,6 +1,6 @@
 import { Suspense } from "react"
-import { notFound } from "next/navigation"
 import { HttpTypes } from "@medusajs/types"
+import { notFound } from "next/navigation"
 import InteractiveLink from "@/modules/common/components/interactive-link"
 import LocalizedClientLink from "@/modules/common/components/localized-client-link"
 import SkeletonProductGrid from "@/modules/skeletons/templates/skeleton-product-grid"

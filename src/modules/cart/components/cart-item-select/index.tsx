@@ -8,7 +8,8 @@ import {
   useRef,
   useState,
 } from "react"
-import { clx, IconBadge } from "@medusajs/ui"
+import { IconBadge } from "@medusajs/ui"
+import { cn } from "@/lib/utils/cn"
 import ChevronDown from "@/modules/common/icons/chevron-down"
 
 type NativeSelectProps = {
@@ -40,7 +41,7 @@ const CartItemSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         <IconBadge
           onFocus={() => innerRef.current?.focus()}
           onBlur={() => innerRef.current?.blur()}
-          className={clx(
+          className={cn(
             "relative flex items-center txt-compact-small border text-ui-fg-base group",
             className,
             {

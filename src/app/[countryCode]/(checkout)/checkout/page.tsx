@@ -1,6 +1,6 @@
 import { Metadata } from "next"
-import { notFound } from "next/navigation"
 import type { HttpTypes } from "@medusajs/types"
+import { notFound } from "next/navigation"
 import { enrichLineItems, retrieveCart } from "@/lib/data/cart"
 import { getCustomer } from "@/lib/data/customer"
 import Wrapper from "@/modules/checkout/components/payment-wrapper"

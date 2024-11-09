@@ -1,6 +1,5 @@
 import * as React from "react"
-
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils/cn"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -73,4 +72,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

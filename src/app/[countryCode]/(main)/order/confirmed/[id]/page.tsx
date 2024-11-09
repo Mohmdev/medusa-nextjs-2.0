@@ -1,6 +1,6 @@
 import { Metadata } from "next"
-import { notFound } from "next/navigation"
 import type { HttpTypes } from "@medusajs/types"
+import { notFound } from "next/navigation"
 import { enrichLineItems } from "@/lib/data/cart"
 import { retrieveOrder } from "@/lib/data/orders"
 import OrderCompletedTemplate from "@/modules/order/templates/order-completed-template"

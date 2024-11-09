@@ -1,8 +1,9 @@
 import React, { Fragment, useMemo } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { HttpTypes } from "@medusajs/types"
-import { Button, clx } from "@medusajs/ui"
+import { Button } from "@medusajs/ui"
 import useToggleState from "@/lib/hooks/use-toggle-state"
+import { cn } from "@/lib/utils/cn"
 import { getProductPrice } from "@/lib/utils/get-product-price"
 import ChevronDown from "@/modules/common/icons/chevron-down"
 import X from "@/modules/common/icons/x"
@@ -50,7 +51,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   return (
     <>
       <div
-        className={clx("lg:hidden inset-x-0 bottom-0 fixed", {
+        className={cn("lg:hidden inset-x-0 bottom-0 fixed", {
           "pointer-events-none": !show,
         })}
       >
@@ -81,7 +82,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                     </p>
                   )}
                   <span
-                    className={clx({
+                    className={cn({
                       "text-ui-fg-interactive":
                         selectedPrice.price_type === "sale",
                     })}

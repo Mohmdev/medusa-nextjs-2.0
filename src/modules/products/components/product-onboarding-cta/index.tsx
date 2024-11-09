@@ -1,5 +1,5 @@
-import { cookies, type UnsafeUnwrappedCookies } from "next/headers"
 import { Button, Container, Text } from "@medusajs/ui"
+import { cookies, type UnsafeUnwrappedCookies } from "next/headers"
 
 const ProductOnboardingCta = () => {
   const isOnboarding =

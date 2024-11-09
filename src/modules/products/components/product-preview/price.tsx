@@ -1,5 +1,6 @@
-import { clx, Text } from "@medusajs/ui"
+import { Text } from "@medusajs/ui"
 import { VariantPrice } from "types/global"
+import { cn } from "@/lib/utils/cn"
 
 export default async function PreviewPrice({ price }: { price: VariantPrice }) {
   if (!price) {
@@ -17,7 +18,7 @@ export default async function PreviewPrice({ price }: { price: VariantPrice }) {
         </Text>
       )}
       <Text
-        className={clx("text-ui-fg-muted", {
+        className={cn("text-ui-fg-muted", {
           "text-ui-fg-interactive": price.price_type === "sale",
         })}
         data-testid="price"

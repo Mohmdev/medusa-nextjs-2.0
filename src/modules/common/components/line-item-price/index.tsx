@@ -1,5 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
-import { clx } from "@medusajs/ui"
+import { cn } from "@/lib/utils/cn"
 import { getPercentageDiff } from "@/lib/utils/get-precentage-diff"
 import { getPricesForVariant } from "@/lib/utils/get-product-price"
 import { convertToLocale } from "@/lib/utils/money"
@@ -49,7 +49,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
           </>
         )}
         <span
-          className={clx("text-base-regular", {
+          className={cn("text-base-regular", {
             "text-ui-fg-interactive": hasReducedPrice,
           })}
           data-testid="product-price"

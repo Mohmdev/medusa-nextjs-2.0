@@ -7,8 +7,8 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react"
-import { clx } from "@medusajs/ui"
 import { ModalProvider, useModal } from "@/lib/context/modal-context"
+import { cn } from "@/lib/utils/cn"
 import X from "@/modules/common/icons/x"
 
 type ModalProps = {
@@ -45,7 +45,7 @@ const Modal = ({
 
         <div className="fixed inset-0 overflow-y-hidden">
           <div
-            className={clx(
+            className={cn(
               "flex min-h-full h-full justify-center p-4 text-center",
               {
                 "items-center": !search,
@@ -64,7 +64,7 @@ const Modal = ({
             >
               <DialogPanel
                 data-testid={dataTestId}
-                className={clx(
+                className={cn(
                   "flex flex-col justify-start w-full transform p-5 text-left align-middle transition-all max-h-[75vh] h-fit",
                   {
                     "max-w-md": size === "small",

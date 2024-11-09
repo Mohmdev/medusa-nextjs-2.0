@@ -1,10 +1,10 @@
 "use client"
 
 import { useActionState } from "react"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { CheckCircleSolid } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
 import { Heading, Text, useToggleState } from "@medusajs/ui"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { setAddresses } from "@/lib/data/cart"
 import compareAddresses from "@/lib/utils/compare-addresses"
 import Divider from "@/modules/common/components/divider"

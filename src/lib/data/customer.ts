@@ -1,9 +1,9 @@
 "use server"
 
 import { cache } from "react"
+import type { HttpTypes } from "@medusajs/types"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
-import type { HttpTypes } from "@medusajs/types"
 import { sdk } from "@/lib/config"
 import medusaError from "@/lib/utils/medusa-error"
 import { getAuthHeaders, removeAuthToken, setAuthToken } from "./cookies"

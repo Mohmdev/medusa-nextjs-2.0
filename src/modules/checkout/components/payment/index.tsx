@@ -1,14 +1,15 @@
 "use client"
 
 import { useCallback, useContext, useEffect, useMemo, useState } from "react"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { RadioGroup } from "@headlessui/react"
 import { CheckCircleSolid, CreditCard } from "@medusajs/icons"
-import { Button, clx, Container, Heading, Text, Tooltip } from "@medusajs/ui"
+import { Button, Container, Heading, Text } from "@medusajs/ui"
 import { CardElement } from "@stripe/react-stripe-js"
 import { StripeCardElementOptions } from "@stripe/stripe-js"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { isStripe as isStripeFunc, paymentInfoMap } from "@/lib/constants"
 import { initiatePaymentSession } from "@/lib/data/cart"
+import { cn } from "@/lib/utils/cn"
 import ErrorMessage from "@/modules/checkout/components/error-message"
 import PaymentContainer from "@/modules/checkout/components/payment-container"
 import { StripeContext } from "@/modules/checkout/components/payment-wrapper"
@@ -117,7 +118,7 @@ const Payment = ({
       <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
-          className={clx(
+          className={cn(
             "flex flex-row text-3xl-regular gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none":

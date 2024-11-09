@@ -1,8 +1,6 @@
 "use client"
 
 import { Fragment, useEffect, useMemo, useState } from "react"
-import ReactCountryFlag from "react-country-flag"
-import { useParams, usePathname } from "next/navigation"
 import {
   Listbox,
   ListboxButton,
@@ -11,6 +9,8 @@ import {
   Transition,
 } from "@headlessui/react"
 import { HttpTypes } from "@medusajs/types"
+import { useParams, usePathname } from "next/navigation"
+import ReactCountryFlag from "react-country-flag"
 import { updateRegion } from "@/lib/data/cart"
 import { StateType } from "@/lib/hooks/use-toggle-state"
 

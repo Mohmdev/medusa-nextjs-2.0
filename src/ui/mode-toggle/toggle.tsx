@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { cn } from '@/lib/util/cn'
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-import { useTheme } from 'next-themes'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
+import { MoonIcon, SunIcon } from "lucide-react"
+import { useTheme } from "next-themes"
+import { cn } from "@/lib/utils/cn"
 
 interface ModeToggleProps {
   size?: number
@@ -12,17 +12,17 @@ interface ModeToggleProps {
 
 const ModeToggle: React.FC<ModeToggleProps> = ({
   size = 24,
-  className = '',
+  className = "",
 }) => {
   const { theme, setTheme } = useTheme()
-  const [isDarkMode, setIsDarkMode] = useState(theme === 'dark')
+  const [isDarkMode, setIsDarkMode] = useState(theme === "dark")
 
   useEffect(() => {
-    setIsDarkMode(theme === 'dark')
+    setIsDarkMode(theme === "dark")
   }, [theme])
 
   const toggleTheme = () => {
-    setTheme(isDarkMode ? 'light' : 'dark')
+    setTheme(isDarkMode ? "light" : "dark")
     setIsDarkMode((prevMode) => !prevMode)
   }
 
@@ -36,7 +36,7 @@ const ModeToggle: React.FC<ModeToggleProps> = ({
       <label
         style={containerSize}
         className={cn(
-          'relative flex cursor-pointer select-none items-center justify-center',
+          "relative flex cursor-pointer select-none items-center justify-center",
           className
         )}
       >
@@ -49,16 +49,16 @@ const ModeToggle: React.FC<ModeToggleProps> = ({
 
         <SunIcon
           className={cn(
-            'absolute transition-all duration-300 ease-in-out hover:text-yellow-500 focus:text-yellow-500',
-            isDarkMode ? 'sun-icon-hide' : 'sun-icon-show'
+            "absolute transition-all duration-300 ease-in-out hover:text-yellow-500 focus:text-yellow-500",
+            isDarkMode ? "sun-icon-hide" : "sun-icon-show"
           )}
           //   size={size}
         />
 
         <MoonIcon
           className={cn(
-            'absolute transition-all duration-300 ease-in-out hover:text-blue-900 focus:text-blue-900',
-            isDarkMode ? 'moon-icon-show' : 'moon-icon-hide'
+            "absolute transition-all duration-300 ease-in-out hover:text-blue-900 focus:text-blue-900",
+            isDarkMode ? "moon-icon-show" : "moon-icon-hide"
           )}
           // size={size}
         />

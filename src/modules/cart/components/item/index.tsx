@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import { HttpTypes } from "@medusajs/types"
-import { clx, Table, Text } from "@medusajs/ui"
+import { Table, Text } from "@medusajs/ui"
 import { updateLineItem } from "@/lib/data/cart"
+import { cn } from "@/lib/utils/cn"
 import CartItemSelect from "@/modules/cart/components/cart-item-select"
 import ErrorMessage from "@/modules/checkout/components/error-message"
 import DeleteButton from "@/modules/common/components/delete-button"
@@ -50,7 +51,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       <Table.Cell className="!pl-0 p-4 w-24">
         <LocalizedClientLink
           href={`/products/${handle}`}
-          className={clx("flex", {
+          className={cn("flex", {
             "w-16": type === "preview",
             "small:w-24 w-12": type === "full",
           })}
@@ -113,7 +114,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
       <Table.Cell className="!pr-0">
         <span
-          className={clx("!pr-0", {
+          className={cn("!pr-0", {
             "flex flex-col items-end h-full justify-center": type === "preview",
           })}
         >
