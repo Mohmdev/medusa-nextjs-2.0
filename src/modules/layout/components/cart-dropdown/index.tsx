@@ -1,16 +1,23 @@
 "use client"
 
 import { Fragment, useEffect, useRef, useState } from "react"
-import { Popover, Transition } from "@headlessui/react"
+import {
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  Transition,
+} from "@headlessui/react"
 import { HttpTypes } from "@medusajs/types"
-import { Button } from "@medusajs/ui"
+import { XIcon } from "lucide-react"
 import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils/cn"
 import { convertToLocale } from "@/lib/utils/money"
 import DeleteButton from "@/modules/common/components/delete-button"
 import LineItemOptions from "@/modules/common/components/line-item-options"
 import LineItemPrice from "@/modules/common/components/line-item-price"
 import LocalizedClientLink from "@/modules/common/components/localized-client-link"
 import Thumbnail from "@/modules/products/components/thumbnail"
+import { Button } from "@/ui/button"
 
 const CartDropdown = ({
   cart: cartState,
@@ -49,6 +56,13 @@ const CartDropdown = ({
     open()
   }
 
+  const toggle = () => {
+    if (activeTimer) {
+      clearTimeout(activeTimer)
+    }
+    setCartDropdownOpen(!cartDropdownOpen)
+  }
+
   // Clean up the timer when the component unmounts
   useEffect(() => {
     return () => {
@@ -65,7 +79,6 @@ const CartDropdown = ({
     if (itemRef.current !== totalItems && !pathname.includes("/cart")) {
       timedOpen()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalItems, itemRef.current])
 
   return (
@@ -75,13 +88,18 @@ const CartDropdown = ({
       onMouseLeave={close}
     >
       <Popover className="relative h-full">
-        <Popover.Button className="h-full">
-          <LocalizedClientLink
-            className="hover:text-ui-fg-base"
-            href="/cart"
+        <PopoverButton className="h-full">
+          <div
+            className="hover:text-ui-fg-base cursor-pointer"
             data-testid="nav-cart-link"
-          >{`Cart (${totalItems})`}</LocalizedClientLink>
-        </Popover.Button>
+            onClick={(e) => {
+              e.preventDefault()
+              toggle()
+            }}
+          >
+            {`Cart (${totalItems})`}
+          </div>
+        </PopoverButton>
         <Transition
           show={cartDropdownOpen}
           as={Fragment}
@@ -92,17 +110,38 @@ const CartDropdown = ({
           leaveFrom="opacity-100 translate-y-0"
           leaveTo="opacity-0 translate-y-1"
         >
-          <Popover.Panel
-            static
-            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-white border-x border-b border-gray-200 w-[420px] text-ui-fg-base"
+          <PopoverPanel
+            // static
             data-testid="nav-cart-dropdown"
+            anchor={{
+              to: "bottom end",
+              gap: ".5rem",
+              padding: ".5rem",
+            }}
+            className={cn(
+              "flex flex-col z-50",
+              "px-4 py-6 gap-4",
+              "w-full md:w-[420px]",
+              "rounded-sm border bg-card border-border text-ui-fg-base",
+              "shadow-lg md:shadow-md",
+              "!shadow-slate-700/15"
+            )}
           >
-            <div className="flex items-center justify-center p-4">
-              <h3 className="text-large-semi">Cart</h3>
+            <div className="flex flex-row justify-between items-center gap-4  -mt-3 mb-1">
+              <h3 className="text-base-semi font-normal text-center">
+                Your Shopping Cart
+              </h3>
+              <button
+                className="text-ui-fg-base"
+                onClick={close}
+                data-testid="close-cart-dropdown"
+              >
+                <XIcon size={16} />
+              </button>
             </div>
             {cartState && cartState.items?.length ? (
               <>
-                <div className="overflow-y-scroll max-h-[402px] px-4 grid grid-cols-1 gap-y-8 no-scrollbar p-px">
+                <div className="overflow-y-scroll max-h-[402px] grid grid-cols-1 gap-y-8 no-scrollbar p-px">
                   {cartState.items
                     .sort((a, b) => {
                       return (a.created_at ?? "") > (b.created_at ?? "")
@@ -117,7 +156,7 @@ const CartDropdown = ({
                       >
                         <LocalizedClientLink
                           href={`/products/${item.variant?.product?.handle}`}
-                          className="w-24"
+                          // className="w-24"
                         >
                           <Thumbnail
                             thumbnail={item.variant?.product?.thumbnail}
@@ -126,46 +165,56 @@ const CartDropdown = ({
                           />
                         </LocalizedClientLink>
                         <div className="flex flex-col justify-between flex-1">
-                          <div className="flex flex-col flex-1">
-                            <div className="flex items-start justify-between">
-                              <div className="flex flex-col overflow-ellipsis whitespace-nowrap mr-4 w-[180px]">
-                                <h3 className="overflow-hidden text-base-regular text-ellipsis">
-                                  <LocalizedClientLink
-                                    href={`/products/${item.variant?.product?.handle}`}
-                                    data-testid="product-link"
-                                  >
-                                    {item.title}
-                                  </LocalizedClientLink>
-                                </h3>
+                          {/*  */}
+                          <div className="flex flex-row flex-wrap items-start justify-between">
+                            {/* Info */}
+                            <div className="flex flex-col gap-1 overflow-ellipsis whitespace-nowrap mr-4 w-max max-w-[180px]">
+                              <h3 className="overflow-hidden text-base-regular text-ellipsis text-[.9375rem]">
+                                <LocalizedClientLink
+                                  href={`/products/${item.variant?.product?.handle}`}
+                                  data-testid="product-link"
+                                >
+                                  {item.product_title}
+                                </LocalizedClientLink>
+                              </h3>
+                              <span className="flex flex-row items-end">
+                                <span
+                                  data-testid="cart-item-quantity"
+                                  data-value={item.quantity}
+                                  className="text-[.75rem] font-normal leading-[18px] text-ui-fg-muted"
+                                >
+                                  {item.quantity} &times;&nbsp;
+                                </span>
                                 <LineItemOptions
                                   variant={item.variant}
                                   data-testid="cart-item-variant"
                                   data-value={item.variant}
+                                  className="text-[.875rem] font-normal leading-[20px] "
                                 />
-                                <span
-                                  data-testid="cart-item-quantity"
-                                  data-value={item.quantity}
-                                >
-                                  Quantity: {item.quantity}
-                                </span>
-                              </div>
-                              <div className="flex justify-end">
-                                <LineItemPrice item={item} style="tight" />
-                              </div>
+                              </span>
+                            </div>
+                            {/* Price */}
+                            <div className="flex justify-end">
+                              <LineItemPrice
+                                item={item}
+                                style="tight"
+                                className="text-[.9375rem]"
+                              />
                             </div>
                           </div>
+                          {/*  */}
                           <DeleteButton
                             id={item.id}
-                            className="mt-1"
+                            className="my-2 self-end"
                             data-testid="cart-item-remove-button"
                           >
-                            Remove
+                            {/* Remove */}
                           </DeleteButton>
                         </div>
                       </div>
                     ))}
                 </div>
-                <div className="flex flex-col p-4 gap-y-4 text-small-regular">
+                <div className="flex flex-col gap-y-4 text-small-regular">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-ui-fg-base">
                       Subtotal{" "}
@@ -184,8 +233,9 @@ const CartDropdown = ({
                   </div>
                   <LocalizedClientLink href="/cart" passHref>
                     <Button
-                      className="w-full"
+                      variant="default"
                       size="large"
+                      className="w-full"
                       data-testid="go-to-cart-button"
                     >
                       Go to cart
@@ -211,7 +261,7 @@ const CartDropdown = ({
                 </div>
               </div>
             )}
-          </Popover.Panel>
+          </PopoverPanel>
         </Transition>
       </Popover>
     </div>

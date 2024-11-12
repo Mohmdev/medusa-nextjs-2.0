@@ -3,7 +3,7 @@ import type { StoreRegion } from "@medusajs/types"
 import { getCategoriesList } from "@/lib/data/categories"
 import { getCollectionsList } from "@/lib/data/collections"
 import { listRegions } from "@/lib/data/regions"
-import Footer from "./templates/footer/footer-1"
+import Footer from "./templates/footer/footer-2"
 import Header from "./templates/header/header-1"
 
 interface LayoutTemplateProps {

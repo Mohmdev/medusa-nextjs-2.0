@@ -7,9 +7,14 @@ import { convertToLocale } from "@/lib/utils/money"
 type LineItemPriceProps = {
   item: HttpTypes.StoreCartLineItem | HttpTypes.StoreOrderLineItem
   style?: "default" | "tight"
+  className?: string
 }
 
-const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
+const LineItemPrice = ({
+  item,
+  style = "default",
+  className,
+}: LineItemPriceProps) => {
   const { currency_code, calculated_price_number, original_price_number } =
     getPricesForVariant(item.variant) ?? {}
 
@@ -49,9 +54,13 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
           </>
         )}
         <span
-          className={cn("text-base-regular", {
-            "text-ui-fg-interactive": hasReducedPrice,
-          })}
+          className={cn(
+            "text-base-regular",
+            {
+              "text-ui-fg-interactive": hasReducedPrice,
+            },
+            className
+          )}
           data-testid="product-price"
         >
           {convertToLocale({
