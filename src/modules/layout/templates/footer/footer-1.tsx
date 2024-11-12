@@ -1,13 +1,22 @@
-import { getCategoriesList } from "@lib/data/categories"
-import { getCollectionsList } from "@lib/data/collections"
-import { clx, Text } from "@medusajs/ui"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
+import type {
+  StoreCollection,
+  StoreProductCategory,
+  StoreRegion,
+} from "@medusajs/types"
+import { Text } from "@medusajs/ui"
+import { cn } from "@/lib/utils/cn"
+import LocalizedClientLink from "@/modules/common/components/localized-client-link"
+import MedusaCTA from "@/modules/layout/components/medusa-cta"
 
-export default async function Footer() {
-  const { collections } = await getCollectionsList(0, 6)
-  const { product_categories } = await getCategoriesList(0, 6)
-
+const Footer = ({
+  regions,
+  collections,
+  product_categories,
+}: {
+  collections: StoreCollection[]
+  product_categories: StoreProductCategory[]
+  regions: StoreRegion[]
+}) => {
   return (
     <footer className="border-t border-ui-border-base w-full">
       <div className="content-container flex flex-col w-full">
@@ -48,7 +57,7 @@ export default async function Footer() {
                         key={c.id}
                       >
                         <LocalizedClientLink
-                          className={clx(
+                          className={cn(
                             "hover:text-ui-fg-base",
                             children && "txt-small-plus"
                           )}
@@ -85,7 +94,7 @@ export default async function Footer() {
                   Collections
                 </span>
                 <ul
-                  className={clx(
+                  className={cn(
                     "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
                     {
                       "grid-cols-2": (collections?.length || 0) > 3,
@@ -152,3 +161,5 @@ export default async function Footer() {
     </footer>
   )
 }
+
+export default Footer

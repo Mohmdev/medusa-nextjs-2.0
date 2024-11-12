@@ -9,8 +9,8 @@
   "trailingComma": "es5",
   "tabWidth": 2,
   "importOrder": [
-    "^react",
-    "^next",
+    "^react$",
+    "^next$",
     "<THIRD_PARTY_MODULES>",
     "^@/(.*)$",
     "^[./]"

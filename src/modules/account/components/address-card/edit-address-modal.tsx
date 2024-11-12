@@ -1,20 +1,20 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
-import { useFormState } from "react-dom"
+import React, { useActionState, useEffect, useState } from "react"
+import { PencilSquare as Edit, Trash } from "@medusajs/icons"
+import { HttpTypes } from "@medusajs/types"
+import { Button, Heading, Text } from "@medusajs/ui"
 import {
   deleteCustomerAddress,
   updateCustomerAddress,
-} from "@lib/data/customer"
-import useToggleState from "@lib/hooks/use-toggle-state"
-import { PencilSquare as Edit, Trash } from "@medusajs/icons"
-import { HttpTypes } from "@medusajs/types"
-import { Button, clx, Heading, Text } from "@medusajs/ui"
-import CountrySelect from "@modules/checkout/components/country-select"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
-import Input from "@modules/common/components/input"
-import Modal from "@modules/common/components/modal"
-import Spinner from "@modules/common/icons/spinner"
+} from "@/lib/data/customer"
+import useToggleState from "@/lib/hooks/use-toggle-state"
+import { cn } from "@/lib/utils/cn"
+import CountrySelect from "@/modules/checkout/components/country-select"
+import { SubmitButton } from "@/modules/checkout/components/submit-button"
+import Input from "@/modules/common/components/input"
+import Modal from "@/modules/common/components/modal"
+import Spinner from "@/modules/common/icons/spinner"
 
 type EditAddressProps = {
   region: HttpTypes.StoreRegion
@@ -31,7 +31,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
   const [successState, setSuccessState] = useState(false)
   const { state, open, close: closeModal } = useToggleState(false)
 
-  const [formState, formAction] = useFormState(updateCustomerAddress, {
+  const [formState, formAction] = useActionState(updateCustomerAddress, {
     success: false,
     error: null,
     addressId: address.id,
@@ -64,7 +64,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
   return (
     <>
       <div
-        className={clx(
+        className={cn(
           "border rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between transition-colors",
           {
             "border-gray-900": isActive,
@@ -87,7 +87,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
               {address.company}
             </Text>
           )}
-          <Text className="flex flex-col text-left text-base-regular mt-2">
+          <Text className="flex flex-col mt-2 text-left text-base-regular">
             <span data-testid="address-address">
               {address.address_1}
               {address.address_2 && <span>, {address.address_2}</span>}
@@ -103,7 +103,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
         </div>
         <div className="flex items-center gap-x-4">
           <button
-            className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
+            className="flex items-center text-small-regular text-ui-fg-base gap-x-2"
             onClick={open}
             data-testid="address-edit-button"
           >
@@ -111,7 +111,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
             Edit
           </button>
           <button
-            className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
+            className="flex items-center text-small-regular text-ui-fg-base gap-x-2"
             onClick={removeAddress}
             data-testid="address-delete-button"
           >
@@ -210,7 +210,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
               />
             </div>
             {formState.error && (
-              <div className="text-rose-500 text-small-regular py-2">
+              <div className="py-2 text-rose-500 text-small-regular">
                 {formState.error}
               </div>
             )}

@@ -1,7 +1,8 @@
 "use client"
 
+import { Heading, Text } from "@medusajs/ui"
 import { useSearchParams } from "next/navigation"
-import { clx, Heading, Text } from "@medusajs/ui"
+import { cn } from "@/lib/utils/cn"
 import PaymentButton from "../payment-button"
 
 const Review = ({ cart }: { cart: any }) => {
@@ -22,7 +23,7 @@ const Review = ({ cart }: { cart: any }) => {
       <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
-          className={clx(
+          className={cn(
             "flex flex-row text-3xl-regular gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none": !isOpen,

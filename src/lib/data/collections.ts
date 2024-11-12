@@ -1,6 +1,6 @@
 import { cache } from "react"
-import { sdk } from "@lib/config"
 import type { HttpTypes } from "@medusajs/types"
+import { sdk } from "@/lib/config"
 import { getProductsList } from "./products"
 
 export const retrieveCollection = cache(async function (id: string) {
@@ -28,7 +28,8 @@ export const getCollectionByHandle = cache(async function (
 
 export const getCollectionsWithProducts = cache(
   async (countryCode: string): Promise<HttpTypes.StoreCollection[] | null> => {
-    const { collections } = await getCollectionsList(0, 3)
+    // TODO: Make the limit and offset dynamic
+    const { collections } = await getCollectionsList(0, 10)
 
     if (!collections) {
       return null
@@ -39,6 +40,7 @@ export const getCollectionsWithProducts = cache(
       .filter(Boolean) as string[]
 
     const { response } = await getProductsList({
+      pageParam: 0,
       queryParams: { collection_id: collectionIds },
       countryCode,
     })

@@ -1,7 +1,7 @@
 import { Metadata } from "next"
-import Link from "next/link"
 import { ArrowUpRightMini } from "@medusajs/icons"
 import { Text } from "@medusajs/ui"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "404",

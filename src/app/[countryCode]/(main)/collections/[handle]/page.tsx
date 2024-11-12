@@ -1,13 +1,13 @@
 import { Metadata } from "next"
+import type { StoreCollection, StoreRegion } from "@medusajs/types"
 import { notFound } from "next/navigation"
 import {
   getCollectionByHandle,
   getCollectionsList,
-} from "@lib/data/collections"
-import { listRegions } from "@lib/data/regions"
-import type { StoreCollection, StoreRegion } from "@medusajs/types"
-import CollectionTemplate from "@modules/collections/templates"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+} from "@/lib/data/collections"
+import { listRegions } from "@/lib/data/regions"
+import CollectionTemplate from "@/modules/collections/templates"
+import { SortOptions } from "@/modules/store/components/refinement-list/sort-products"
 
 type Props = {
   params: Promise<{ handle: string; countryCode: string }>

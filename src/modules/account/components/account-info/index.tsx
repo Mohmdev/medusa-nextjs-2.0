@@ -1,8 +1,9 @@
 import React, { useEffect } from "react"
-import { useFormStatus } from "react-dom"
 import { Disclosure, DisclosurePanel } from "@headlessui/react"
-import useToggleState from "@lib/hooks/use-toggle-state"
-import { Badge, Button, clx } from "@medusajs/ui"
+import { Badge, Button } from "@medusajs/ui"
+import { useFormStatus } from "react-dom"
+import useToggleState from "@/lib/hooks/use-toggle-state"
+import { cn } from "@/lib/utils/cn"
 
 type AccountInfoProps = {
   label: string
@@ -73,7 +74,7 @@ const AccountInfo = ({
       <Disclosure>
         <DisclosurePanel
           static
-          className={clx(
+          className={cn(
             "transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden",
             {
               "max-h-[1000px] opacity-100": isSuccess,
@@ -92,7 +93,7 @@ const AccountInfo = ({
       <Disclosure>
         <DisclosurePanel
           static
-          className={clx(
+          className={cn(
             "transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden",
             {
               "max-h-[1000px] opacity-100": isError,
@@ -110,7 +111,7 @@ const AccountInfo = ({
       <Disclosure>
         <DisclosurePanel
           static
-          className={clx(
+          className={cn(
             "transition-[max-height,opacity] duration-300 ease-in-out overflow-visible",
             {
               "max-h-[1000px] opacity-100": state,

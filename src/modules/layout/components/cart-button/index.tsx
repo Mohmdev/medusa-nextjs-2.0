@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { enrichLineItems, retrieveCart } from "@lib/data/cart"
+import { enrichLineItems, retrieveCart } from "@/lib/data/cart"
 import CartDropdown from "../cart-dropdown"
 
 const fetchCart = async () => {

@@ -1,11 +1,10 @@
 "use client"
 
-import React, { useEffect, useMemo } from "react"
-import { useFormState } from "react-dom"
-import { updateCustomerAddress } from "@lib/data/customer"
+import React, { useActionState, useEffect, useMemo } from "react"
 import { HttpTypes } from "@medusajs/types"
-import Input from "@modules/common/components/input"
-import NativeSelect from "@modules/common/components/native-select"
+import { updateCustomerAddress } from "@/lib/data/customer"
+import Input from "@/modules/common/components/input"
+import NativeSelect from "@/modules/common/components/native-select"
 import AccountInfo from "../account-info"
 
 type MyInformationProps = {
@@ -32,7 +31,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
 
   const [successState, setSuccessState] = React.useState(false)
 
-  const [state, formAction] = useFormState(updateCustomerAddress, {
+  const [state, formAction] = useActionState(updateCustomerAddress, {
     error: false,
     success: false,
   })

@@ -1,6 +1,6 @@
 import { FormEvent } from "react"
-import { useRouter } from "next/navigation"
 import { XMarkMini } from "@medusajs/icons"
+import { useRouter } from "next/navigation"
 import SearchBoxWrapper, {
   ControlledSearchBoxProps,
 } from "../search-box-wrapper"

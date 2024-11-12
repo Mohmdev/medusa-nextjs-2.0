@@ -1,10 +1,10 @@
 import { Fragment, useMemo } from "react"
 import { Listbox, Transition } from "@headlessui/react"
-import compareAddresses from "@lib/util/compare-addresses"
 import { ChevronUpDown } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
-import { clx } from "@medusajs/ui"
-import Radio from "@modules/common/components/radio"
+import { cn } from "@/lib/utils/cn"
+import compareAddresses from "@/lib/utils/compare-addresses"
+import Radio from "@/modules/common/components/radio"
 
 type AddressSelectProps = {
   addresses: HttpTypes.StoreCustomerAddress[]
@@ -46,7 +46,7 @@ const AddressSelect = ({
                   : "Choose an address"}
               </span>
               <ChevronUpDown
-                className={clx("transition-rotate duration-200", {
+                className={cn("transition-rotate duration-200", {
                   "transform rotate-180": open,
                 })}
               />

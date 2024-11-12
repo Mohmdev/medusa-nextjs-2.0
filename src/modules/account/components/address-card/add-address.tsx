@@ -1,22 +1,21 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useFormState } from "react-dom"
-import { addCustomerAddress } from "@lib/data/customer"
-import useToggleState from "@lib/hooks/use-toggle-state"
+import { useActionState, useEffect, useState } from "react"
 import { Plus } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
 import { Button, Heading } from "@medusajs/ui"
-import CountrySelect from "@modules/checkout/components/country-select"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
-import Input from "@modules/common/components/input"
-import Modal from "@modules/common/components/modal"
+import { addCustomerAddress } from "@/lib/data/customer"
+import useToggleState from "@/lib/hooks/use-toggle-state"
+import CountrySelect from "@/modules/checkout/components/country-select"
+import { SubmitButton } from "@/modules/checkout/components/submit-button"
+import Input from "@/modules/common/components/input"
+import Modal from "@/modules/common/components/modal"
 
 const AddAddress = ({ region }: { region: HttpTypes.StoreRegion }) => {
   const [successState, setSuccessState] = useState(false)
   const { state, open, close: closeModal } = useToggleState(false)
 
-  const [formState, formAction] = useFormState(addCustomerAddress, {
+  const [formState, formAction] = useActionState(addCustomerAddress, {
     success: false,
     error: null,
   })
@@ -130,7 +129,7 @@ const AddAddress = ({ region }: { region: HttpTypes.StoreRegion }) => {
             </div>
             {formState.error && (
               <div
-                className="text-rose-500 text-small-regular py-2"
+                className="py-2 text-rose-500 text-small-regular"
                 data-testid="address-error"
               >
                 {formState.error}

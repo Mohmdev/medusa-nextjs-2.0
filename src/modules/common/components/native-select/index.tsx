@@ -7,7 +7,7 @@ import {
   useState,
 } from "react"
 import { ChevronUpDown } from "@medusajs/icons"
-import { clx } from "@medusajs/ui"
+import { cn } from "@/lib/utils/cn"
 
 export type NativeSelectProps = {
   placeholder?: string
@@ -41,7 +41,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         <div
           onFocus={() => innerRef.current?.focus()}
           onBlur={() => innerRef.current?.blur()}
-          className={clx(
+          className={cn(
             "relative flex items-center text-base-regular border border-ui-border-base bg-ui-bg-subtle rounded-md hover:bg-ui-bg-field-hover",
             className,
             {

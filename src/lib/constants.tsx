@@ -1,8 +1,8 @@
 import React from "react"
 import { CreditCard } from "@medusajs/icons"
-import Bancontact from "@modules/common/icons/bancontact"
-import Ideal from "@modules/common/icons/ideal"
-import PayPal from "@modules/common/icons/paypal"
+import Bancontact from "@/modules/common/icons/bancontact"
+import Ideal from "@/modules/common/icons/ideal"
+import PayPal from "@/modules/common/icons/paypal"
 
 /* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
 export const paymentInfoMap: Record<

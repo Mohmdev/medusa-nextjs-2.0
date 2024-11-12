@@ -1,16 +1,17 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { RadioGroup } from "@headlessui/react"
-import { setShippingMethod } from "@lib/data/cart"
-import { convertToLocale } from "@lib/util/money"
 import { CheckCircleSolid } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
-import { Button, clx, Heading, Text } from "@medusajs/ui"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import Divider from "@modules/common/components/divider"
-import Radio from "@modules/common/components/radio"
+import { Button, Heading, Text } from "@medusajs/ui"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { setShippingMethod } from "@/lib/data/cart"
+import { cn } from "@/lib/utils/cn"
+import { convertToLocale } from "@/lib/utils/money"
+import ErrorMessage from "@/modules/checkout/components/error-message"
+import Divider from "@/modules/common/components/divider"
+import Radio from "@/modules/common/components/radio"
 
 type ShippingProps = {
   cart: HttpTypes.StoreCart
@@ -63,7 +64,7 @@ const Shipping: React.FC<ShippingProps> = ({
       <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
-          className={clx(
+          className={cn(
             "flex flex-row text-3xl-regular gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none":
@@ -101,7 +102,7 @@ const Shipping: React.FC<ShippingProps> = ({
                     key={option.id}
                     value={option.id}
                     data-testid="delivery-option-radio"
-                    className={clx(
+                    className={cn(
                       "flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-rounded px-8 mb-2 hover:shadow-borders-interactive-with-active",
                       {
                         "border-ui-border-interactive":

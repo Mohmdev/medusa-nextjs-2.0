@@ -1,5 +1,5 @@
 import { cache } from "react"
-import { sdk } from "@lib/config"
+import { sdk } from "@/lib/config"
 
 // Shipping actions
 export const listCartShippingMethods = cache(async function (cartId: string) {

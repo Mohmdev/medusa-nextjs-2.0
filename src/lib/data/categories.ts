@@ -1,5 +1,5 @@
 import { cache } from "react"
-import { sdk } from "@lib/config"
+import { sdk } from "@/lib/config"
 
 export const listCategories = cache(async function () {
   return sdk.store.category

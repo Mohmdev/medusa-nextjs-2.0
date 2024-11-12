@@ -1,7 +1,7 @@
 import { cache } from "react"
-import { sdk } from "@lib/config"
-import medusaError from "@lib/util/medusa-error"
 import type { HttpTypes } from "@medusajs/types"
+import { sdk } from "@/lib/config"
+import medusaError from "@/lib/utils/medusa-error"
 
 export const listRegions = cache(async function () {
   return sdk.store.region

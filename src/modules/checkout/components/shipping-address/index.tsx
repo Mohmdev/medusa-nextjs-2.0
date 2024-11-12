@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react"
 import { HttpTypes } from "@medusajs/types"
 import { Container } from "@medusajs/ui"
-import Checkbox from "@modules/common/components/checkbox"
-import Input from "@modules/common/components/input"
 import { mapKeys } from "lodash"
+import Checkbox from "@/modules/common/components/checkbox"
+import Input from "@/modules/common/components/input"
 import AddressSelect from "../address-select"
 import CountrySelect from "../country-select"
 

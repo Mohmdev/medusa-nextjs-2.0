@@ -6,8 +6,8 @@ import React, {
   useRef,
   useState,
 } from "react"
-import { useSearchBox, UseSearchBoxProps } from "react-instantsearch-hooks-web"
 import { useRouter } from "next/navigation"
+import { useSearchBox, UseSearchBoxProps } from "react-instantsearch-hooks-web"
 
 export type ControlledSearchBoxProps = React.ComponentProps<"div"> & {
   inputRef: RefObject<HTMLInputElement>

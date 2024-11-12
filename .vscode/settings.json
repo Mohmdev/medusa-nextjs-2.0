@@ -1,17 +1,19 @@
 {
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#1f0d49",
+    "titleBar.activeBackground": "#3e394d",
     "titleBar.activeForeground": "#e2e8f0",
     "titleBar.inactiveBackground": "#181239",
     "titleBar.inactiveForeground": "#b1b6bd"
   },
 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
+    // "source.fixAll.eslint": "explicit",
+    // "source.organizeImports": "never"
+    // "source.sortImports": "never"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
+  "prettier.prettierPath": "./node_modules/prettier",
+  "prettier.requireConfig": true,
+  // "editor.formatOnSave": true,
   // "editor.rulers": [100],
   "editor.tabSize": 2,
   "editor.quickSuggestions": {
@@ -24,19 +26,9 @@
     "typescript",
     "typescriptreact"
   ],
-
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "typescript.tsdk": "node_modules/typescript/lib",
   "prettier.documentSelectors": [
     "**/*.{cjs,mjs,ts,tsx,astro,md,mdx,json,yaml,yml}"
-  ],
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  ]
 }

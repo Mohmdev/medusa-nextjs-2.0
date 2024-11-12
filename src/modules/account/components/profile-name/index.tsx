@@ -1,10 +1,9 @@
 "use client"
 
-import React, { useEffect } from "react"
-import { useFormState } from "react-dom"
-import { updateCustomer } from "@lib/data/customer"
+import React, { useActionState, useEffect } from "react"
 import { HttpTypes } from "@medusajs/types"
-import Input from "@modules/common/components/input"
+import { updateCustomer } from "@/lib/data/customer"
+import Input from "@/modules/common/components/input"
 import AccountInfo from "../account-info"
 
 type MyInformationProps = {
@@ -31,7 +30,7 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
     }
   }
 
-  const [state, formAction] = useFormState(updateCustomerName, {
+  const [state, formAction] = useActionState(updateCustomerName, {
     error: false,
     success: false,
   })
