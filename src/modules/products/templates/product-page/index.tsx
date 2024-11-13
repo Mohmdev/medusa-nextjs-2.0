@@ -8,7 +8,7 @@ import ProductTabs from "@/modules/products/components/product-tabs"
 import RelatedProducts from "@/modules/products/components/related-products"
 import ProductInfo from "@/modules/products/templates/product-info"
 import SkeletonRelatedProducts from "@/modules/skeletons/templates/skeleton-related-products"
-import ProductActionsWrapper from "./product-actions-wrapper"
+import ProductActionsWrapper from "../product-actions-wrapper"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
