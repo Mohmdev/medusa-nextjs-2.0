@@ -21,16 +21,6 @@ const CategoryFilter = ({
 
   const activeCategory = searchParams.get("category")
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams)
-      params.set(name, value)
-
-      return params.toString()
-    },
-    [searchParams]
-  )
-
   const setQueryParams = (name: string, value: string) => {
     const params = new URLSearchParams(searchParams)
 
