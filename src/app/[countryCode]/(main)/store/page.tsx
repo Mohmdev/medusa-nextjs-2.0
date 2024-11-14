@@ -55,8 +55,8 @@ export default async function StorePage(props: Params) {
             sortBy={sort}
             page={pageNumber}
             countryCode={params.countryCode}
-            categoryId={category}
-            collectionId={collection}
+            categoryHandle={category}
+            collectionHandle={collection}
           />
         </Suspense>
       </div>

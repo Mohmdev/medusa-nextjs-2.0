@@ -3,6 +3,7 @@
 import { useCallback } from "react"
 import type { HttpTypes } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { cn } from "@/lib/utils/cn"
 
 type CategoryFilterProps = {
   search?: boolean
@@ -42,12 +43,13 @@ const CategoryFilter = ({
         {categories.map((cat: HttpTypes.StoreProductCategory) => (
           <li key={cat.id}>
             <button
-              onClick={() => setQueryParams("category", cat.id)}
-              className={`w-full text-left py-2 hover:text-ui-fg-base transition-colors ${
-                activeCategory === cat.id
+              onClick={() => setQueryParams("category", cat.handle)}
+              className={cn(
+                "w-full text-left py-2 hover:text-ui-fg-base transition-colors",
+                activeCategory === cat.handle
                   ? "text-ui-fg-base font-semibold"
                   : "text-ui-fg-subtle"
-              }`}
+              )}
             >
               {cat.name}
             </button>

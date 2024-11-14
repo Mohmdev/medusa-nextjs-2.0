@@ -1,3 +1,5 @@
+import { getCategoryByHandle } from "@/lib/data/categories"
+import { getCollectionByHandle } from "@/lib/data/collections"
 import { getProductsListWithSort } from "@/lib/data/products"
 import { getRegion } from "@/lib/data/regions"
 import ProductPreview from "@/modules/products/components/product-preview"
@@ -15,19 +17,23 @@ type PaginatedProductsParams = {
 }
 
 const PaginatedProducts = async ({
+  countryCode,
   sortBy,
   page,
-  collectionId,
-  categoryId,
   productsIds,
-  countryCode,
+  categoryId,
+  categoryHandle,
+  collectionId,
+  collectionHandle,
 }: {
+  countryCode: string
   sortBy?: SortOptions
   page: number
-  collectionId?: string
-  categoryId?: string
   productsIds?: string[]
-  countryCode: string
+  categoryId?: string
+  categoryHandle?: string
+  collectionId?: string
+  collectionHandle?: string
 }) => {
   const queryParams: PaginatedProductsParams = {
     limit: 12,
@@ -37,8 +43,22 @@ const PaginatedProducts = async ({
     queryParams["collection_id"] = [collectionId]
   }
 
+  if (collectionHandle) {
+    const collection = await getCollectionByHandle(collectionHandle)
+    if (collection) {
+      queryParams["collection_id"] = [collection.id]
+    }
+  }
+
   if (categoryId) {
     queryParams["category_id"] = [categoryId]
+  }
+
+  if (categoryHandle) {
+    const { product_categories } = await getCategoryByHandle([categoryHandle])
+    if (product_categories?.[0]) {
+      queryParams["category_id"] = [product_categories[0].id]
+    }
   }
 
   if (productsIds) {

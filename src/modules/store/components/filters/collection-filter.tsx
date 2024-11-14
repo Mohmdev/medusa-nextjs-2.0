@@ -1,13 +1,14 @@
 "use client"
 
 import { useCallback } from "react"
-import type { HttpTypes } from "@medusajs/types"
+import type { StoreCollection } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { cn } from "@/lib/utils/cn"
 
 type CollectionFilterProps = {
   search?: boolean
   "data-testid"?: string
-  collections: HttpTypes.StoreCollection[]
+  collections: StoreCollection[]
 }
 
 const CollectionFilter = ({
@@ -24,7 +25,6 @@ const CollectionFilter = ({
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams)
       params.set(name, value)
-
       return params.toString()
     },
     [searchParams]
@@ -39,15 +39,16 @@ const CollectionFilter = ({
     <div className="px-6 small:px-8 small:py-4">
       <h3 className="txt-compact-xlarge mb-4">Collections</h3>
       <ul className="txt-compact-small">
-        {collections.map((collection: HttpTypes.StoreCollection) => (
+        {collections.map((collection: StoreCollection) => (
           <li key={collection.id}>
             <button
-              onClick={() => setQueryParams("collection", collection.id)}
-              className={`w-full text-left py-2 hover:text-ui-fg-base transition-colors ${
-                activeCollection === collection.id
+              onClick={() => setQueryParams("collection", collection.handle)}
+              className={cn(
+                "w-full text-left py-2 hover:text-ui-fg-base transition-colors",
+                activeCollection === collection.handle
                   ? "text-ui-fg-base font-semibold"
                   : "text-ui-fg-subtle"
-              }`}
+              )}
             >
               {collection.title}
             </button>
