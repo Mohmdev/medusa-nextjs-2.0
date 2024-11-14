@@ -31,8 +31,17 @@ const CollectionFilter = ({
   )
 
   const setQueryParams = (name: string, value: string) => {
-    const query = createQueryString(name, value)
-    router.push(`${pathname}?${query}`)
+    const params = new URLSearchParams(searchParams)
+
+    // If clicking the already selected collection, remove it from params
+    if (activeCollection === value) {
+      params.delete(name)
+    } else {
+      // Otherwise set the new collection
+      params.set(name, value)
+    }
+
+    router.push(`${pathname}?${params.toString()}`)
   }
 
   return (
