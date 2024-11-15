@@ -3,8 +3,9 @@
 import type { StoreProductCategory } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils/cn"
+import { Checkbox } from "@/ui/shadcn/checkbox"
 
-type CategoryFilterProps = {
+type CategoryFilterWithCountProps = {
   search?: boolean
   "data-testid"?: string
   categories: (StoreProductCategory & { product_count: number })[]
@@ -13,7 +14,7 @@ type CategoryFilterProps = {
 const CategoryFilterWithCount = ({
   categories,
   "data-testid": dataTestId,
-}: CategoryFilterProps) => {
+}: CategoryFilterWithCountProps) => {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -51,35 +52,46 @@ const CategoryFilterWithCount = ({
       <div className="flex items-center justify-between mb-4">
         <h3 className="txt-compact-xlarge">Categories</h3>
       </div>
-      <ul className="txt-compact-small">
-        {categories.map(
-          (category: StoreProductCategory & { product_count: number }) => (
-            <li key={category.id}>
-              <button
-                onClick={() => setQueryParams("category", category.handle)}
+      <div className="space-y-3">
+        {categories.map((category) => {
+          const isChecked = activeCategories.includes(category.handle)
+          return (
+            <div key={category.id} className="flex items-center space-x-2">
+              <Checkbox
+                id={category.id}
+                checked={isChecked}
+                onCheckedChange={() =>
+                  setQueryParams("category", category.handle)
+                }
                 className={cn(
-                  "w-full text-left py-2 hover:text-ui-fg-base transition-colors",
-                  activeCategories.includes(category.handle)
-                    ? "text-ui-fg-base font-semibold"
-                    : "text-ui-fg-subtle"
+                  "border-border",
+                  "data-[state=checked]:bg-secondary-foreground data-[state=checked]:border-secondary-foreground"
+                )}
+              />
+              <label
+                htmlFor={category.id}
+                className={cn(
+                  "text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer flex items-center justify-between w-full",
+                  isChecked ? "text-ui-fg-base" : "text-ui-fg-subtle"
                 )}
               >
-                {category.name} ({category.product_count})
-              </button>
-            </li>
+                <span>{category.name}</span>
+                <span className="text-ui-fg-subtle">
+                  ({category.product_count})
+                </span>
+              </label>
+            </div>
           )
+        })}
+        {activeCategories.length > 0 && (
+          <button
+            onClick={clearAll}
+            className="txt-compact-small text-ui-fg-subtle hover:text-ui-fg-base transition-colors pt-2"
+          >
+            Clear all
+          </button>
         )}
-        <li>
-          {activeCategories.length > 0 && (
-            <button
-              onClick={clearAll}
-              className="txt-compact-small text-ui-fg-subtle hover:text-ui-fg-base transition-colors"
-            >
-              Clear all
-            </button>
-          )}
-        </li>
-      </ul>
+      </div>
     </div>
   )
 }

@@ -3,17 +3,18 @@
 import type { StoreCollection } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils/cn"
+import { Checkbox } from "@/ui/shadcn/checkbox"
 
-type CollectionFilterProps = {
+type CollectionFilterWithCountProps = {
   search?: boolean
   "data-testid"?: string
   collections: (StoreCollection & { product_count: number })[]
 }
 
-const CollectionFilter = ({
+const CollectionFilterWithCount = ({
   collections,
   "data-testid": dataTestId,
-}: CollectionFilterProps) => {
+}: CollectionFilterWithCountProps) => {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -51,37 +52,48 @@ const CollectionFilter = ({
       <div className="flex items-center justify-between mb-4">
         <h3 className="txt-compact-xlarge">Collections</h3>
       </div>
-      <ul className="txt-compact-small">
-        {collections.map(
-          (collection: StoreCollection & { product_count: number }) => (
-            <li key={collection.id}>
-              <button
-                onClick={() => setQueryParams("collection", collection.handle)}
+      <div className="space-y-3">
+        {collections.map((collection) => {
+          const isChecked = activeCollections.includes(collection.handle)
+          return (
+            <div key={collection.id} className="flex items-center space-x-2">
+              <Checkbox
+                id={collection.id}
+                checked={isChecked}
+                onCheckedChange={() =>
+                  setQueryParams("collection", collection.handle)
+                }
                 className={cn(
-                  "w-full text-left py-2 hover:text-ui-fg-base transition-colors",
-                  activeCollections.includes(collection.handle)
-                    ? "text-ui-fg-base font-semibold"
-                    : "text-ui-fg-subtle"
+                  "border-border",
+                  "data-[state=checked]:bg-secondary-foreground data-[state=checked]:border-secondary-foreground"
+                )}
+              />
+              <label
+                htmlFor={collection.id}
+                className={cn(
+                  "text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer flex items-center justify-between w-full",
+                  isChecked ? "text-ui-fg-base" : "text-ui-fg-subtle"
                 )}
               >
-                {collection.title} ({collection.product_count})
-              </button>
-            </li>
+                <span>{collection.title}</span>
+                <span className="text-ui-fg-subtle">
+                  ({collection.product_count})
+                </span>
+              </label>
+            </div>
           )
+        })}
+        {activeCollections.length > 0 && (
+          <button
+            onClick={clearAll}
+            className="txt-compact-small text-ui-fg-subtle hover:text-ui-fg-base transition-colors pt-2"
+          >
+            Clear all
+          </button>
         )}
-        <li>
-          {activeCollections.length > 0 && (
-            <button
-              onClick={clearAll}
-              className="txt-compact-small text-ui-fg-subtle hover:text-ui-fg-base transition-colors"
-            >
-              Clear all
-            </button>
-          )}
-        </li>
-      </ul>
+      </div>
     </div>
   )
 }
 
-export default CollectionFilter
+export default CollectionFilterWithCount
