@@ -1,6 +1,5 @@
 "use client"
 
-import { useCallback } from "react"
 import type { StoreProductCategory } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils/cn"
@@ -19,18 +18,24 @@ const CategoryFilter = ({
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const activeCategory = searchParams.get("category")
+  // Get all category values from searchParams
+  const activeCategories = searchParams.getAll("category")
 
   const setQueryParams = (name: string, value: string) => {
     const params = new URLSearchParams(searchParams)
 
-    // If clicking the already selected category, remove it from params
-    if (activeCategory === value) {
-      params.delete(name)
-    } else {
-      // Otherwise set the new category
-      params.set(name, value)
-    }
+    // Remove all existing category parameters
+    params.delete(name)
+
+    // If the category is already selected, filter it out
+    const newCategories = activeCategories.includes(value)
+      ? activeCategories.filter((cat) => cat !== value)
+      : [...activeCategories, value]
+
+    // Add each category as a separate parameter
+    newCategories.forEach((category) => {
+      params.append(name, category)
+    })
 
     router.push(`${pathname}?${params.toString()}`)
   }
@@ -45,7 +50,7 @@ const CategoryFilter = ({
               onClick={() => setQueryParams("category", category.handle)}
               className={cn(
                 "w-full text-left py-2 hover:text-ui-fg-base transition-colors",
-                activeCategory === category.handle
+                activeCategories.includes(category.handle)
                   ? "text-ui-fg-base font-semibold"
                   : "text-ui-fg-subtle"
               )}

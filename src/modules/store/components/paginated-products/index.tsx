@@ -16,6 +16,17 @@ type PaginatedProductsParams = {
   order?: string
 }
 
+type PaginatedProductsProps = {
+  countryCode: string
+  sortBy?: SortOptions
+  page: number
+  productsIds?: string[]
+  categoryId?: string
+  categoryHandle?: string | string[]
+  collectionId?: string
+  collectionHandle?: string | string[]
+}
+
 const PaginatedProducts = async ({
   countryCode,
   sortBy,
@@ -25,16 +36,7 @@ const PaginatedProducts = async ({
   categoryHandle,
   collectionId,
   collectionHandle,
-}: {
-  countryCode: string
-  sortBy?: SortOptions
-  page: number
-  productsIds?: string[]
-  categoryId?: string
-  categoryHandle?: string
-  collectionId?: string
-  collectionHandle?: string
-}) => {
+}: PaginatedProductsProps) => {
   const queryParams: PaginatedProductsParams = {
     limit: 12,
   }
@@ -44,9 +46,15 @@ const PaginatedProducts = async ({
   }
 
   if (collectionHandle) {
-    const collection = await getCollectionByHandle(collectionHandle)
-    if (collection) {
-      queryParams["collection_id"] = [collection.id]
+    const handles = Array.isArray(collectionHandle)
+      ? collectionHandle
+      : [collectionHandle]
+    const collections = await Promise.all(
+      handles.map((handle) => getCollectionByHandle(handle))
+    )
+    const validCollections = collections.filter(Boolean)
+    if (validCollections.length) {
+      queryParams["collection_id"] = validCollections.map((col) => col.id)
     }
   }
 
@@ -55,9 +63,12 @@ const PaginatedProducts = async ({
   }
 
   if (categoryHandle) {
-    const { product_categories } = await getCategoryByHandle([categoryHandle])
-    if (product_categories?.[0]) {
-      queryParams["category_id"] = [product_categories[0].id]
+    const handles = Array.isArray(categoryHandle)
+      ? categoryHandle
+      : [categoryHandle]
+    const { product_categories } = await getCategoryByHandle(handles)
+    if (product_categories?.length) {
+      queryParams["category_id"] = product_categories.map((cat) => cat.id)
     }
   }
 

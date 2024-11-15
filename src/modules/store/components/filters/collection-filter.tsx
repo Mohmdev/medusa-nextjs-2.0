@@ -1,6 +1,5 @@
 "use client"
 
-import { useCallback } from "react"
 import type { StoreCollection } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils/cn"
@@ -19,18 +18,24 @@ const CollectionFilter = ({
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const activeCollection = searchParams.get("collection")
+  // Get all collection values from searchParams
+  const activeCollections = searchParams.getAll("collection")
 
   const setQueryParams = (name: string, value: string) => {
     const params = new URLSearchParams(searchParams)
 
-    // If clicking the already selected collection, remove it from params
-    if (activeCollection === value) {
-      params.delete(name)
-    } else {
-      // Otherwise set the new collection
-      params.set(name, value)
-    }
+    // Remove all existing collection parameters
+    params.delete(name)
+
+    // If the collection is already selected, filter it out
+    const newCollections = activeCollections.includes(value)
+      ? activeCollections.filter((col) => col !== value)
+      : [...activeCollections, value]
+
+    // Add each collection as a separate parameter
+    newCollections.forEach((collection) => {
+      params.append(name, collection)
+    })
 
     router.push(`${pathname}?${params.toString()}`)
   }
@@ -45,7 +50,7 @@ const CollectionFilter = ({
               onClick={() => setQueryParams("collection", collection.handle)}
               className={cn(
                 "w-full text-left py-2 hover:text-ui-fg-base transition-colors",
-                activeCollection === collection.handle
+                activeCollections.includes(collection.handle)
                   ? "text-ui-fg-base font-semibold"
                   : "text-ui-fg-subtle"
               )}

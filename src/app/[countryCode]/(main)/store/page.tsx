@@ -18,7 +18,7 @@ type Params = {
   searchParams: Promise<{
     sortBy?: SortOptions
     page?: string
-    category?: string
+    category?: string // This will now be a comma-separated string of categories
     collection?: string
   }>
   params: Promise<{
@@ -29,7 +29,15 @@ type Params = {
 export default async function StorePage(props: Params) {
   const params = await props.params
   const searchParams = await props.searchParams
-  const { sortBy, page, category, collection } = searchParams
+  const { sortBy, page, collection } = searchParams
+
+  // Get all category values (handles multiple parameters)
+  const categories = Array.isArray(searchParams.category)
+    ? searchParams.category
+    : searchParams.category
+      ? [searchParams.category]
+      : undefined
+
   const { product_categories } = await getCategoriesList()
   const { collections } = await getCollectionsList()
 
@@ -55,7 +63,7 @@ export default async function StorePage(props: Params) {
             sortBy={sort}
             page={pageNumber}
             countryCode={params.countryCode}
-            categoryHandle={category}
+            categoryHandle={categories} // Pass array of categories
             collectionHandle={collection}
           />
         </Suspense>
