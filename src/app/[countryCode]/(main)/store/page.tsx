@@ -4,7 +4,7 @@ import { getCategoriesList } from "@/lib/data/categories"
 import { getCollectionsList } from "@/lib/data/collections"
 import SkeletonProductGrid from "@/modules/skeletons/templates/skeleton-product-grid"
 import CategoryFilter from "@/modules/store/components/filters/category-filter"
-import CollectionFilter from "@/modules/store/components/filters/collection-filter"
+import CollectionTabs from "@/modules/store/components/filters/collection-tabs"
 import PaginatedProducts from "@/modules/store/components/paginated-products"
 import RefinementList from "@/modules/store/components/refinement-list"
 import { SortOptions } from "@/modules/store/components/refinement-list/sort-products"
@@ -52,9 +52,12 @@ export default async function StorePage(props: Params) {
       <div className="flex flex-col items-start justify-start gap-6">
         <RefinementList sortBy={sort} />
         <CategoryFilter categories={product_categories} />
-        <CollectionFilter collections={collections} />
+        {/* Remove CollectionFilter from here since we're using tabs */}
       </div>
       <div className="w-full">
+        <div className="mb-8">
+          <CollectionTabs collections={collections} />
+        </div>
         <div className="mb-8 text-2xl-semi">
           <h1 data-testid="store-page-title">All products</h1>
         </div>
