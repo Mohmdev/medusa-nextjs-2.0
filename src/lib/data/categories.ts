@@ -29,3 +29,18 @@ export const getCategoryByHandle = cache(async function (
     { next: { tags: ["categories"] } }
   )
 })
+
+export const getCategoriesListWithCount = cache(async () => {
+  const { product_categories } = await getCategoriesList()
+
+  const categoriesWithCount = await Promise.all(
+    product_categories.map(async (category) => {
+      const { count } = await sdk.store.product.list({
+        category_id: [category.id],
+      })
+      return { ...category, product_count: count }
+    })
+  )
+
+  return { product_categories: categoriesWithCount }
+})

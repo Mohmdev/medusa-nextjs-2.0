@@ -62,3 +62,18 @@ export const getCollectionsWithProducts = cache(
     return collections as unknown as HttpTypes.StoreCollection[]
   }
 )
+
+export const getCollectionsListWithCount = cache(async () => {
+  const { collections } = await getCollectionsList()
+
+  const collectionsWithCount = await Promise.all(
+    collections.map(async (collection) => {
+      const { count } = await sdk.store.product.list({
+        collection_id: [collection.id],
+      })
+      return { ...collection, product_count: count }
+    })
+  )
+
+  return collectionsWithCount
+})
