@@ -40,9 +40,17 @@ const CollectionFilter = ({
     router.push(`${pathname}?${params.toString()}`)
   }
 
+  const clearAll = () => {
+    const params = new URLSearchParams(searchParams)
+    params.delete("collection")
+    router.push(`${pathname}?${params.toString()}`)
+  }
+
   return (
     <div className="px-6 small:px-8 small:py-4">
-      <h3 className="txt-compact-xlarge mb-4">Collections</h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="txt-compact-xlarge">Collections</h3>
+      </div>
       <ul className="txt-compact-small">
         {collections.map((collection: StoreCollection) => (
           <li key={collection.id}>
@@ -59,6 +67,16 @@ const CollectionFilter = ({
             </button>
           </li>
         ))}
+        <li>
+          {activeCollections.length > 0 && (
+            <button
+              onClick={clearAll}
+              className="txt-compact-small text-ui-fg-subtle hover:text-ui-fg-base transition-colors"
+            >
+              Clear all
+            </button>
+          )}
+        </li>
       </ul>
     </div>
   )
